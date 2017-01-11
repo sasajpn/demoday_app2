@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   def user_check
     @user = User.find(params[:id]) || User.find(params[:user_id])
     redirect_to user_url(current_user), notice: "そのページはご利用いだだけません" unless current_user == @user
+  end
 
   private
 
