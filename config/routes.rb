@@ -8,4 +8,5 @@ Rails.application.routes.draw do
       resources :negotiates, shallow: true
     end
   end
+  resources :deals
 end
