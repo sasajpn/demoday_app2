@@ -65,20 +65,12 @@ ActiveRecord::Schema.define(version: 20170111144603) do
 
   create_table "deadlines", force: :cascade do |t|
     t.integer  "book_id",    limit: 4
-    t.date     "deadline"
+    t.datetime "deadline"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
   add_index "deadlines", ["book_id"], name: "index_deadlines_on_book_id", using: :btree
-
-  create_table "deals", force: :cascade do |t|
-    t.integer  "parent_id",  limit: 4
-    t.integer  "child_id",   limit: 4
-    t.text     "recommend",  limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
 
   create_table "evals", force: :cascade do |t|
     t.integer  "evaluatee_id", limit: 4
