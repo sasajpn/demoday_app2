@@ -11,7 +11,7 @@
         <hr />
         <div class="elements-list clearfix">
           <%= render 'books/start', object: object if num == 0 %>
-          <%= link_to "ほしいね！を見る",  class:"btn btn-gray" if num == 1 %>
+          <%= link_to "ほしいね！を見る", book_negotiates_path(object), class:"btn btn-gray" if num == 1 %>
           <%= link_to "ほしいね！を取り消す", child_path(object), class: "btn btn-danger",
              method: :delete, data: { confirm: 'ほしいね！を取り消してもよろしいですか？' } if num == 2 %>
           <%= link_to "取引を行う", parent_child_path(object.parent_child), class:"btn btn-gray" if num == 3 %>
