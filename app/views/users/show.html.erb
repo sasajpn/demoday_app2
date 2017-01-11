@@ -8,7 +8,7 @@
 					<br>
 				<% end %>
 				<div class="tab-pane fade <%= active_in(n)%>" id="vtab<%= n %>">
-					<%= render 'book', objects: @books.where(status: n), num: n %>
+					<%= render 'book', objects: @books.where(status: n-1), num: n-1 %>
 				</div>
 			<% end %>
 			<div class="tab-pane fade" id="vtab6">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110204408) do
+ActiveRecord::Schema.define(version: 20170111144603) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 20170110204408) do
     t.integer  "level",        limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "negotiates", force: :cascade do |t|
+    t.integer  "parent_id",  limit: 4
+    t.integer  "child_id",   limit: 4
+    t.text     "recommend",  limit: 65535
+    t.boolean  "agree",                    default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "prefectures", force: :cascade do |t|

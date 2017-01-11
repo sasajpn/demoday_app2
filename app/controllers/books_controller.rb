@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_book, only: [:destroy]
+  before_action :set_book, only: [:update, :destroy]
 
   def new
     @books = []
@@ -12,7 +12,7 @@ class BooksController < ApplicationController
         dataType: 'script',
         response_group: 'ItemAttributes, Images',
         country: 'jp',
-        power: "Not kindle"
+        power: 'Not kindle'
       )
       books.items.each do |item|
         book = current_user.books.build(
@@ -35,6 +35,10 @@ class BooksController < ApplicationController
     end
   end
 
+  def update
+    redirect_to user_url(current_user) if @book.update(book_params)
+  end
+
   def destroy
     @book.destroy
     redirect_to user_url(current_user)
@@ -43,7 +47,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :image, :status, :user_id)
+    params.require(:book).permit(:title, :author, :image, :condition, :status, :user_id)
   end
 
   def set_book
