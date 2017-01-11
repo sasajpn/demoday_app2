@@ -1,8 +1,7 @@
-<% objects.each do |object| %>
   <div class="col-md-3 col-sm-6">
     <div class="listing-item white-bg bordered mb-20 book-image">
       <div class="overlay-container">
-        <%= image_tag(object.image, style: "width: 250px; height: 350px;") unless object.image.blank? %>
+        <%= image_tag(object.image) unless object.image.blank? %>
         <%= image_tag('no-image.png', style: "width: 250px; height: 350px;") if object.image.blank? %>
       </div>
       <div class="book-info">
@@ -19,4 +18,3 @@
       </div>
     </div>
   </div>
-<% end %>

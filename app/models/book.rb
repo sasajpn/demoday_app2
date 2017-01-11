@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
-  has_one :parent, class_name: 'Negotiate', foreign_key: 'parent_id'
-  has_one :child, class_name: 'Negotiate', foreign_key: 'child_id'
+  has_many :parents, class_name: 'Negotiate', foreign_key: 'parent_id'
+  has_many :children, class_name: 'Negotiate', foreign_key: 'child_id'
   has_one :deadline
   has_one :book_address
 
