@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   before_action :user_check, except: [:get_area]
 
   def show
+    @addresses = current_user.addresses
+    @books = current_user.books
   end
 
   def edit
