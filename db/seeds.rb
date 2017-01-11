@@ -8,14 +8,3 @@
   user.skip_confirmation!
   user.save
 end
-
-3.times do |n|
-  Book.create(user_id: 1,
-           title: "#{n}",
-           author: "#{n}",
-           condition: 1)
-  Book.create(user_id: 1,
-           title: "#{n}",
-           author: "#{n}",
-           condition: 1)
-end
