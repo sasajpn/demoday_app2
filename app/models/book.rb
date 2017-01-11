@@ -6,6 +6,8 @@ class Book < ActiveRecord::Base
 
   belongs_to :user
 
+  enum condition: { very_good: 3, good: 2, bad: 1, very_bad: 0 }
+
   scope :no_deal, -> { where(status: 0) }
   scope :deal_as_parent, -> { where(status: 1) }
   scope :deal_as_child, -> { where(status: 2) }

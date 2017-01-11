@@ -1,0 +1,26 @@
+<% @books.each do |book| %>
+  <%= bootstrap_form_for [current_user, book] do |f| %>
+  <div class="image-box style-3 mb-20 shadow bordered light-gray-bg">
+  	<div class="row grid-space-0">
+  		<div class="col-md-3">
+  			<div class="overlay-container">
+  				<%= image_tag(book.image, style: "width: 250px; height: 350px;") if book.image? %>
+  			</div>
+  		</div>
+  		<div class="col-md-9">
+  			<div class="body">
+  				<div class="pv-30 visible-lg"></div>
+  				<h4><%= book.title %></h4>
+  				<p class="small mb-10"><%= book.author %></p>
+  				<div class="separator-2"></div>
+          <%= f.hidden_field :image, value: book.image %>
+          <%= f.hidden_field :title, value: book.title %>
+          <%= f.hidden_field :author, value: book.author %>
+          <%= f.select :condition, Book.conditions_i18n.inver %>
+          <%= f.submit %>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  <% end %>
+<% end %>
