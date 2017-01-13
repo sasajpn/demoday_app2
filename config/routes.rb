@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :addresses
     resources :books, shallow: true do
-      resources :negotiates, shallow: true
+      resources :negotiates
     end
   end
   resources :deals, only: [:index]

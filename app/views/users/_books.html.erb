@@ -1,3 +1,22 @@
 <% objects.each do |object| %>
-  <%= render 'shared/book', object: object, num: num %>
+  <div class="col-md-3 col-sm-6">
+    <div class="listing-item white-bg bordered mb-20 book-image">
+      <div class="overlay-container">
+        <%= image_tag(object.image) unless object.image.blank? %>
+        <%= image_tag('no-image.png', style: "width: 250px; height: 350px;") if object.image.blank? %>
+      </div>
+      <div class="book-info">
+        <h3><%= object.title.truncate(15) %></h3>
+        <small><%= object.author.truncate(15) %></small>
+        <hr />
+        <div class="elements-list clearfix">
+          <%= render 'shared/status_form', object: object, num: 1 if num == 0 %>
+          <%= link_to "ほしいね！を見る", book_negotiates_path(object), class:"btn btn-gray" if num == 1 %>
+          <%= link_to "ほしいね！を取り消す", negotiate_path(object.child), class: "btn btn-danger",
+             method: :delete, data: { confirm: 'ほしいね！を取り消してもよろしいですか？' } if num == 2 %>
+          <%= link_to "取引を行う", parent_child_path(object.parent_child), class:"btn btn-gray" if num == 3 %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

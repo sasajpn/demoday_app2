@@ -1,1 +1,48 @@
-<%= render 'shared/book', object: @book, num: -1 %>
+<div class="row grid-space-10 relative">
+  <%= render 'shared/book', object: @book %>
+  <div class="col-md-3 text-center align-text">
+    <i class="fa fa-long-arrow-right fa-3x"></i>
+    <br>
+    <i class="fa fa-long-arrow-left fa-3x"></i>
+  </div>
+  <% if @book.status != 3 %>
+    <div class="col-md-3">
+      <div class="listing-item white-bg bordered mb-20 book-image">
+        <div class="overlay-container">
+          <%= image_tag('question.png')%>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <%= render 'shared/book', object: @book.parents.find_by(agree: true).child %>
+  <% end %>
+</div>
+<div class="image-box style-3 mb-20 shadow bordered light-gray-bg">
+  <div class="row grid-space-0">
+    <% if @negotiates.any? %>
+      <% if @book.status != 3 %>
+        <% @negotiates.each do |negotiate| %>
+          <div class="col-md-3">
+            <div class="overlay-container">
+              <%= image_tag(negotiate.image, style: "width: 250px; height: 350px;") unless negotiate.image.blank? %>
+              <%= image_tag('no-image.png', style: "width: 250px; height: 350px;") if negotiate.image.blank? %>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="body">
+              <div class="pv-30 visible-lg"></div>
+              <h4><%= negotiate.title %></h4>
+              <p class="small mb-10"><%= negotiate.author %></p>
+              <span class="label label-default">本の状態:<%= negotiate.condition %></span>
+              <div class="separator-2"></div>
+              <p><%= negotiate.recommend unless negotiate.recommend.blank? %></p>
+              <%= render 'update_form', negotiate: negotiate %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>まだ誰からもほしいね！をもらっていません</p>
+    <% end %>
+  </div>
+</div>
