@@ -1,0 +1,5 @@
+<%= link_to "ほしいね！", new_book_negotiate_path(object), class: "btn btn-gray btn-sm" if num == -1 %>
+<%= link_to "ほしいね！を見る", book_negotiates_path(object), class:"btn btn-gray" if num == 1 %>
+<%= link_to "ほしいね！を取り消す", negotiate_path(object.child), class: "btn btn-danger",method: :delete, data: { confirm: 'ほしいね！を取り消してもよろしいですか？' } if num == 2 %>
+<%= link_to "取引ページ", negotiate_trades_path(object.set_negotiate), class:"btn btn-gray" if num == 3 %>
+<%= link_to "取引相手を評価する", negotiate_trades_path(object.set_negotiate), class:"btn btn-gray" if num == 4 && object.status < 8 %>

@@ -75,6 +75,12 @@ body {
   visibility: hidden;
 }
 
+.book-box {
+  display: inline-block;
+  width: 250px;
+  height: 350px;
+}
+
 .book-image {
   position: relative;
 
@@ -83,12 +89,20 @@ body {
     bottom: 0px;
     color: #FFFFFF;
     background: rgba(0,0,0,.6);
-    width: 100%;
+    width: 250px;
     text-align: center;
+
+    hr {
+      margin: 3px;
+    }
 
     h3 {
       font-size: 16px;
       color: #FFFFFF;
+    }
+
+    .book-bottom {
+      margin: 10px;
     }
   }
 }

@@ -81,4 +81,8 @@ module ApplicationHelper
       'お届け先の変更'
     end
   end
+
+  def finish_eval(object, num)
+    "取引相手の評価は終了しています" if num == 4 && object.status == 8
+  end
 end
