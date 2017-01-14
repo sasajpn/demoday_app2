@@ -4,6 +4,7 @@
   <p><%= step_content(num) %></p>
 <% elsif current_user == parent_or_child(parent, child).user && parent_or_child(parent, child).status > num %>
   <p><%= step.two %></p>
+  <p><%= step_content(num) if num == 7 %></p>
 <% else %>
   <p>- <%= step.three %></p>
   <p><%= step.four %></p>

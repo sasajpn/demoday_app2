@@ -41,7 +41,8 @@ module ApplicationHelper
 
   def step_content(num)
     return "次のStepに進んでください！" if num >= 3 && num <= 5
-    return "これで取引は終了です！" if num >= 6
+    return "これで取引は終了です！" if num == 6
+    return "引き続き弊サービスをよろしくお願い致します！" if num == 7
   end
 
   def which_status(n)
