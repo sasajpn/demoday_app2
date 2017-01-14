@@ -1,6 +1,6 @@
 class Step < ActiveHash::Base
   self.data = [
-    { id: 1, title: "取引の成立", to_do: "確認する", done: "確信し",
+    { id: 1, title: "取引の成立", to_do: "確認する", done: "確認し",
       main: "取引が成立しました！", sub: "確認のため、以下のボタンを押してください。" },
     { id: 2, title: "住所", to_do: "通知する", done: "通知し",
       main: "相手方にお届け先を通知致します。", sub: "以下からあなたのお届け先を選択してください。" },

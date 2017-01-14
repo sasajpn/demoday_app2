@@ -9,5 +9,6 @@
   <p><%= step.sub %></p>
 <% end %>
 <% unless parent_or_child(parent, child).status > num %>
-  <%= render 'books/update_form', object: parent_or_child(parent, child), num: num + 1 %>
+  <%= render 'books/update_form', object: parent_or_child(parent, child), num: num + 1 unless num == 4 %>
+  <%= render 'trades/address_form', object: parent_or_child(parent, child), num: num + 1 if num == 4 %>
 <% end %>

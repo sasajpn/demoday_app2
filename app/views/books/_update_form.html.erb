@@ -1,4 +1,4 @@
-<%= form_for(object) do |f| %>
+<%= bootstrap_form_for(object) do |f| %>
   <%= f.hidden_field :status, value: num %>
-  <%= f.submit "取引に出す", class: "btn btn-gray btn-sm" %>
+  <%= f.submit update_title(num), class: "btn btn-primary btn-sm" %>
 <% end %>

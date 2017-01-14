@@ -38,4 +38,34 @@ module ApplicationHelper
     return "次のStepに進んでください！" if num >= 3 && num <= 5
     return "これで取引は終了です！" if num >= 6
   end
+
+  def which_status(n)
+    case n
+    when 1
+      return 0
+    when 2
+      return 1
+    when 3
+      return 2
+    when 4
+      return [3, 4, 5, 6, 7]
+    when 5
+      return 8
+    end
+  end
+
+  def update_title(num)
+    case num
+    when 1
+      "取引に出す"
+    when 4
+      "取引の成立を確認する"
+    when 5
+      "選択した住所を通知する"
+    when 6
+      "本を配送しましたか？"
+    when 7
+      "本を受け取りましたか？"
+    end
+  end
 end
