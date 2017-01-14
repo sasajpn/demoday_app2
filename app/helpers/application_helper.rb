@@ -68,4 +68,13 @@ module ApplicationHelper
       "本を受け取りましたか？"
     end
   end
+
+  def new_or_edit
+    case controller.action_name
+    when 'new'
+      'お届け先の登録'
+    when 'edit'
+      'お届け先の変更'
+    end
+  end
 end

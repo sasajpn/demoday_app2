@@ -1,0 +1,18 @@
+<%= bootstrap_form_for [ user, address ] do |f| %>
+  <%= f.text_field :family_name %>
+  <%= f.text_field :given_name %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.text_field :postal_code, class: "form-control address" %>
+    </div>
+    <div class="col-md-4 address-form">
+      <div class="btn btn-default" id="getarea-button">郵便番号から住所を自動入力する</div>
+      <div id="postalcode-result"></div>
+    </div>
+  </div>
+  <%= f.select :prefecture, prefectures.collect{ |t|[t.name,t.name] }, { prompt: "選択してください" } %>
+  <%= f.text_field :municipality, class: "address" %>
+  <%= f.text_field :street, class: "ddress" %>
+  <%= f.text_field :building%>
+  <%= f.submit %>
+<% end %>
