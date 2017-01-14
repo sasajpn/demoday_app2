@@ -48,9 +48,9 @@ module ApplicationHelper
     when 3
       return 2
     when 4
-      return [3, 4, 5, 6, 7]
+      return [3, 4, 5, 6]
     when 5
-      return 8
+      return [7, 8]
     end
   end
 

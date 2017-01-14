@@ -3,6 +3,7 @@ class Book < ActiveRecord::Base
   has_one :child, class_name: 'Negotiate', foreign_key: 'child_id'
   has_one :deadline
   has_one :book_address
+  accepts_nested_attributes_for :book_address
 
   belongs_to :user
 

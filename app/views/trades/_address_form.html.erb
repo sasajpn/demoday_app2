@@ -3,7 +3,10 @@
   <% if current_user.addresses.blank? %>
     <%= link_to '住所を登録してください', new_user_address_path(current_user), class: 'btn btn-danger btn-sm' %>
   <% else %>
-    <%= f.collection_radio_buttons(:address_id, object.user.addresses, :id, :display_address) %>
+    <% object.build_book_address %>
+    <%= f.fields_for :book_address do |af| %>
+      <%= af.collection_radio_buttons(:address_id, object.user.addresses, :id, :display_address) %>
+    <% end %>
     <%= f.submit update_title(num), class: "btn btn-primary btn-sm" %>
   <% end %>
 <% end %>

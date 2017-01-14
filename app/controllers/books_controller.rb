@@ -37,7 +37,6 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(update_book_params)
-      @book.create_book_address(address_id: params[:address_id])
       redirect_to user_url(current_user)
     end
   end
@@ -54,7 +53,10 @@ class BooksController < ApplicationController
   end
 
   def update_book_params
-    params.require(:book).permit(:status)
+    params.require(:book).permit(
+      :status,
+      book_address_attributes: [:id, :address_id]
+    )
   end
 
   def set_book
