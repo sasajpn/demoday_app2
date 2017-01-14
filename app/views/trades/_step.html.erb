@@ -1,14 +1,16 @@
 <% step = Step.find(num-2) %>
 <% if parent.status > num && child.status > num %>
-  <p>お互いが<%= step.title %>を<%= step.done %>ました！</p>
+  <p><%= step.one %></p>
   <p><%= step_content(num) %></p>
 <% elsif current_user == parent_or_child(parent, child).user && parent_or_child(parent, child).status > num %>
-  <p>相手方が<%= step.title %>を<%= step.to_do %>までしばらくお待ちください。</p>
+  <p><%= step.two %></p>
 <% else %>
-  <p>- <%= step.main %></p>
-  <p><%= step.sub %></p>
+  <p>- <%= step.three %></p>
+  <p><%= step.four %></p>
 <% end %>
 <% unless parent_or_child(parent, child).status > num %>
-  <%= render 'books/update_form', object: parent_or_child(parent, child), num: num + 1 unless num == 4 %>
+  <%= render 'books/update_form', object: parent_or_child(parent, child), num: num + 1 unless num == 4 || num == 7 %>
   <%= render 'trades/address_form', object: parent_or_child(parent, child), num: num + 1 if num == 4 %>
+  <%= render 'evals/form', evaluatee: get_evaluatee(parent, child),
+    object: parent_or_child(parent, child), num: num + 1 if num == 7 %>
 <% end %>

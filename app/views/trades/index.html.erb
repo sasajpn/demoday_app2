@@ -2,7 +2,7 @@
   <div class="process">
     <%= render 'nav' %>
 		<div class="tab-content clear-style">
-      <% (3..6).each do |n| %>
+      <% (3..7).each do |n| %>
         <% style = "active" if n == 3 %>
   			<div class="tab-pane <%= style %>" id="pill-pr-<%= n-2 %>">
           <%= render 'step', parent: @negotiate.parent, child: @negotiate.child, num: n %>

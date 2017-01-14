@@ -34,6 +34,11 @@ module ApplicationHelper
     return child if current_user == child.user
   end
 
+  def get_evaluatee(parent, child)
+    return child.user if current_user == parent.user
+    return parent.user if current_user == child.user
+  end
+
   def step_content(num)
     return "次のStepに進んでください！" if num >= 3 && num <= 5
     return "これで取引は終了です！" if num >= 6
@@ -60,8 +65,6 @@ module ApplicationHelper
       "取引に出す"
     when 4
       "取引の成立を確認する"
-    when 5
-      "選択した住所を通知する"
     when 6
       "本を配送しましたか？"
     when 7

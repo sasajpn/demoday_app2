@@ -7,7 +7,7 @@ ja:
         good: 良い
         bad: 悪い
         very_bad: とても悪い
-    evals:
+    eval:
       level:
         very_good: とても良い
         good: 良い

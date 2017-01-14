@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :addresses
+    resources :evals
     resources :books, shallow: true do
       resources :negotiates do
         resources :trades
