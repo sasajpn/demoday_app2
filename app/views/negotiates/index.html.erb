@@ -4,6 +4,8 @@
     <i class="fa fa-long-arrow-right fa-3x"></i>
     <br>
     <i class="fa fa-long-arrow-left fa-3x"></i>
+    <br>
+    <%= link_to '取引を行う', negotiate_trades_path(@agree), class: 'btn btn-primary' if @agree %>
   </div>
   <% if @book.status != 3 %>
     <div class="col-md-3">
@@ -14,7 +16,7 @@
       </div>
     </div>
   <% else %>
-    <%= render 'shared/book', object: @book.parents.find_by(agree: true).child %>
+    <%= render 'shared/book', object: @agree.child %>
   <% end %>
 </div>
 <div class="image-box style-3 mb-20 shadow bordered light-gray-bg">

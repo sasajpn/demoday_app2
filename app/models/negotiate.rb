@@ -2,8 +2,8 @@ class Negotiate < ActiveRecord::Base
   belongs_to :parent, class_name: 'Book'
   belongs_to :child, class_name: 'Book'
 
-  has_one :user, through: :child
-
+  delegate :user, to: :parent, prefix: :parent
+  delegate :user, to: :child, prefix: :child
   delegate :title, :author, :image, :condition, to: :child
 
   after_create :update_status_for_start

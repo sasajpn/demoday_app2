@@ -10,6 +10,10 @@ class Book < ActiveRecord::Base
 
   after_update :create_deadline
 
+  def set_negotiate
+    parents.find_by(agree: true) || child
+  end
+
   private
 
   def create_deadline

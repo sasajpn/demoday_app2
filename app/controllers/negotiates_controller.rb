@@ -5,6 +5,7 @@ class NegotiatesController < ApplicationController
 
   def index
     @negotiates = @book.parents
+    @agree = @negotiates.find_by(agree: true)
   end
 
   def new

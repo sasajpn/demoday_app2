@@ -1,0 +1,12 @@
+<% if parent.status > 3 && child.status > 3 %>
+  <p>お互いが確認ボタンを押しました！</p>
+  <p>次のStepに進んでください！</p>
+<% elsif current_user == parent_or_child(parent, child).user && parent_or_child(parent, child).status > 3 %>
+  <p>相手方が確認ボタンを押すまでしばらくお待ちください。</p>
+<% else %>
+  <p>取引が成立しました！</p>
+  <p>確認のため、以下のボタンを押してください。</p>
+<% end %>
+<% unless parent_or_child(parent, child).status > 3 %>
+  <%= render 'books/update_form', object: parent_or_child(parent, child), num: 4 %>
+<% end %>

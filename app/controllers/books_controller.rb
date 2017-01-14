@@ -50,7 +50,7 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :image, :condition)
   end
 
-  def updare_book_params
+  def update_book_params
     params.require(:book).permit(:status)
   end
 

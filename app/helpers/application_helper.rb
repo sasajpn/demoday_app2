@@ -28,4 +28,9 @@ module ApplicationHelper
     active_in = %w(active in)
     active_in.join(' ') if n == 1
   end
+
+  def parent_or_child(parent, child)
+    return parent if current_user == parent.user
+    return child if current_user == child.user
+  end
 end

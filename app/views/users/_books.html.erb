@@ -10,11 +10,11 @@
         <small><%= object.author.truncate(15) %></small>
         <hr />
         <div class="elements-list clearfix">
-          <%= render 'shared/status_form', object: object, num: 1 if num == 0 %>
+          <%= render 'books/update_form', object: object, num: 1 if num == 0 %>
           <%= link_to "ほしいね！を見る", book_negotiates_path(object), class:"btn btn-gray" if num == 1 %>
           <%= link_to "ほしいね！を取り消す", negotiate_path(object.child), class: "btn btn-danger",
              method: :delete, data: { confirm: 'ほしいね！を取り消してもよろしいですか？' } if num == 2 %>
-          <%= link_to "取引を行う", parent_child_path(object.parent_child), class:"btn btn-gray" if num == 3 %>
+          <%= link_to "取引を行う", negotiate_trades_path(object.set_negotiate), class:"btn btn-gray" if num == 3 %>
         </div>
       </div>
     </div>
