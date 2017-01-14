@@ -2,17 +2,12 @@
   <div class="process">
     <%= render 'nav' %>
 		<div class="tab-content clear-style">
-			<div class="tab-pane active" id="pill-pr-1">
-        <%= render 'step', parent: @negotiate.parent, child: @negotiate.child %>
-			</div>
-			<div class="tab-pane" id="pill-pr-2">
-			</div>
-      <div class="tab-pane" id="pill-pr-3">
-			</div>
-      <div class="tab-pane" id="pill-pr-4">
-      </div>
-      <div class="tab-pane" id="pill-pr-5">
-      </div>
+      <% (3..6).each do |n| %>
+        <% style = "active" if n == 3 %>
+  			<div class="tab-pane <%= style %>" id="pill-pr-<%= n-2 %>">
+          <%= render 'step', parent: @negotiate.parent, child: @negotiate.child, num: n %>
+  			</div>
+      <% end %>
     </div>
 	</div>
 </div>

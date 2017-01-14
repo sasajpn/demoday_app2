@@ -33,4 +33,9 @@ module ApplicationHelper
     return parent if current_user == parent.user
     return child if current_user == child.user
   end
+
+  def step_content(num)
+    return "次のStepに進んでください！" if num >= 3 && num <= 5
+    return "これで取引は終了です！" if num >= 6
+  end
 end
