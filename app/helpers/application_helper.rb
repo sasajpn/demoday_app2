@@ -45,18 +45,18 @@ module ApplicationHelper
     return "引き続き弊サービスをよろしくお願い致します！" if num == 7
   end
 
-  def which_status(n)
+  def which_collection(books, n)
     case n
     when 1
-      return 0
+      return books.where(status: 0)
     when 2
-      return 1
+      return books.where(status: 1)
     when 3
-      return 2
+      return Book.where(id: Negotiate.where(child_id: books).select(:parent_id))
     when 4
-      return [3, 4, 5, 6]
+      return books.where(status: [3, 4, 5, 6])
     when 5
-      return [7, 8]
+      return books.where(status: [7, 8])
     end
   end
 

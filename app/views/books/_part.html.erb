@@ -9,9 +9,8 @@
       <small><%= object.author.truncate(15) %></small>
       <hr />
       <div class="elements-list clearfix">
-
         <%= render 'books/update_form', object: object, num: 1 if num == 0 %>
-        <%= render 'books/link', object: object, num: num %>
+        <%= render 'books/link', object: object, other: current_user.children.find_by(parent_id: object.id), num: num %>
         <div class="book-bottom"></div>
         <div class="book-bottom"><%= finish_eval(object, num) %></div>
       </div>
