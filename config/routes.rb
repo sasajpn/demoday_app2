@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'page#top'
-  devise_for :users
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
+  }
 
   resources :users do
     resources :addresses

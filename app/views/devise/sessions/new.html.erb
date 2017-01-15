@@ -1,0 +1,34 @@
+<h2 class="title text-left">ログイン</h2>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal text-left" }) do |f| %>
+  <div class="form-group has-feedback">
+    <%= f.label :username, class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :username, autofocus: true, class: "form-control" %>
+      <i class="fa fa-user form-control-feedback"></i>
+    </div>
+	</div>
+	<div class="form-group has-feedback">
+    <%= f.label :password, class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      <i class="fa fa-lock form-control-feedback"></i>
+    </div>
+	</div>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-8">
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+      <%= button_tag type: "submit", class: "btn btn-group btn-default btn-animated" do %>
+        ログイン<i class="fa fa-check"></i>
+      <% end %>
+      <div class="space-top">
+        <p>まだアカウントを持っていませんか？<%= link_to new_registration_path(resource_name) do %>新規登録<% end %></p>
+        <p>パスワードを忘れましたか？<%= link_to new_password_path(resource_name) do %>再設定<% end %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
