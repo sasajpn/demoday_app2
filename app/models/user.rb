@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include AssignAnimal
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,7 +12,9 @@ class User < ActiveRecord::Base
   has_many :evaluatees, class_name: 'Eval', foreign_key: 'evaluatee_id'
   has_many :evaluators, class_name: 'Eval', foreign_key: 'evaluator_id'
 
-  has_one :user_icon
+  after_create do
+    update(icon: set_animal)
+  end
 
   def mine?(object)
     self == object.user
