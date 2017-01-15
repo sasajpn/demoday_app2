@@ -85,4 +85,33 @@ module ApplicationHelper
   def finish_eval(object, num)
     "取引相手の評価は終了しています" if num == 4 && object.status == 8
   end
+
+  def icon(animal)
+    case
+    when animal.include?("チーター")
+      'Cheetah.png'
+    when animal.include?("たぬき")
+      'Raccoon.png'
+    when animal.include?("猿")
+      'Monkey.png'
+    when animal.include?("コアラ")
+      'Koala.png'
+    when animal.include?("黒ひょう")
+      'Leopard.png'
+    when animal.include?("虎")
+      'Tiger.png'
+    when animal.include?("こじか")
+      'Deer.png'
+    when animal.include?("ゾウ")
+      'Elephants'
+    when animal.include?("狼")
+      'Wolf.png'
+    when animal.include?("ひつじ")
+      'Sheep'
+    when animal.include?("ペガサス")
+      'Pegasus.jpg'
+    when animal.include?("ライオン")
+      'Lion.png'
+    end
+  end
 end
