@@ -84,6 +84,11 @@ body {
 .book-image {
   position: relative;
 
+  .set-top {
+    position: absolute;
+    top: 0;
+  }
+
   .book-info {
     position: absolute;
     bottom: 0px;
@@ -114,4 +119,52 @@ body {
 .align-text {
   position: absolute;
   top: 100px;
+}
+
+.cheetah {
+  background-color: #FF0000;
+}
+
+.raccoon {
+  background-color: #008000;
+}
+
+.monkey {
+  background-color: #ffa500;
+}
+
+.koala {
+  background-color: #cccccc;
+}
+
+.leopard {
+  background-color: #FFFFFF;
+}
+
+.tiger {
+  background-color: #FFFF00;
+}
+
+.deer {
+  background-color: #FCE2C4;
+}
+
+.elephant {
+  background-color: #ccffff;
+}
+
+.wolf {
+  background-color: #800080;
+}
+
+.sheep {
+  background-color: #FFFFEF;
+}
+
+.pegasus {
+  background-color: #C0C0C0;
+}
+
+.lion {
+  background-color: #FFD700;
 }

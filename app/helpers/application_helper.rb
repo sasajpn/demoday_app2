@@ -103,7 +103,7 @@ module ApplicationHelper
     when animal.include?("こじか")
       'Deer.png'
     when animal.include?("ゾウ")
-      'Elephants'
+      'Elephant'
     when animal.include?("狼")
       'Wolf.png'
     when animal.include?("ひつじ")
@@ -112,6 +112,35 @@ module ApplicationHelper
       'Pegasus.jpg'
     when animal.include?("ライオン")
       'Lion.png'
+    end
+  end
+
+  def icon_style(animal)
+    case
+    when animal.include?("チーター")
+      'cheetah'
+    when animal.include?("たぬき")
+      'raccoon'
+    when animal.include?("猿")
+      'monkey'
+    when animal.include?("コアラ")
+      'koala'
+    when animal.include?("黒ひょう")
+      'leopard'
+    when animal.include?("虎")
+      'tiger'
+    when animal.include?("こじか")
+      'deer'
+    when animal.include?("ゾウ")
+      'elephant'
+    when animal.include?("狼")
+      'wolf'
+    when animal.include?("ひつじ")
+      'sheep'
+    when animal.include?("ペガサス")
+      'pegasus'
+    when animal.include?("ライオン")
+      'lion'
     end
   end
 end

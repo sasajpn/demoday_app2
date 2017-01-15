@@ -3,6 +3,10 @@
     <div class="overlay-container">
       <%= image_tag(object.image, style: "width: 250px; height: 350px;") unless object.image.blank? %>
       <%= image_tag('no-image.png', style: "width: 250px; height: 350px;") if object.image.blank? %>
+      <div class="set-top">
+        <% animal = Animal.find(object.user.icon).name %>
+        <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") if current_user.not_mine?(object) %>
+      </div>
     </div>
     <div class="book-info">
       <h3><%= object.title.truncate(15) %></h3>
