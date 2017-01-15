@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include AssignAnimal
+  include BookOption
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -14,29 +15,5 @@ class User < ActiveRecord::Base
 
   after_create do
     update(icon: set_animal)
-  end
-
-  def mine?(object)
-    self == object.user
-  end
-
-  def already_want?(object)
-    children.where(parent_id: object.id).exists?
-  end
-
-  def until_want?(object)
-    children.where(parent_id: object.id).blank?
-  end
-
-  def not_mine?(object)
-    self != object.user
-  end
-
-  def can_want?(object)
-    until_want?(object) && not_mine?(object)
-  end
-
-  def can_cancel?(object)
-    already_want?(object) && not_mine?(object)
   end
 end
