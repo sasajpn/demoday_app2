@@ -31,7 +31,12 @@ module AssignAnimal
   end
 
   def plus_day
-    calculate_from_year_and_month + birthday.day
+    result = calculate_from_year_and_month + birthday.day
+    if result > 60
+      result - 60
+    else
+      result
+    end
   end
 
   def set_animal

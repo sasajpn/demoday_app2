@@ -19,11 +19,11 @@ class User < ActiveRecord::Base
   has_many :evaluatees, class_name: 'Eval', foreign_key: 'evaluatee_id'
   has_many :evaluators, class_name: 'Eval', foreign_key: 'evaluator_id'
 
-  after_commit :set_icon, on: :create
+  before_create :set_icon
 
   private
 
   def set_icon
-    update(icon: set_animal)
+    self.icon = set_animal
   end
 end
