@@ -18,7 +18,7 @@
   </div>
 
   <% flash.each do |type, msg| %>
-    <div class="alert alert-<%= type %>">
+    <div class="alert alert-<%= type %> alert-dismissible">
       <%= msg %>
     </div>
   <% end %>
