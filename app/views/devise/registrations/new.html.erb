@@ -18,8 +18,15 @@
   <div class="form-group has-feedback">
     <%= f.label :birthday, class: "col-sm-3 control-label" %>
     <div class="col-sm-8">
-      <%= f.date_field :birthday, class: "form-control" %>
-      <i class="fa fa-gift form-control-feedback"></i>
+      <%= raw sprintf(
+            f.date_select(
+              :birthday,
+              use_month_numbers: true,
+              date_separator: '%s',
+              start_year: 1920,
+              end_year: Time.now.year,
+              default: '1990-1-1'.to_date),
+              '年','月') + '日生まれ' %>
     </div>
   </div>
 	<div class="form-group has-feedback">
