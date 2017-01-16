@@ -7,13 +7,23 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  # override Devise::Models::Confirmable#send_on_create_confirmation_instructions
+  def send_on_create_confirmation_instructions
+    generate_confirmation_token! unless @raw_confirmation_token
+    send_devise_notification(:confirmation_on_create_instructions, @raw_confirmation_token, {})
+  end
+
   has_many :addresses
   has_many :books
   has_many :children, through: :books
   has_many :evaluatees, class_name: 'Eval', foreign_key: 'evaluatee_id'
   has_many :evaluators, class_name: 'Eval', foreign_key: 'evaluator_id'
 
-  after_create do
+  after_commit :set_icon, on: :create
+
+  private
+
+  def set_icon
     update(icon: set_animal)
   end
 end
