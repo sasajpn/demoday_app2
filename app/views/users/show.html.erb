@@ -2,6 +2,12 @@
 	<div class="vertical">
     <%= render 'nav' %>
 		<div class="mypage-tab tab-content">
+			<% flash.each do |type, msg| %>
+				<div class="alert alert-<%= type %> alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<%= msg %>
+				</div>
+			<% end %>
 			<% (1..5).each do |n| %>
 				<% if n == 1 %>
 					<%= link_to "本を登録する", new_user_book_path(current_user), class: "btn btn-default" %>

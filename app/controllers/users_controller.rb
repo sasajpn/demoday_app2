@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @addresses = current_user.addresses
     @books = current_user.books
+    render layout: 'mypage/show'
   end
 
   def edit
