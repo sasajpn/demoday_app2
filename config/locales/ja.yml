@@ -22,8 +22,8 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     attributes:
       address:
-        given_name: 名
-        family_name: 性
+        given_name: 名前
+        family_name: 姓
         postal_code: 郵便番号
         prefecture: 都道府県
         municipality: 市町村

@@ -1,4 +1,5 @@
 <%= bootstrap_form_for [ user, address ] do |f| %>
+  <%= f.alert_message "エラーがあります。", class: "alert alert-danger" %>
   <%= f.text_field :family_name %>
   <%= f.text_field :given_name %>
   <div class="row">

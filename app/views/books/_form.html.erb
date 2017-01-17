@@ -1,5 +1,6 @@
 <% @books.each do |book| %>
   <%= bootstrap_form_for [current_user, book] do |f| %>
+  <%= f.alert_message "エラーがあります。", class: "alert alert-danger" %>  
   <div class="image-box style-3 mb-20 shadow bordered light-gray-bg">
   	<div class="row grid-space-0">
   		<div class="col-md-3">
