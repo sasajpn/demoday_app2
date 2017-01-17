@@ -1,8 +1,8 @@
 <div class='row'>
   <div class="form-group col-md-8" id="search-box">
     <%= form_tag({ controller: :books, action: :new }, method: :get) do %>
-        <%= text_field_tag :book, "", class: "form-control", id: "book_search", name: "keyword", placeholder: "本のタイトル,あるいはISBNコードを入力してください" %>
-        <button class="btn btn-gray" title="検索" type="submit">検索</button>
+      <%= text_field_tag :book, "", class: "form-control", id: "book_search", name: "keyword", placeholder: "本のタイトル,あるいはISBNコードを入力してください" %>
+      <button class="btn btn-gray" title="検索" type="submit">検索</button>
     <% end %>
   </div>
 </div>

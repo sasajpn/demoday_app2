@@ -1,6 +1,7 @@
 <%= bootstrap_form_for [@book, @negotiate] do |f| %>
   <%= f.hidden_field :parent_id, value: @book.id %>
-  <%= f.collection_select :child_id, @books, :id, :title %>
+  <%= f.collection_select :child_id, @books, :id, :title%>
   <%= f.text_area :recommend %>
-  <%= f.submit %>
+  <%= f.submit '交渉する',
+    data: { confirm: "相手方があなたの本にほしいね！をした場合、この取引は成立しますがよろしいですか？(ほしいね！される前であれば交渉は取り消すことができます)" } %>
 <% end %>

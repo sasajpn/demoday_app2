@@ -8,9 +8,9 @@ class Book < ActiveRecord::Base
   belongs_to :user
 
   validates :title, :author, presence: true
-  
-  validates :user_id,
-    uniqueness: { scope: [:title, :author], message: 'その本はすでに登録しています' }
+
+  validates :user_id, uniqueness: { scope: [:title, :author],
+    message: 'その本はすでに登録しています' }
 
   enum condition: { very_good: 3, good: 2, bad: 1, very_bad: 0 }
 
@@ -18,6 +18,13 @@ class Book < ActiveRecord::Base
 
   def set_negotiate
     parents.find_by(agree: true) || child
+  end
+
+  def notice_message
+    case status
+    when 1
+      '本を取引に出しました。'
+    end
   end
 
   private

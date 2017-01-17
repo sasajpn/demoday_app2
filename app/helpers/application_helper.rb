@@ -143,4 +143,12 @@ module ApplicationHelper
       'lion'
     end
   end
+
+  def confirm_message(num)
+    case num
+    when 1
+      '取引に出すと、1週間はこの本を使って他のユーザと交渉できなくなりますがよろしいですか？'
+    end
+  end
+
 end

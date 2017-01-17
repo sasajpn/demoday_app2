@@ -28,7 +28,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      redirect_to user_url(current_user)
+      redirect_to user_url(current_user), notice: '本を登録しました。'
     else
       @books = []
       render :new
@@ -37,13 +37,13 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(update_book_params)
-      redirect_to user_url(current_user)
+      redirect_to user_url(current_user), notice: @book.notice_message
     end
   end
 
   def destroy
     @book.destroy
-    redirect_to user_url(current_user)
+    redirect_to user_url(current_user), alert: '本を削除しました。'
   end
 
   private

@@ -6,6 +6,7 @@ class Negotiate < ActiveRecord::Base
   delegate :user, to: :child, prefix: :child
   delegate :title, :author, :image, :condition, to: :child
 
+  validates :child_id, presence: true
   validates :recommend, length: { maximum: 140 }
 
   after_create :update_status_for_start
