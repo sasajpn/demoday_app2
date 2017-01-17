@@ -49,6 +49,7 @@
         新規登録<i class="fa fa-check"></i>
       <% end %>
       <p>既にアカウントをお持ちですか？<%= link_to new_session_path(resource_name) do %>ログイン<% end %></p>
+      <p>メールが届きませんでしたか？<%= link_to new_confirmation_path(resource_name) do %>メールの再送信<% end %></p>
     </div>
   </div>
 <% end %>
