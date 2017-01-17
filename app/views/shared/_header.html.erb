@@ -5,7 +5,9 @@
         <div class="col-xs-3 col-sm-6 col-md-3">
           <% if user_signed_in? %>
             <div class="user-info">
-              <%= image_tag(icon(Animal.find(current_user.icon).name), size: "40x40", align: "middle") %>
+              <% animal = Animal.find(current_user.icon).name %>
+              <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") %>
+              <span><%= current_user.username %></span>
             </div>
           <% end %>
         </div>
