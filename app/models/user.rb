@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_many :evaluatees, class_name: 'Eval', foreign_key: 'evaluatee_id'
   has_many :evaluators, class_name: 'Eval', foreign_key: 'evaluator_id'
 
+  validates :username, :birthday, presence: true
+
   before_create :set_icon
 
   private

@@ -1,5 +1,5 @@
 <h2 class="title text-left">メールが届きませんでしたか？</h2>
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "form-horizontal text-left"  }) do |f| %>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "form-horizontal text-left" }) do |f| %>
   <%= devise_error_messages! %>
   <div class="form-group has-feedback">
     <%= f.label :email, class: "col-sm-3 control-label"%>

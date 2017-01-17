@@ -3,6 +3,6 @@
 <p>下記のリンクをクリックするとアカウント登録が完了します。</p>
 
 <p><%= link_to 'アカウント登録',
-        controller: 'devise/confirmations',
+        controller: 'users/confirmations',
         action: 'create',
         confirmation_token: @token %></p>

@@ -1,6 +1,6 @@
 <p>メールアドレス変更のリクエストをお受けいたしました。</p>
 <p>下記のURLをクリックすると、メールアドレスの確認が完了します。</p>
 <p><%= link_to 'メールアドレス変更',
-        controller: 'devise/confirmations',
+        controller: 'users/confirmations',
         action: 'create',
         confirmation_token: @token %></p>
