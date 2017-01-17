@@ -1,5 +1,5 @@
-<%= link_to "ほしいね！", new_book_negotiate_path(object), class: "btn btn-gray btn-sm" if current_user.can_want?(object) && current_user.books.where(status: 0).any? %>
-<%= link_to "ほしいね！を見る", book_negotiates_path(object), class:"btn btn-gray btn-sm" if current_user.mine?(object) && object.status == 1 %>
-<%= link_to "ほしいね！を取り消す", negotiate_path(other), class: "btn btn-danger btn-sm",method: :delete, data: { confirm: 'ほしいね！を取り消してもよろしいですか？' } if current_user.already_want?(object) %>
+<%= link_to "交渉する", new_book_negotiate_path(object), class: "btn btn-gray btn-sm" if current_user.can_want?(object) && current_user.books.where(status: 0).any? %>
+<%= link_to "交渉に出された本を見る", book_negotiates_path(object), class:"btn btn-gray btn-sm" if current_user.mine?(object) && object.status == 1 %>
+<%= link_to "交渉を取り消す", negotiate_path(other), class: "btn btn-danger btn-sm",method: :delete, data: { confirm: 'ほしいね！を取り消してもよろしいですか？' } if current_user.already_want?(object) %>
 <%= link_to "取引ページ", negotiate_trades_path(object.set_negotiate), class:"btn btn-gray btn-sm" if current_user.mine?(object) && object.status.between?(3,6) %>
 <%= link_to "取引相手を評価する", negotiate_trades_path(object.set_negotiate), class:"btn btn-gray btn-sm" if current_user.already_want?(object) && object.status == 7 %>
