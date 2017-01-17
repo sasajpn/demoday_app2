@@ -86,6 +86,10 @@ module ApplicationHelper
     "取引相手の評価は終了しています" if num == 4 && object.status == 8
   end
 
+  def have_no_book(object)
+    "交渉に出せる本がありません" if current_user.can_want?(object) && current_user.books.where(status: 0).blank?
+  end
+
   def icon(animal)
     case
     when animal.include?("チーター")
