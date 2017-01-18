@@ -30,6 +30,9 @@ gem 'devise'
 # Pagination
 gem 'kaminari'
 
+# Search
+gem 'ransack'
+
 # Crawler
 gem 'mechanize'
 
