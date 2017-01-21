@@ -1,5 +1,5 @@
 <% if @negotiates.any? %>
-  <div class="image-box style-3 mb-20 ">
+  <div class="image-box style-3 mb-20 bordered shadow">
     <div class="row grid-space-0">
         <% if @book.status != 3 %>
           <% @negotiates.each do |negotiate| %>
@@ -16,7 +16,7 @@
                 <p class="small mb-10"><%= negotiate.author %></p>
                 <span class="label label-default">本の状態:<%= negotiate.condition %></span>
                 <div class="separator-2"></div>
-                <p><%= negotiate.recommend unless negotiate.recommend.blank? %></p>
+                <p><%= negotiate.recommend unless negotiate.recommend? %></p>
                 <%= render 'update_form', negotiate: negotiate %>
               </div>
             </div>
