@@ -15,9 +15,9 @@ class NegotiatesController < ApplicationController
   def create
     @negotiate = Negotiate.new(negotiate_params)
     if @negotiate.save
-      redirect_to deals_url, notice: '本を交渉に出しました。'
+      redirect_to books_url, notice: '本を交渉に出しました。'
     else
-      redirect_to deals_url, alert: '交渉に出すことができませんでした。'
+      redirect_to books_url, alert: '交渉に出すことができませんでした。'
     end
   end
 

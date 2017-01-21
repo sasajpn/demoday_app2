@@ -12,6 +12,7 @@ class Negotiate < ActiveRecord::Base
   after_create :update_status_for_start
   after_destroy :update_status_for_cancel
   after_update :update_status_for_agree
+  after_update :destroy_not_agree
 
   private
 
@@ -26,6 +27,16 @@ class Negotiate < ActiveRecord::Base
   def update_status_for_agree
     [parent, child].each do |object|
       Book.find(object).update(status: 3)
+    end
+  end
+
+  def destroy_not_agree
+    if agree == true
+      negotiates = Negotiate.where(parent_id: parent).where.not(agree: true)
+      negotiates.each do |negotiate|
+        Book.find(id: child_id).update(status: 0)
+        negotiate.destroy
+      end
     end
   end
 end

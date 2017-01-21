@@ -1,4 +1,10 @@
+<% if @agree %>
+  <div class="alert alert-info">
+    取引が成立しました！
+    <%= link_to "取引を行う", negotiate_trades_path(@agree), class: 'alert-link' %>
+  </div>
+<% end %>
 <div class="row grid-space-10 relative">
   <%= render 'books/part', object: @book, link: false %>
 </div>
-<%= render 'list' %>
+<%= render 'list', negotiates: @negotiates %>
