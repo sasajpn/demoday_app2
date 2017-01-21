@@ -155,4 +155,25 @@ module ApplicationHelper
     end
   end
 
+  def set_active(negotiate, n)
+    parent = negotiate.parent_status
+    child = negotiate.child_status
+    if parent == n && child == n
+      style = 'active'
+    elsif (parent - 1) == n && child == n
+      style = 'active'
+    elsif parent == n && (child - 1) == n
+      style = 'active'
+    end
+    style
+  end
+
+  def set_address(user, negotiate)
+    if user == negotiate.parent_user
+      return negotiate.parent.book_address.address
+    else
+      return negotiate.child.book_address.address
+    end
+  end
+
 end

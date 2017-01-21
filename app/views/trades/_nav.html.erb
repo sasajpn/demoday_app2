@@ -1,7 +1,15 @@
 <ul class="nav nav-pills">
-  <li class="active"><a href="#pill-pr-1" role="tab" data-toggle="tab" title="Step 1">Step 1：取引成立確認</a></li>
-  <li><a href="#pill-pr-2" role="tab" data-toggle="tab" title="Step 2">Step 2：住所連絡</a></li>
-  <li><a href="#pill-pr-3" role="tab" data-toggle="tab" title="Step 3">Step 3：配送連絡</a></li>
-  <li><a href="#pill-pr-4" role="tab" data-toggle="tab" title="Step 4">Step 4：受け取り連絡</a></li>
-  <li><a href="#pill-pr-5" role="tab" data-toggle="tab" title="Step 5">取引相手の評価</a></li>
+  <% if parent_status == 3 || child_status == 3 %>
+    <% style1 = 'active' %>
+    <li class="<%= style1 %>"><a href="#pill-pr-1" role="tab" data-toggle="tab" title="Step 1">Step 1：取引成立確認</a></li>
+  <% elsif parent_status == 4 || child_status == 4 %>
+    <% style2 = 'active' %>
+    <li class="<%= style2 %>"><a href="#pill-pr-2" role="tab" data-toggle="tab" title="Step 2">Step 2：住所連絡</a></li>
+  <% elsif parent_status == 5 || child_status == 5 %>
+    <li><a href="#pill-pr-3" role="tab" data-toggle="tab" title="Step 3">Step 3：配送連絡</a></li>
+  <% elsif parent_status == 6 || child_status == 6 %>
+    <li><a href="#pill-pr-4" role="tab" data-toggle="tab" title="Step 4">Step 4：受け取り連絡</a></li>
+  <% elsif parent_status == 7  || child_status == 7  %>
+    <li><a href="#pill-pr-5" role="tab" data-toggle="tab" title="Step 5">取引相手の評価</a></li>
+  <% end %>
 </ul>
