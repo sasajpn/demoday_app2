@@ -2,6 +2,12 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_book, only: [:update, :destroy]
 
+  def index
+    @books = Book.where(status: 1).where.not(user_id: current_user)
+    @search = @books.search(params[:q])
+    @books = @search.result(distinct: true)
+  end
+
   def new
     @books = []
     if params[:keyword].present?
