@@ -11,12 +11,11 @@
     <div class="book-info">
       <h3><%= object.title.truncate(15) %></h3>
       <small><%= object.author.truncate(15) %></small>
-      <hr />
       <div class="elements-list clearfix">
-        <%= render 'books/update_form', object: object, num: 1 if num == 0 %>
-        <%= render 'books/link', object: object, other: current_user.children.find_by(parent_id: object.id), num: num %>
+        <%= render 'books/link', object: object, other: current_user.children.find_by(parent_id: object.id) if link %>
+        <%= render 'books/update_form', object: object, num: 1 if object.status == 0 %>
         <div class="book-bottom"><%= have_no_book(object) %></div>
-        <div class="book-bottom"><%= finish_eval(object, num) %></div>
+        <div class="book-bottom"><%= finish_eval(object) %></div>
       </div>
     </div>
   </div>

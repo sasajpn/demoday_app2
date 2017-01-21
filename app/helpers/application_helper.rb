@@ -82,8 +82,8 @@ module ApplicationHelper
     end
   end
 
-  def finish_eval(object, num)
-    "取引相手の評価は終了しています" if num == 4 && object.status == 8
+  def finish_eval(object)
+    "取引相手の評価は終了しています" if object.status == 8
   end
 
   def have_no_book(object)

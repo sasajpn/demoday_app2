@@ -15,7 +15,7 @@
 				<% end %>
 				<div class="tab-pane fade <%= active_in(n)%>" id="vtab<%= n %>">
 					<%= render partial: 'books/part',
-						collection: which_collection(@books, n), as: "object", locals: { num: n-1 } %>
+						collection: which_collection(@books, n), as: "object", locals: { link: true } %>
 				</div>
 			<% end %>
 			<div class="tab-pane fade" id="vtab6">
