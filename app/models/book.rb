@@ -27,6 +27,16 @@ class Book < ActiveRecord::Base
     end
   end
 
+  def cancel_negotiate
+    parents.each do |parent|
+      Book.find(parent.child).update(status: 0)
+    end
+  end
+
+  def destroy_all_negotiate
+    parents.destroy_all
+  end
+
   private
 
   def create_deadline
