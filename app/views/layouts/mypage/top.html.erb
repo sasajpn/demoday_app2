@@ -18,6 +18,12 @@
   </div>
 
   <section class="main-container top">
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %> alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
     <%= render 'shared/footer' %>
   </section>
