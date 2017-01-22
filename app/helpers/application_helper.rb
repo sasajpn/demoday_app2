@@ -111,11 +111,11 @@ module ApplicationHelper
     when animal.include?("こじか")
       'Deer.png'
     when animal.include?("ゾウ")
-      'Elephant'
+      'Elephant.png'
     when animal.include?("狼")
       'Wolf.png'
     when animal.include?("ひつじ")
-      'Sheep'
+      'Sheep.png'
     when animal.include?("ペガサス")
       'Pegasus.jpg'
     when animal.include?("ライオン")
@@ -179,5 +179,4 @@ module ApplicationHelper
       return negotiate.child.book_address.address
     end
   end
-
 end
