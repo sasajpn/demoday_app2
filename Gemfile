@@ -80,3 +80,5 @@ group :development do
   gem 'letter_opener'
   gem 'rails_best_practices', require: false
 end
+
+gem 'rails_12factor', group: :production

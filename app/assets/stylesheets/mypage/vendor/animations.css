@@ -1,22 +1,4 @@
-/*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license - http://opensource.org/licenses/MIT
-
-Copyright (c) 2014 Daniel Eden
-*/
-
 @import url(animate.css);
-
-/* Theme Name: The Project - Responsive Website Template
-Author:HtmlCoder
-Author URI:http://www.htmlcoder.me
-Author e-mail:htmlcoder.me@gmail.com
-Version:1.3.0
-Created:December 2014
-License URI:http://support.wrapbootstrap.com/
-File Description: Animations */
-
-/*Custom Animations*/
 
 @-webkit-keyframes fadeInDownSmall {
   0% {
