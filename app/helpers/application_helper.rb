@@ -11,6 +11,10 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def app_title
+    'ReBook'
+  end
+
   def panel_title(num)
     case num
     when 'One'

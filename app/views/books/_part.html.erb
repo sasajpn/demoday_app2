@@ -1,5 +1,9 @@
 <div class="book-box">
   <div class="listing-item mb-20 book-image">
+    <% invisible = "hidden-link" unless object.status == 0 %>
+    <ul class="book-list social-links circle small clearfix hidden-xs <%= invisible %>">
+      <li class="googleplus"><%= link_to book_path(object), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></li>
+    </ul>
     <div class="overlay-container">
       <%= image_tag(object.image, style: "width: 250px; height: 350px;") unless object.image.blank? %>
       <%= image_tag('no-image.png', style: "width: 250px; height: 350px;") if object.image.blank? %>
