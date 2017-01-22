@@ -4,8 +4,8 @@
     <%= f.text_field :username, hide_label: true, placeholder: 'ユーザネーム' %>
     <%= f.email_field :email, hide_label: true, placeholder: 'メールアドレス' %>
     <div class="birthday-select">
-      <%= f.label :birthday, '生年月日（※登録後の変更はできません）' %>
-      <%= f.date_select :birthday, hide_label: true, use_month_numbers: true, default: '1990-1-1'.to_date, start_year: 1920, end_year: Time.now.year %>
+      <%= f.date_select :birthday, use_month_numbers: true, default: '1990-1-1'.to_date, start_year: 1920, end_year: Time.now.year %>
+      <small class="birthday-alert">※登録後、誕生日の変更はできません</small>
     </div>
     <%= f.password_field :password, hide_label: true, placeholder: 'パスワード' %>
     <%= f.password_field :password_confirmation, hide_label: true, placeholder: 'パスワード(確認用)' %>
@@ -13,5 +13,5 @@
     <br>
   <% end %>
   <p>既にアカウントをお持ちですか？<%= link_to new_session_path(resource_name) do %>ログイン<% end %></p>
-  <p>メールが届きませんか？<%= link_to new_confirmation_path(resource_name) do %>メールの再送信<% end %></p>
+  <p>メールが届きませんでしたか？<%= link_to new_confirmation_path(resource_name) do %>メールの再送信<% end %></p>
 </div>

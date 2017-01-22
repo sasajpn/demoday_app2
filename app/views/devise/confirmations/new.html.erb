@@ -1,18 +1,9 @@
-<h2 class="title text-left">メールが届きませんでしたか？</h2>
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "form-horizontal text-left" }) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="form-group has-feedback">
-    <%= f.label :email, class: "col-sm-3 control-label"%>
-    <div class="col-sm-8">
-      <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-control" %>
-      <i class="fa fa-envelope form-control-feedback"></i>
-    </div>
-	</div>
-  <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-8">
-      <%= button_tag type: "submit", class: "btn btn-group btn-default btn-animated" do %>
-        もう一度メールを送る<i class="fa fa-check"></i>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<div class="col-md-4 col-sm-8 col-xs-10 col-md-offset-4 col-sm-offset-2 col-xs-offset-1">
+  <%= bootstrap_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "form-horizontal text-left" }) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.email_field :email, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), hide_label: true, placeholder: 'メールアドレス' %>
+    <%= f.submit 'もう一度アカウント登録用のメールを送る' %>
+    <br>
+  <% end %>
+  <p>アカウントの認証ができましたか？<%= link_to new_session_path(resource_name) do %>ログイン<% end %></p>
+</div>

@@ -13,26 +13,24 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
-  <div class="page-wrapper">
-    <div class="pv-40 dark-translucent-bg">
-      <div class="container">
-        <% flash.each do |type, msg| %>
-          <div class="alert alert-<%= type %> alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <%= msg %>
-          </div>
-        <% end %>
-        <div class="object-non-visible text-center animated object-visible fadeInDownSmall" data-animation-effect="fadeInDownSmall" data-effect-delay="100">
-          <div id="logo" class="logo">
-          <h3 class="margin-clear"><%= link_to root_path, class: "logo-font link-light" do %><%= app_title %><% end %></h3>
-          </div>
-          <br>
-          <div class="form-block center-block p-30 light-gray-bg border-clear">
-            <%= yield %>
-          </div>
-        </div>
+  <section class="main-container light-gray-bg top">
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %> alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <%= msg %>
       </div>
+    <% end %>
+    <div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+    		<div id="logo" class="logo">
+    			<h1 class="text-center logo-font"><strong><%= app_title %></strong></h1>
+    		</div>
+    		<p class="large text-center logo-font">読み終わった本を交換しよう</p>
+    		<hr>
+    	</div>
+    	<%= yield %>
     </div>
-  </div>
+  </section>
+  <%= render 'shared/footer' %>
 </body>
 </html>
