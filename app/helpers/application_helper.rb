@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def app_title
-    'ReBook'
+    'Re.Book'
   end
 
   def panel_title(num)
