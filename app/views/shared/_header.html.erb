@@ -7,7 +7,6 @@
             <div class="user-info">
               <% animal = Animal.find(current_user.icon).name %>
               <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") %>
-              <span><%= current_user.username %></span>
             </div>
           <% end %>
         </div>
@@ -15,7 +14,7 @@
           <div id="header-top-second" class="clearfix">
             <div class="header-top-dropdown text-right">
               <% if user_signed_in? %>
-                <%= link_to user_path(current_user), class:"btn btn-default btn-sm" do %><i class="fa fa-user pr-10"></i> マイページ<% end %>
+                <%= link_to user_path(current_user), class:"btn btn-default btn-sm" do %><i class="fa fa-user pr-10"></i> <%= current_user.username %><% end %>
                 <%= link_to destroy_user_session_path, method: :delete, class: "btn dropdown-toggle btn-default btn-sm" do %><i class="fa fa-unlock-alt pr-10"></i> ログアウト<% end %>
               <% else %>
                 <div class="btn-group">
