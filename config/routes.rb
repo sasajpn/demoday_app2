@@ -10,9 +10,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :addresses
+    resources :negotiates, only: [:index]
     resources :books, shallow: true do
       resources :evals
-      resources :negotiates do
+      resources :negotiates, except: [:index] do
         resources :trades
       end
     end

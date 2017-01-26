@@ -1,16 +1,14 @@
 class UsersController < ApplicationController
-  layout 'mypage/application'
-
   before_action :authenticate_user!
   before_action :user_check, except: [:get_area]
 
   def show
     @addresses = current_user.addresses
     @books = current_user.books
-    render layout: 'mypage/show'
   end
 
   def edit
+    @addresses = current_user.addresses
   end
 
   def update

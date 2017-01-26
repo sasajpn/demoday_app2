@@ -1,0 +1,86 @@
+<div class="panel-group collapse-style-1" id="accordion">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
+					<i class="fa fa-user pr-10"></i>ユーザ名の変更
+				</a>
+			</h4>
+		</div>
+		<div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+			<div class="panel-body">
+        <div class="col-md-6">
+          <%= bootstrap_form_for(current_user) do |f| %>
+            <%= f.text_field :username %>
+            <%= f.submit "ユーザ名を変更する" %>
+          <% end %>
+        </div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
+					<i class="fa fa-envelope pr-10"></i>メールアドレスの変更
+				</a>
+			</h4>
+		</div>
+		<div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false">
+			<div class="panel-body">
+        <div class="col-md-6">
+          <%= bootstrap_form_for(current_user) do |f| %>
+            <%= f.email_field :email, autofocus: true %>
+            <%= f.submit "メールアドレスを変更する" %>
+          <% end %>
+        </div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false">
+					<i class="fa fa-key pr-10"></i>パスワード変更
+				</a>
+			</h4>
+		</div>
+		<div id="collapseThree" class="panel-collapse collapse" aria-expanded="false">
+			<div class="panel-body">
+        <div class="col-md-6">
+          <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.password_field :current_password, autocomplete: "off" %>
+            <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <%= f.submit "パスワードを変更する" %>
+          <% end %>
+        </div>
+			</div>
+		</div>
+	</div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="collapsed" aria-expanded="false">
+          <i class="fa fa-map-marker pr-10"></i>登録した住所
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false">
+      <div class="panel-body">
+        <div class="col-md-6">
+          <br>
+          <%= link_to "新しく住所を登録する", new_user_address_path(current_user), class: "btn btn-default" %>
+          <div class="separator-2"></div>
+          <% if @addresses.any? %>
+            <%= render 'address', address: @addresses %>
+          <% else %>
+            <div class="alert alert-danger" role="alert">
+              住所が登録されていません
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

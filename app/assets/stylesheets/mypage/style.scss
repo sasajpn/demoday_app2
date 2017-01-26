@@ -4,7 +4,12 @@ body {
 
 .main-container {
   height: 100%;
-  padding-top: 0 !important;
+  padding-top: 10px !important;
+}
+
+.container-fluid {
+  // margin-left: 10px !important;
+  // margin-right: 10px !important;
 }
 
 .page-wrapper {
@@ -26,6 +31,27 @@ body {
 
 .top-image {
   background-image: image-url("top.jpg");
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.main {
+  margin: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    position: absolute !important;
+    top: 100px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .main {
+    margin-top: 30px;
+  }
 }
 
 .mypage-tab {
@@ -58,6 +84,14 @@ body {
   margin-bottom: 5px !important;
 }
 
+.social-links {
+  text-align: right;
+}
+
+.google-plus {
+
+}
+
 .step-warning {
   color: #FF0000;
   font-weight: bold;
@@ -69,6 +103,7 @@ body {
 }
 
 .user-info {
+  margin-left: 10px;
   img {
     display: inline-block;
   }
@@ -93,6 +128,7 @@ body {
   display: inline-block;
   width: 250px;
   height: 350px;
+  margin-right: 40px;
 }
 
 .book-image {
@@ -211,4 +247,47 @@ body {
   .form-group {
     margin-bottom: 0;
   }
+}
+
+.list-group {
+  list-style: none !important;
+}
+
+.list-group-item {
+  color: rgba(0,0,0,0.87) !important;
+  font-size: 14px !important;
+  margin-bottom: 7px !important;
+  border: none !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  background-color: #fafafa !important;
+}
+
+.navbar {
+  background-color: #fafafa !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.navbar-toggle {
+  float: left !important;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-offcanvas {
+    left: -260px !important;
+  }
+}
+
+
+.offcanvas-toggle-background {
+  background-color: #fafafa !important;
+}
+
+.offcanvas-toggle-bars-color {
+  background-color: #000 !important;
+}
+
+.navbar-offcanvas.in {
+  box-shadow: 0 0 0 !important;
 }

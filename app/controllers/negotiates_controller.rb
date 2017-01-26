@@ -1,9 +1,13 @@
 class NegotiatesController < ApplicationController
   before_action :set_negotiate, only: [:update, :destroy]
-  before_action :set_book, only: [:index, :new]
+  before_action :set_book, only: [:show, :new]
   before_action :set_books, only: [:new]
 
   def index
+    @negotiates = current_user.books.where(status: 2).order(created_at: :desc)
+  end
+
+  def show
     @negotiates = @book.parents
     @agree = @negotiates.find_by(agree: true)
   end
