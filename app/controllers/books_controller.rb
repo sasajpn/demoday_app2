@@ -3,7 +3,9 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:update, :destroy]
 
   def index
-    @books = current_user.books.where.not(status: 2).order(created_at: :desc)
+    @books = current_user.books.order(created_at: :desc)
+    @search = @books.search(params[:q])
+    @search_books = @search.result(distinct: true)
   end
 
   def new
@@ -64,7 +66,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :image, :condition)
+    params.require(:book).permit(:title, :author, :image, :condition, :status)
   end
 
   def update_book_params

@@ -1,0 +1,4 @@
+<%= search_form_for(search, url: user_books_path(current_user), method: :get) do |f| %>
+  <%= f.select :status_eq, { 'アクティビティのない本': 0, '取引に出した本': 1, '交渉に出した本': 2, '取引の成立した本': 3 }, { include_blank: 'すべての本' }, { class: 'form-control' } %>
+  <%= f.submit class: 'btn btn-default' %>
+<% end %>

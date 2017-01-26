@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :user_check, except: [:get_area]
 
+  def show
+  end
+  
   def edit
     @addresses = current_user.addresses
   end

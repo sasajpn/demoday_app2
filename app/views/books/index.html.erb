@@ -1,4 +1,16 @@
-<div class="text-center">
+<%= render 'search', search: @search %>
+<% if @search_books.any? %>
   <%= render partial: 'part',
-    collection: @books, as: "object", locals: { link: true } %>
-</div>
+    collection: @search_books, as: "object", locals: { link: true } %>
+<% elsif @search_books.blank? %>
+  <div class="alert alert-warning" role="alert">
+    条件に一致する本が見つかりませんでした
+  </div>
+<% elsif @books.any? %>
+<%= render partial: 'part',
+  collection: @books, as: "object", locals: { link: true } %>
+<% elsif @books.blank? %>
+  <div class="alert alert-warning" role="alert">
+    本が登録されていません
+  </div>
+<% end %>
