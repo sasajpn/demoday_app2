@@ -8,18 +8,10 @@
           <span><%= current_user.username %></span>
         </div>
       <% end %>
-      <form role="search">
-				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="Search">
-					<i class="fa fa-search form-control-feedback"></i>
-				</div>
-			</form>
-      <li><%= link_to books_path, class: "list-group-item" do %><i class="fa fa-gavel pr-10"></i> 現在の取引<% end %></li>
       <hr>
+      <li><%= link_to deals_path, class: "list-group-item" do %><i class="fa fa-gavel pr-10"></i> 現在の取引<% end %></li>
       <li><%= link_to user_books_path(current_user), class: 'list-group-item' do %><i class="fa fa-book pr-10"></i> マイブック</li><% end %>
-      <hr>
       <li><%= link_to user_negotiates_path(current_user), class: 'list-group-item' do %><i class="fa fa-handshake-o pr-10"></i> 交渉している取引</li></li><% end %>
-      <hr>
       <li><%= link_to edit_user_path(current_user), class: 'list-group-item' do %><i class="fa fa-user-circle-o pr-10"></i> プロフィールの編集</li><% end %>
   	</ul>
   </nav>

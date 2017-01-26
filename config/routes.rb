@@ -18,5 +18,5 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :books, only: [:index]
+  resources :deals, only: [:index]
 end

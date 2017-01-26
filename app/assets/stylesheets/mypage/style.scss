@@ -291,3 +291,13 @@ body {
 .navbar-offcanvas.in {
   box-shadow: 0 0 0 !important;
 }
+
+.badge {
+  // font-size: 16px !important;
+  padding: 15px !important;
+  background-color: rgba(255,0,0,0.9) !important;
+  border: 1px solid #808080 !important;
+  a {
+    color: #FFFFFF !important;
+  }
+}
