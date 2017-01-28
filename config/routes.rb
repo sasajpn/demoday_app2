@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       resources :evals
       resource :negotiate, only: [:show]
       resources :negotiates, except: [:index, :show] do
-        resources :trades
+        resource :trade
       end
     end
   end

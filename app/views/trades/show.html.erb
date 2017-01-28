@@ -1,0 +1,8 @@
+<%= render 'nav', parent_status: @negotiate.parent_status, child_status: @negotiate.child_status %>
+<div class="tab-content clear-style">
+  <%= render 'confirm' if @object.status == 3 %>
+  <%= render 'notice' if @object.status == 4 && @other.status > 3 %>
+  <%= render 'send' if @object.status == 5 && @other.status > 4 %>
+  <%= render 'recieve' if @object.status == 6 %>
+  <%= render 'evals/form', evaluatee: @other.user, num: 8 if @object.status == 7 %>
+</div>

@@ -1,7 +1,7 @@
-<%= bootstrap_form_for [object, current_user.evaluators.build] do |f| %>
+<%= bootstrap_form_for [@object, current_user.evaluators.build] do |f| %>
     <%= f.hidden_field :evaluatee_id, value: evaluatee.id %>
     <%= f.select :level, Eval.levels_i18n.invert %>
-    <%= fields_for(object) do |af| %>
+    <%= fields_for(@object) do |af| %>
       <%= af.hidden_field :status, value: num %>
     <% end %>
     <%= f.submit "取引相手を評価する", class: "btn btn-primary btn-sm" %>

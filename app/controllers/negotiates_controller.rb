@@ -1,4 +1,4 @@
-class NegotiatesController < ApplicationController
+class NegotiatesController < BooksController
   before_action :set_negotiate, only: [:update, :destroy]
   before_action :set_book, only: [:show, :new]
   before_action :set_books, only: [:new]

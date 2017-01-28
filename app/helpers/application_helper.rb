@@ -70,6 +70,8 @@ module ApplicationHelper
       "取引に出す"
     when 4
       "取引の成立を確認する"
+    when 5
+      '選択したお届け先を知らせる'
     when 6
       "本を配送しましたか？"
     when 7

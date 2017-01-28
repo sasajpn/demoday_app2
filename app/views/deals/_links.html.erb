@@ -5,5 +5,5 @@
 <% elsif current_user.until_negotiate?(object) %>
   <%= link_to "交渉する", new_book_negotiate_path(object), class: "btn btn-gray btn-sm" %>
 <% elsif current_user.books.where(status: 0).blank? %>
-  <%= render 'notice' %>
+  <%= render 'alert' %>
 <% end %>
