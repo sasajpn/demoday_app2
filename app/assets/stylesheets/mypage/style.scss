@@ -41,7 +41,6 @@ body {
   .main {
     position: absolute !important;
     top: 100px;
-    padding-left: 35px !important;
   }
 }
 
@@ -122,11 +121,285 @@ body {
   visibility: hidden;
 }
 
-.book-box {
-  display: inline-block;
-  width: 220px;
-  height: 320px;
-  margin-right: 10px;
+@media screen and (min-width: 1290px) {
+  .overlay-container {
+    width: 230px;
+    height: 320px;
+  }
+  .book-info {
+    width: 230px;
+    h3 {
+      font-size: 16px;
+    }
+  }
+  .small-font {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 1290px) {
+  .overlay-container {
+    width: 210px;
+    height: 300px;
+  }
+  .book-info {
+    width: 210px;
+    h3 {
+      font-size: 15px;
+    }
+    small {
+      font-size: 80%;
+    }
+    .alert {
+      width: 70% !important;
+    }
+  }
+  .small-font {
+    font-size: 8px;
+  }
+}
+@media screen and (max-width: 1190px) {
+  .overlay-container {
+    width: 190px;
+    height: 280px;
+  }
+  .book-info {
+    width: 190px;
+    h3 {
+      font-size: 14px;
+    }
+    small {
+      font-size: 75%;
+    }
+  }
+}
+
+@media screen and (max-width: 1085px) {
+  .overlay-container {
+    width: 170px;
+    height: 260px;
+  }
+  .book-info {
+    width: 170px;
+    h3 {
+      font-size: 13px;
+    }
+    small {
+      font-size: 75%;
+    }
+  }
+}
+@media screen and (max-width: 836px) {
+  .overlay-container {
+    width: 150px;
+    height: 240px;
+  }
+  .book-info {
+    width: 150px;
+    h3 {
+      font-size: 11px;
+    }
+    small {
+      font-size: 65%;
+    }
+    .alert {
+      width: 80% !important;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .overlay-container {
+    width: 350px;
+    height: 440px;
+  }
+  .book-info {
+    width: 350px;
+    h3 {
+      font-size: 20px;
+    }
+    small {
+      font-size: 100%;
+    }
+    .small-font {
+      font-size: 18px;
+    }
+    .alert {
+      width: 70% !important;
+      padding: 22px 25px !important;
+    }
+    .btn-sm {
+      font-size: 18px;
+      padding: 20px 25px;
+    }
+  }
+}
+@media screen and (max-width: 749px) {
+  .overlay-container {
+    width: 330px;
+    height: 420px;
+  }
+  .book-info {
+    width: 330px;
+  }
+}
+@media screen and (max-width: 708px) {
+  .overlay-container {
+    width: 310px;
+    height: 400px;
+  }
+  .book-info {
+    width: 310px;
+  }
+}
+@media screen and (max-width: 668px) {
+  .overlay-container {
+    width: 290px;
+    height: 380px;
+  }
+  .book-info {
+    width: 290px;
+    .small-font {
+      font-size: 16px;
+    }
+    .alert {
+      width: 70% !important;
+      padding: 17px 20px !important;
+    }
+    .btn-sm {
+      font-size: 16px;
+      padding: 15px 20px;
+    }
+  }
+}
+@media screen and (max-width: 628px) {
+  .overlay-container {
+    width: 270px;
+    height: 360px;
+  }
+  .book-info {
+    width: 270px;
+  }
+}
+@media screen and (max-width: 587px) {
+  .overlay-container {
+    width: 250px;
+    height: 340px;
+  }
+  .book-info {
+    width: 250px;
+    .small-font {
+      font-size: 15px;
+    }
+    .alert {
+      width: 70% !important;
+      padding: 14px 17px !important;
+    }
+    .btn-sm {
+      font-size: 15px;
+      padding: 12px 17px;
+    }
+  }
+}
+@media screen and (max-width: 547px) {
+  .overlay-container {
+    width: 230px;
+    height: 320px;
+  }
+  .book-info {
+    width: 230px;
+    h3 {
+      font-size: 14px;
+    }
+    small {
+      font-size: 75%;
+    }
+    .small-font {
+      font-size: 14px;
+    }
+    .alert {
+      width: 70% !important;
+      padding: 14px 17px !important;
+    }
+    .btn-sm {
+      font-size: 14px;
+      padding: 12px 17px;
+    }
+  }
+}
+@media screen and (max-width: 507px) {
+  .overlay-container {
+    width: 210px;
+    height: 300px;
+  }
+  .book-info {
+    width: 210px;
+    h3 {
+      font-size: 13px;
+    }
+    small {
+      font-size: 75%;
+    }
+    .small-font {
+      font-size: 14px;
+    }
+    .alert {
+      width: 80% !important;
+      padding: 14px 17px !important;
+    }
+    .btn-sm {
+      font-size: 14px;
+      padding: 12px 17px;
+    }
+  }
+}
+@media screen and (max-width: 467px) {
+  .overlay-container {
+    width: 190px;
+    height: 280px;
+  }
+  .book-info {
+    width: 190px;
+    h3 {
+      font-size: 13px;
+    }
+    small {
+      font-size: 70%;
+    }
+    .small-font {
+      font-size: 12px;
+    }
+    .alert {
+      width: 90% !important;
+      padding: 12px 15px !important;
+    }
+    .btn-sm {
+      font-size: 12px;
+      padding: 10px 15px;
+    }
+  }
+}
+@media screen and (max-width: 427px) {
+  .overlay-container {
+    width: 170px;
+    height: 260px;
+  }
+  .book-info {
+    width: 170px;
+  }
+}
+
+.overlay-container {
+  .bg-warning {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px !important;
+    margin-bottom: 5px !important;
+    width: 60% !important;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .book-image {
@@ -142,7 +415,6 @@ body {
     bottom: 0px;
     color: #FFFFFF;
     background: rgba(0,0,0,.6);
-    width: 220px;
     text-align: center;
 
     hr {
@@ -150,12 +422,11 @@ body {
     }
 
     h3 {
-      font-size: 16px;
       color: #FFFFFF;
     }
 
     .book-bottom {
-      margin: 10px;
+      margin: 5px;
     }
   }
 }
@@ -269,6 +540,11 @@ body {
 
 .navbar-toggle {
   float: left !important;
+  margin-bottom: 0 !important;
+  margin-top: 2px !important;
+  .icon-bar {
+    background: #FFFFFF !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -312,10 +588,10 @@ body {
     margin: 0;
   }
   .alert {
-    padding: 8px !important;
+    padding: 8px;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
-    width: 50% !important;
+    width: 50%;
   }
   .alert-success {
     margin: auto;
@@ -328,23 +604,5 @@ body {
   }
   .alert-info {
     margin: auto;
-  }
-  .small-font {
-    font-size: 10px;
-  }
-}
-
-.overlay-container {
-  .bg-warning {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 8px !important;
-    margin-bottom: 5px !important;
-    width: 60% !important;
-  }
-  img {
-    width: 220px;
-    height: 320px;
   }
 }
