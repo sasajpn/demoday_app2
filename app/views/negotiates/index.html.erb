@@ -1,8 +1,8 @@
 <% if @negotiates.any? %>
   <%= render partial: 'books/part',
-    collection: @negotiates, as: "object", locals: { link: true } %>
+    collection: @negotiates, as: "object" %>
 <% else %>
-  <div class="alert alert-danger" role="alert">
+  <p class="bg-danger p-20">
     現在交渉中の取引はありません。
-  </div>
+  </p>
 <% end %>

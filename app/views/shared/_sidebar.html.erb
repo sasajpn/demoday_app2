@@ -1,18 +1,16 @@
-<div class="no-padding col-md-3 col-sm-3">
-  <nav class="navbar navbar-offcanvas" role="navigation" id="js-bootstrap-offcanvas">
-    <ul class="list-group">
-      <% if user_signed_in? %>
-        <div class="user-info">
-          <% animal = Animal.find(current_user.icon).name %>
-          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") %>
-          <span><%= current_user.username %></span>
-        </div>
-      <% end %>
-      <hr>
-      <li><%= link_to deals_path, class: "list-group-item" do %><i class="fa fa-gavel pr-10"></i> 現在の取引<% end %></li>
-      <li><%= link_to user_books_path(current_user), class: 'list-group-item' do %><i class="fa fa-book pr-10"></i> マイブック</li><% end %>
-      <li><%= link_to user_negotiates_path(current_user), class: 'list-group-item' do %><i class="fa fa-handshake-o pr-10"></i> 交渉している取引</li></li><% end %>
-      <li><%= link_to edit_user_path(current_user), class: 'list-group-item' do %><i class="fa fa-user-circle-o pr-10"></i> プロフィールの編集</li><% end %>
-  	</ul>
-  </nav>
-</div>
+<nav class="navbar navbar-offcanvas" role="navigation" id="js-bootstrap-offcanvas">
+  <ul class="list-group">
+    <% if user_signed_in? %>
+      <div class="user-info">
+        <% animal = Animal.find(current_user.icon).name %>
+        <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") %>
+        <span><%= current_user.username %></span>
+      </div>
+    <% end %>
+    <hr>
+    <li><%= link_to deals_path, class: "list-group-item" do %><i class="fa fa-gavel pr-10"></i> 現在の取引<% end %></li>
+    <li><%= link_to user_books_path(current_user), class: 'list-group-item' do %><i class="fa fa-book pr-10"></i> マイブック</li><% end %>
+    <li><%= link_to user_negotiates_path(current_user), class: 'list-group-item' do %><i class="fa fa-handshake-o pr-10"></i> 交渉している取引</li></li><% end %>
+    <li><%= link_to edit_user_path(current_user), class: 'list-group-item' do %><i class="fa fa-user-circle-o pr-10"></i> プロフィールの編集</li><% end %>
+	</ul>
+</nav>

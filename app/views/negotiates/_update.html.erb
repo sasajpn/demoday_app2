@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(negotiate) do |f| %>
+<%= bootstrap_form_for(object, url: negotiate_path(object), method: :patch) do |f| %>
   <%= f.hidden_field :agree, value: true %>
   <%= f.submit '取引を決定する' %>
 <% end %>

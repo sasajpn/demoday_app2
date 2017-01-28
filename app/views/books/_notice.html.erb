@@ -1,0 +1,10 @@
+<% case object.status %>
+<% when 1 %>
+  <div class="alert alert-warning">
+    交渉がありません
+  </div>
+<% when 2 %>
+  <div class="alert alert-success">
+    交渉中です
+  </div>
+<% end %>

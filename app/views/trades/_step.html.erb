@@ -10,7 +10,7 @@
   <p><%= step.four %></p>
 <% end %>
 <% unless parent_or_child(parent, child).status > num %>
-  <%= render 'books/update_form', object: parent_or_child(parent, child), num: num + 1 unless num == 4 || num == 7 %>
+  <%= render 'books/update', object: parent_or_child(parent, child), num: num + 1 unless num == 4 || num == 7 %>
   <%= render 'trades/address_form', object: parent_or_child(parent, child), num: num + 1 if num == 4 %>
   <%= render 'evals/form', evaluatee: get_evaluatee(parent, child),
     object: parent_or_child(parent, child), num: num + 1 if num == 7 %>

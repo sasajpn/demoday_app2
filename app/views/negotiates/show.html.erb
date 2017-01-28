@@ -5,6 +5,5 @@
   </div>
 <% end %>
 <div class="row grid-space-10 relative">
-  <%= render 'books/part', object: @book, link: false %>
 </div>
-<%= render 'list', negotiates: @negotiates %>
+<%= render partial: 'lists', collection: @negotiates, as: "object" %>

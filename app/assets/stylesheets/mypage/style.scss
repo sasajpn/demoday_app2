@@ -4,7 +4,7 @@ body {
 
 .main-container {
   height: 100%;
-  padding-top: 10px !important;
+  padding-top: 0 !important;
 }
 
 .container-fluid {
@@ -38,13 +38,13 @@ body {
 }
 
 .main {
-  margin: auto;
 }
 
 @media screen and (max-width: 767px) {
   .main {
     position: absolute !important;
     top: 100px;
+    padding-left: 35px !important;
   }
 }
 
@@ -103,6 +103,7 @@ body {
 }
 
 .user-info {
+  margin-top: 20px;
   margin-left: 10px;
   img {
     display: inline-block;
@@ -265,8 +266,8 @@ body {
 
 .navbar {
   background-color: #fafafa !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
+  padding-left: 30px !important;
+  padding-right: 0px !important;
 }
 
 .navbar-toggle {
@@ -306,5 +307,40 @@ body {
     bottom: 0;
     color: #FFFFFF !important;
     line-height: 3.2;
+  }
+}
+
+.elements-list {
+  form {
+    margin: 0;
+  }
+  .alert {
+    padding: 8px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    width: 50% !important;
+  }
+  .alert-success {
+    margin: auto;
+  }
+  .alert-warning {
+    margin: auto;
+  }
+  .alert-danger {
+    margin: auto;
+  }
+  .small-font {
+    font-size: 12px;
+  }
+}
+
+.overlay-container {
+  .bg-warning {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px !important;
+    margin-bottom: 5px !important;
+    width: 60% !important;
   }
 }

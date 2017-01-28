@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :negotiates, only: [:index]
     resources :books, shallow: true do
       resources :evals
-      resources :negotiates, except: [:index] do
+      resource :negotiate, only: [:show]
+      resources :negotiates, except: [:index, :show] do
         resources :trades
       end
     end

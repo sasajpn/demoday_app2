@@ -90,10 +90,6 @@ module ApplicationHelper
     "取引相手の評価は終了しています" if object.status == 8
   end
 
-  def have_no_book(object)
-    "交渉に出せる本がありません" if current_user.can_want?(object) && current_user.books.where(status: 0).blank?
-  end
-
   def icon(animal)
     case
     when animal.include?("チーター")
@@ -155,7 +151,7 @@ module ApplicationHelper
   def confirm_message(num)
     case num
     when 1
-      '取引に出すと、1週間はこの本を使って他のユーザと交渉できなくなりますがよろしいですか？'
+      '取引に出すと、1週間はこの本を使って他のユーザの取引に交渉できなくなりますがよろしいですか？'
     end
   end
 
