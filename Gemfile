@@ -20,6 +20,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 
 gem 'data-confirm-modal'
+gem 'active_link_to'
 
 # Crontab
 gem 'whenever', require: false

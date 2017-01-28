@@ -408,6 +408,10 @@ body {
   .set-top {
     position: absolute;
     top: 0;
+    img {
+      height: 40px;
+      width: 40px;
+    }
   }
 
   .book-info {
@@ -520,16 +524,18 @@ body {
 
 .list-group {
   list-style: none !important;
-}
-
-.list-group-item {
-  color: rgba(0,0,0,0.87) !important;
-  font-size: 14px !important;
-  margin-bottom: 7px !important;
-  border: none !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  background-color: #fafafa !important;
+  .list-group-item {
+    color: rgba(0,0,0,0.87) !important;
+    font-size: 15px !important;
+    margin-bottom: 7px !important;
+    border: none !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    background-color: #fafafa !important;
+  }
+  .active {
+    color: #008be4 !important;
+  }
 }
 
 .navbar {

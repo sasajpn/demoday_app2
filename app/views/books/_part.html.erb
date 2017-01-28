@@ -8,7 +8,7 @@
         <% end %>
         <div class="set-top">
           <% animal = Animal.find(object.user.icon).name %>
-          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") if current_user.not_mine?(object) %>
+          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(object) %>
         </div>
       </div>
       <div class="book-info">
