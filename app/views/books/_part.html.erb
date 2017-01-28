@@ -1,22 +1,22 @@
-<div class="book-box">
-  <div class="listing-item mb-20 book-image">
-    <div class="overlay-container">
-      <%= image_tag(object.image, style: "width: 250px; height: 350px;") unless object.image.blank? %>
-      <%= image_tag('no-image.png', style: "width: 250px; height: 350px;") if object.image.blank? %>
-      <% if object.status == 0 %>
-        <span class="badge"><%= link_to book_path(object), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></span>
-      <% end %>
-      <div class="set-top">
-        <% animal = Animal.find(object.user.icon).name %>
-        <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") if current_user.not_mine?(object) %>
+  <div class="book-box">
+    <div class="listing-item mb-20 book-image">
+      <div class="overlay-container">
+        <%= image_tag(object.image) unless object.image.blank? %>
+        <%= image_tag('no-image.png') if object.image.blank? %>
+        <% if object.status == 0 %>
+          <span class="badge"><%= link_to book_path(object), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></span>
+        <% end %>
+        <div class="set-top">
+          <% animal = Animal.find(object.user.icon).name %>
+          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") if current_user.not_mine?(object) %>
+        </div>
       </div>
-    </div>
-    <div class="book-info">
-      <h3><%= object.title.truncate(15) %></h3>
-      <small><%= object.author.truncate(15) %></small>
-      <div class="elements-list clearfix">
-        <%= render 'links', object: object unless controller_name == 'trades' %>
+      <div class="book-info">
+        <h3><%= object.title.truncate(15) %></h3>
+        <small><%= object.author.truncate(15) %></small>
+        <div class="elements-list clearfix">
+          <%= render 'links', object: object unless controller_name == 'trades' %>
+        </div>
       </div>
     </div>
   </div>
-</div>

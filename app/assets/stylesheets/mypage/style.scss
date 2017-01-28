@@ -37,9 +37,6 @@ body {
   padding: 0 !important;
 }
 
-.main {
-}
-
 @media screen and (max-width: 767px) {
   .main {
     position: absolute !important;
@@ -127,9 +124,9 @@ body {
 
 .book-box {
   display: inline-block;
-  width: 250px;
-  height: 350px;
-  margin-right: 40px;
+  width: 220px;
+  height: 320px;
+  margin-right: 10px;
 }
 
 .book-image {
@@ -145,7 +142,7 @@ body {
     bottom: 0px;
     color: #FFFFFF;
     background: rgba(0,0,0,.6);
-    width: 250px;
+    width: 220px;
     text-align: center;
 
     hr {
@@ -333,7 +330,7 @@ body {
     margin: auto;
   }
   .small-font {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -345,5 +342,9 @@ body {
     padding: 8px !important;
     margin-bottom: 5px !important;
     width: 60% !important;
+  }
+  img {
+    width: 220px;
+    height: 320px;
   }
 }
