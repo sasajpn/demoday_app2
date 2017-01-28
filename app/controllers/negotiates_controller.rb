@@ -1,9 +1,13 @@
-class NegotiatesController < ApplicationController
+class NegotiatesController < BooksController
   before_action :set_negotiate, only: [:update, :destroy]
-  before_action :set_book, only: [:index, :new]
+  before_action :set_book, only: [:show, :new]
   before_action :set_books, only: [:new]
 
   def index
+    @negotiates = Book.where(id: Negotiate.where(child_id: current_user.books).select(:parent_id))
+  end
+
+  def show
     @negotiates = @book.parents
     @agree = @negotiates.find_by(agree: true)
   end
@@ -15,9 +19,9 @@ class NegotiatesController < ApplicationController
   def create
     @negotiate = Negotiate.new(negotiate_params)
     if @negotiate.save
-      redirect_to books_url, notice: '本を交渉に出しました。'
+      redirect_to deals_url, notice: '本を交渉に出しました。'
     else
-      redirect_to books_url, alert: '交渉に出すことができませんでした。'
+      redirect_to deals_url, alert: '交渉に出すことができませんでした。'
     end
   end
 
@@ -29,7 +33,7 @@ class NegotiatesController < ApplicationController
 
   def destroy
     @negotiate.destroy
-    redirect_to user_url(current_user)
+    redirect_to user_url(current_user), notice: '交渉を取り消しました。'
   end
 
   private

@@ -5,12 +5,12 @@ module BookOption
     self == object.user
   end
 
-  def already_want?(object)
-    children.where(parent_id: object.id).exists?
+  def already_negotiate?(object)
+    children.find_by(parent_id: object.id)
   end
 
-  def until_want?(object)
-    children.where(parent_id: object.id).blank?
+  def until_negotiate?(object)
+    children.find_by(parent_id: object.id).nil?
   end
 
   def not_mine?(object)

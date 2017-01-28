@@ -1,0 +1,10 @@
+<hr>
+<%= render 'update', object: object, num: 1 if object.status == 0 %>
+
+<% if object.status == 1 %>
+  <%= link_to '交渉を確認する', book_negotiate_path(object), class:'btn btn-gray btn-sm' if object.parents.any? %>
+  <%= render 'alert', object: object if object.parents.blank? %>
+<% end %>
+<%= render 'alert', object: object if object.status == 2 %>
+<%= link_to '取引ページ', negotiate_trade_path(object.set_negotiate), class:'btn btn-success btn-sm' if object.status.between?(3, 7) %>
+<%= render 'alert', object: object if object.status == 8 %>

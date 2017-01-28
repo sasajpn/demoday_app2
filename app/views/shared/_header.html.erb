@@ -1,34 +1,24 @@
 <div class="header-container">
-  <div class="header-top dark ">
+  <div class="header-top dark">
     <div class="container">
       <div class="row">
         <div class="col-xs-3 col-sm-6 col-md-3">
-          <% if user_signed_in? %>
-            <div class="user-info">
-              <% animal = Animal.find(current_user.icon).name %>
-              <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") %>
-              <span><%= current_user.username %></span>
-            </div>
-          <% end %>
+          <button type="button" class="navbar-toggle offcanvas-toggle" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
         </div>
         <div class="col-xs-9 col-sm-6 col-md-9">
           <div id="header-top-second" class="clearfix">
             <div class="header-top-dropdown text-right">
               <% if user_signed_in? %>
-                <%= link_to books_path, class: "btn btn-default btn-sm text-left" do %><i class="fa fa-handshake-o pr-10"></i> 取引を見る<% end %>
-                <%= link_to user_path(current_user), class:"btn btn-default btn-sm" do %><i class="fa fa-user pr-10"></i> マイページ<% end %>
                 <%= link_to destroy_user_session_path, method: :delete, class: "btn dropdown-toggle btn-default btn-sm" do %><i class="fa fa-unlock-alt pr-10"></i> ログアウト<% end %>
               <% else %>
                 <div class="btn-group">
                 <%= link_to new_user_registration_path, class:"btn btn-default btn-sm" do %><i class="fa fa-user pr-10"></i> 新規登録<% end %>
-                </div>
-                <div class="btn-group dropdown">
-                <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> ログイン</button>
-                  <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
-                    <li>
-                      <%= render partial: 'shared/header_login' %>
-                    </li>
-                  </ul>
+                <%= link_to new_user_session_path, class: "btn btn-default btn-sm" do %><i class="fa fa-lock pr-10"></i> ログイン<% end %>
                 </div>
               <% end %>
             </div>

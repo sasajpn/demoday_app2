@@ -1,13 +1,10 @@
 <% current_user.addresses.each.with_index(1) do |address, i| %>
-	<ul class="nav nav-pills" role="tablist">
-		<li>住所.<%= i %></a></li>
-	</ul>
-	<div class="tab-pane">
 		<div class="row grid-space-10">
 			<ul class="book-list social-links circle small clearfix hidden-xs">
 				<li class="flickr"><%= link_to edit_user_address_path(current_user, address) do %><i class="fa fa-edit"></i><% end %></li>
 				<li class="googleplus"><%= link_to user_address_path(current_user, address), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></li>
 			</ul>
+			<p>住所.<%= i %></p>
 			<dl class="dl-horizontal">
 				<dt>名前</dt>
 				<dd><%= address.family_name %> <%= address.given_name %></dd>
@@ -23,6 +20,4 @@
 				<dd><%= address.building %></dd>
 			</dl>
 		</div>
-	</div>
-	<div class="separator-2"></div>
 <% end %>

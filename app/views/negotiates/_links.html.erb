@@ -1,0 +1,3 @@
+<hr>
+<%= link_to "交渉を取り消す", negotiate_path(current_user.children.find_by(parent_id: object.id)), class: "btn btn-danger btn-sm", method: :delete,
+  data: { confirm: 'ほしいね！を取り消してもよろしいですか？' } %>
