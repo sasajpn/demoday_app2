@@ -1,4 +1,4 @@
-<%= render 'search', search: @search %>
+<%= render 'search', search: @search if @books.any? %>
 <% if @books.blank? %>
   <div class="alert alert-danger" role="alert">
     本が登録されていません

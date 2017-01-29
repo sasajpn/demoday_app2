@@ -1,2 +1,14 @@
-<%= render 'search', search: @search %>
-<%= render partial: 'books/part', collection: @books, as: "object" %>
+<%= render 'search', search: @search if @deals.any? %>
+<% if @deals.blank? %>
+  <div class="alert alert-danger" role="alert">
+    現在、取引はありません
+  </div>
+<% elsif @search_deals.any? %>
+  <%= render partial: 'books/part', collection: @search_deals, as: "object" %>
+<% elsif @search_deals.blank? %>
+  <div class="alert alert-warning" role="alert">
+    条件に一致する本が見つかりませんでした
+  </div>
+<% elsif @deals.any? %>
+  <%= render partial: 'books/part', collection: @search_deals, as: "object" %>
+<% end %>

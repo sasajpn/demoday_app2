@@ -33,6 +33,7 @@ class BooksController < ApplicationController
       end
     rescue
       retry_count += 1
+      retry
       sleep(5) if retry_count < 5
       flash.now[:alert] = '申し訳ございませんが、もう一度検索してください。'
     end
