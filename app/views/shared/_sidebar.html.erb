@@ -14,8 +14,8 @@
     <%= active_link_to user_negotiates_path(current_user), class: 'list-group-item' do %><i class="fa fa-handshake-o pr-10"></i> 交渉している取引<% end %>
     <%= active_link_to edit_user_path(current_user), class: 'list-group-item' do %><i class="fa fa-user-circle-o pr-10"></i> プロフィールの編集<% end %>
     <hr>
-    <%= active_link_to edit_user_path(current_user), class: 'list-group-item' do %><i class="fa fa-user-circle-o pr-10"></i> Re.Bookの使い方<% end %>
-    <%= active_link_to edit_user_path(current_user), class: 'list-group-item' do %><i class="fa fa-user-circle-o pr-10"></i> フィードバック<% end %>
+    <%= active_link_to page_info_path, class: 'list-group-item' do %><i class="fa fa-info-circle pr-10"></i> <span class="logo-font"><%= app_title %>の使い方</span><% end %>
+    <%= active_link_to page_contact_path(current_user), class: 'list-group-item' do %><i class="fa fa-commenting pr-10"></i> フィードバック<% end %>
 	</ul>
   <p class="logo-font sidebar-logo"><strong>© <%= Time.now.year %> <%= app_title %></strong></p>
 </nav>

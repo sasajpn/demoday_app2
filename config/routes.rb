@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'page#top'
+  get 'page/info'
+  get 'page/contact'
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',

@@ -1,5 +1,11 @@
 class PageController < ApplicationController
-  layout 'mypage/top'
   def top
+    layout 'mypage/top'
+  end
+
+  def info
+  end
+
+  def contact
   end
 end

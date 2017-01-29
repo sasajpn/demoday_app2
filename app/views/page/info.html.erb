@@ -1,56 +1,54 @@
-<div class="col-md-8 col-md-offset-2">
-  <div id="logo" class="logo">
-    <h2 class="text-center logo-font"><strong>How to Use</strong></h2>
-  </div>
-  <div class="separator"></div>
-  <p class="large text-center logo-font"><%= app_title %>を利用することで簡単に本の取引ができます。</p>
-</div>
-<section class="section border-clear clearfix padding-ver-clear light-gray-bg">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 padding-bottom-clear pv-30">
-        <div class="feature-box-2">
-          <span class="icon without-bg"><i class="text-default fa fa-book"></i></span>
-          <div class="body">
-            <h4 class="title">本の登録</h4>
-            <hr>
-            <p>あなたが交換したい本を登録します。</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 padding-bottom-clear pv-30 default-translucent-bg">
-        <div class="feature-box-2">
-          <span class="icon without-bg"><i class="fa fa-question"></i></span>
-          <div class="body">
-            <h4 class="title">取引開始</h4>
-            <hr>
-            <p>あなたが取引を開始するか、<br>あるいはすでに開始された取引に交換の交渉を行います。</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 padding-bottom-clear pv-30">
-        <div class="feature-box-2">
-          <span class="icon without-bg"><i class="text-default fa fa-handshake-o"></i></span>
-          <div class="body">
-            <h4 class="title">取引成立</h4>
-            <hr>
-            <p>あなたの取引が成立した場合、本の交換を行います。</p>
-          </div>
-        </div>
-      </div>
+<div class="info-content section">
+  <div class="row">
+  	<div class="col-md-4">
+  		<h5 class="text-center logo-font">1.本の登録をしてください</h5>
+  		<div class="separator"></div>
+      <p>あなたの持っている本の中で、誰かと交換してみたいものを登録してください.</p>
+      <p><strong>本の登録は簡単にできます.</strong></p>
+      <p>タイトル,著者名あるいはISBNコードを入力するだけです.</p>
+  	</div>
+    <div class="col-md-2">
+      <%= image_tag('info1') %>
+    </div>
+		<div class="col-md-4">
+      <h5 class="text-center logo-font">2.取引に出す</h5>
+  		<div class="separator"></div>
+      <p>あなたが登録した本を取引に出します.</p>
+      <p>本を取引に出すと,他のユーザがあなたの本に交渉することができます.</p>
+      <p><strong>もちろん,他のユーザがすでに取引に出した本にあなたが交渉することもできます.</strong></p>
+      <p>ただし,取引に出した本は交渉に使うことができませんし,交渉に出した本は取引に出すこともできません.</p>
+      <p><strong>また交渉を取り消すことはできますが,取引に出した本は1週間は取引に出たままとなります.</strong></p>
+		</div>
+    <div class="col-md-2">
+      <%= image_tag('info2') %>
     </div>
   </div>
-</section>
-<div class="alert  alert-icon alert-warning" role="alert">
-  <i class="fa fa-warning"></i>
-  <h4>使用上の注意点</h4>
-  <hr>
-  <p class="logo-font">1. 取引が成立し、本の交換が終わるまで同じ本を登録することができません。</p>
-  <br>
-  <p class="logo-font">2. 本を取引に出すと、取引開始から一週間が経過するまでその本を他の本への交渉には使用できません。</p>
-  <br>
-  <p class="logo-font">3. すでに開始された取引に交渉した場合、相手方があなたの本と交換する（ほしいね！）ボタンを押すと、取引は成立します。</p>
-  <br>
-  <p class="logo-font">4. 本の交換は速やかにしていただくようお願いいたします。</p>
-  <br>
+</div>
+<div class="info-content section">
+	<div class="row">
+		<div class="col-md-4">
+      <h5 class="text-center logo-font">3.取引の成立</h5>
+  		<div class="separator"></div>
+      <p>あなたが取引に出した本が他のユーザから交渉された場合,その交渉の中からあなたは取引を成立させたい本を選択することができます.</p>
+      <p>もしあなたが取引を成立させるボタンを押した場合,その時点でユーザ同士の本の交換が決定します.</p>
+      <p><strong>つまり,逆にあなたが交渉に出した本については,取引主があなたの本との取引を成立させた場合,即座にあなたとの本の交換が決まります.</strong></p>
+      <p class="info-danger"><strong>また取引は1週間が期限となりますので,あなたの取引が多くのユーザから交渉されていたとしてもあなたが1週間取引を成立させなかった場合,その取引はキャンセルされます.</strong></p>
+		</div>
+    <div class="col-md-2">
+      <%= image_tag('info3') %>
+    </div>
+    <div class="col-md-4">
+      <h5 class="text-center logo-font">4.本の交換</h5>
+      <div class="separator"></div>
+      <p>あなたの取引あるいは交渉が成立した場合,ユーザ同士で本の交換を行っていただきます.</p>
+      <p class="info-danger"><strong>本の交換時には,あなたの住所を相手方に通知する必要がありますので,その点については事前にご了承をいただいた上で,<span class="logo-font"><%= app_title %></span>をご利用いただきますようお願い致します.</strong></p>
+      <p>また本の交換は交換ページの手順通りにしていただければ,交換を行っていただけるようになっております.</p>
+      <p><strong>簡易的に本の交換ができるよう,ユーザ同士のメッセージ機能等はご用意しておりません.</strong></p>
+      <p>本の交換は常識を持って行っていただきますようお願い致します.</p>
+      <p>交換中に何か問題が発生しました場合は,お問い合わせフォームから報告をお願い致します.</p>
+    </div>
+    <div class="col-md-2">
+      <%= image_tag('info4') %>
+    </div>
+	</div>
 </div>
