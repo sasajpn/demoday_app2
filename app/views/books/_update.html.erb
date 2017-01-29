@@ -1,5 +1,6 @@
 <%= bootstrap_form_for(object) do |f| %>
   <%= f.hidden_field :status, value: num %>
   <%= render 'address', object: object, f: f if object.status == 4 %>
-  <%= f.submit update_title(num), class: "btn btn-primary btn-sm", data: { confirm: confirm_message(num) } %>
+  <%= f.submit update_name(num), class: "btn btn-primary btn-sm",
+    data: { confirm: update_message(num), 'commit': update_confirm(num), 'cancel': update_cancel(num), }, title: update_title(num) %>
 <% end %>

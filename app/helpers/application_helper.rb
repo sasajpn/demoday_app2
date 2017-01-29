@@ -1,70 +1,9 @@
 module ApplicationHelper
-  def resource_name
-    :user
-  end
-
-  def resource
-    @resource ||= User.new
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
-  end
-
   def app_title
     'Re.Book'
   end
 
-  def panel_title(num)
-    case num
-    when 'One'
-      'ユーザネーム・メールアドレス変更'
-    when 'Two'
-      '住所登録'
-    when 'Three'
-      'パスワード変更'
-    when 'Four'
-      '退会'
-    end
-  end
-
-  def active_in(n)
-    active_in = %w(active in)
-    active_in.join(' ') if n == 1
-  end
-
-  def parent_or_child(parent, child)
-    return parent if current_user == parent.user
-    return child if current_user == child.user
-  end
-
-  def get_evaluatee(parent, child)
-    return child.user if current_user == parent.user
-    return parent.user if current_user == child.user
-  end
-
-  def step_content(num)
-    return "次のStepに進んでください！" if num >= 3 && num <= 5
-    return "これで取引は終了です！" if num == 6
-    return "引き続き弊サービスをよろしくお願い致します！" if num == 7
-  end
-
-  def which_collection(books, n)
-    case n
-    when 1
-      return books.where(status: 0)
-    when 2
-      return books.where(status: 1)
-    when 3
-      return Book.where(id: Negotiate.where(child_id: books).select(:parent_id))
-    when 4
-      return books.where(status: [3, 4, 5, 6])
-    when 5
-      return books.where(status: [7, 8])
-    end
-  end
-
-  def update_title(num)
+  def update_name(num)
     case num
     when 1
       "取引に出す"
@@ -76,6 +15,34 @@ module ApplicationHelper
       "本を配送しましたか？"
     when 7
       "本を受け取りましたか？"
+    end
+  end
+
+  def update_message(num)
+    case num
+    when 1
+      '1週間は取引が継続されますがよろしいですか？'
+    end
+  end
+
+  def update_confirm(num)
+    case num
+    when 1
+      '取引に出す'
+    end
+  end
+
+  def update_cancel(num)
+    case num
+    when 1
+      '取り消す'
+    end
+  end
+
+  def update_title(num)
+    case num
+    when 1
+      '取引開始の確認'
     end
   end
 
@@ -147,13 +114,6 @@ module ApplicationHelper
       'pegasus'
     when animal.include?("ライオン")
       'lion'
-    end
-  end
-
-  def confirm_message(num)
-    case num
-    when 1
-      '取引に出すと、1週間はこの本を使って他のユーザの取引に交渉できなくなりますがよろしいですか？'
     end
   end
 

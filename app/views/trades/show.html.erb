@@ -1,8 +1,23 @@
 <%= render 'nav', parent_status: @negotiate.parent_status, child_status: @negotiate.child_status %>
 <div class="tab-content clear-style">
-  <%= render 'confirm' if @object.status == 3 %>
-  <%= render 'notice' if @object.status == 4 && @other.status > 3 %>
+  <% if @object.status == 3 %>
+  <%= render 'confirm' %>
+  <% elsif @other.status == 3 %>
+    <p class="bg-warning p-20">相手方が取引の成立を確認するまでお待ち下さい。</p>
+  <% end %>
+  <% if @object.status == 4 && @other.status > 3 %>
+    <%= render 'notice' %>
+  <% elsif @other.status == 4 %>
+    <p class="bg-warning p-20">相手方が住所を通知するまでお待ち下さい。</p>
+  <% end %>
   <%= render 'send' if @object.status == 5 && @other.status > 4 %>
   <%= render 'recieve' if @object.status == 6 %>
-  <%= render 'evals/form', evaluatee: @other.user, num: 8 if @object.status == 7 %>
+  <% if @object.status == 7 %>
+    <p class="bg-info p-20">
+      最後に取引相手を評価することができます。
+      <br>
+      <span class="caution-content">※両者が本を受け取った後、1週間経過すると取引相手の評価ができなくなります</span>
+    </p>
+    <%= render 'evals/form', evaluatee: @other.user, num: 8 %>
+  <% end %>
 </div>

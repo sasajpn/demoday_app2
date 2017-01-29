@@ -1,7 +1,7 @@
 <% if @agree %>
   <div class="alert alert-info">
-    取引が成立しました！
-    <%= link_to "取引を行う", negotiate_trades_path(@agree), class: 'alert-link' %>
+    <p>取引が成立しました！</p>
+    <p><%= link_to 'こちらから本の交換を行ってください', negotiate_trade_path(@agree), class: 'alert-link' %></p>
   </div>
 <% end %>
 <div class="row grid-space-10 relative">

@@ -41,7 +41,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      redirect_to user_url(current_user), notice: '本を登録しました。'
+      redirect_to user_books_url(current_user), notice: '本を登録しました。'
     else
       @books = []
       @book.errors.full_messages.each do |error|
@@ -53,7 +53,8 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(update_book_params)
-      redirect_to user_url(current_user), notice: @book.notice_message
+      redirect_to user_books_url(current_user), notice: @book.notice_message if @book.status <= 2
+      redirect_to negotiate_trade_url(@book.set_negotiate), notice: @book.notice_message if @book.status >= 4
     end
   end
 

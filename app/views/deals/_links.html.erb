@@ -2,8 +2,8 @@
 <% if current_user.already_negotiate?(object) %>
   <%= link_to "交渉を取り消す", negotiate_path(current_user.children.find_by(parent_id: object.id)), class: "btn btn-danger btn-sm", method: :delete,
     data: { confirm: 'ほしいね！を取り消してもよろしいですか？' } %>
-<% elsif current_user.until_negotiate?(object) %>
-  <%= link_to "交渉する", new_book_negotiate_path(object), class: "btn btn-gray btn-sm" %>
 <% elsif current_user.books.where(status: 0).blank? %>
   <%= render 'alert' %>
+<% elsif current_user.until_negotiate?(object) %>
+  <%= link_to "交渉する", new_book_negotiate_path(object), class: "btn btn-info btn-sm" %>
 <% end %>

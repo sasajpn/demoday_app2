@@ -1,7 +1,7 @@
 class NegotiatesController < BooksController
   before_action :set_negotiate, only: [:update, :destroy]
-  before_action :set_book, only: [:show, :new]
-  before_action :set_books, only: [:new]
+  before_action :set_book, only: [:show, :new, :create]
+  before_action :set_books, only: [:new, :create]
 
   def index
     @negotiates = Book.where(id: Negotiate.where(child_id: current_user.books).select(:parent_id))
@@ -21,7 +21,7 @@ class NegotiatesController < BooksController
     if @negotiate.save
       redirect_to deals_url, notice: '本を交渉に出しました。'
     else
-      redirect_to deals_url, alert: '交渉に出すことができませんでした。'
+      render :new
     end
   end
 

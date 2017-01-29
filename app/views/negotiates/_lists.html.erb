@@ -1,14 +1,14 @@
 <div class="book-box">
   <div class="listing-item mb-20 book-image">
     <div class="overlay-container">
-      <%= image_tag(object.image, style: "width: 250px; height: 350px;") unless object.image.blank? %>
-      <%= image_tag('no-image.png', style: "width: 250px; height: 350px;") if object.image.blank? %>
+      <%= image_tag(object.image) unless object.image.blank? %>
+      <%= image_tag('no-image.png') if object.image.blank? %>
       <div class="set-top">
         <% animal = Animal.find(object.child_user.icon).name %>
         <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") %>
       </div>
       <p class="bg-warning p-20">
-        <%= object.child.condition_i18n %>
+        <small><strong><%= object.child.condition_i18n %></strong></small>
       </p>
     </div>
     <div class="book-info">

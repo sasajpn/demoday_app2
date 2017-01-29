@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :evaluators, class_name: 'Eval', foreign_key: 'evaluator_id'
 
   validates :username, :birthday, presence: true
-  validates :username, uniqueness: true
+  validates :username, :email, uniqueness: true
 
   before_create :set_icon
 

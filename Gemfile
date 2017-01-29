@@ -60,8 +60,6 @@ group :development, :test do
   gem 'annotate'
   gem 'awesome_print'
   gem 'factory_girl_rails'
-  gem 'seed-fu'
-  gem 'rails-erd'
 end
 
 group :development do

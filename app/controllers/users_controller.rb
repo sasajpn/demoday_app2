@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_address, only: [:edit, :update]
   before_action :user_check, except: [:get_area]
 
   def show
   end
-  
+
   def edit
-    @addresses = current_user.addresses
   end
 
   def update
     if @user.update(user_params)
-      sign_in(@user, bypass: true) if current_user == @user
-      redirect_to user_url(current_user)
+      bypass_sign_in(current_user) if current_user == @user
+      redirect_to edit_user_url(current_user)
     else
+      @user.errors.full_messages.each do |error|
+        flash.now[:alert] = error
+      end
       render :edit
     end
   end
@@ -27,5 +30,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def set_address
+    @addresses = current_user.addresses
   end
 end

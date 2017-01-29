@@ -569,7 +569,7 @@ html,body {
     padding: 8px;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
-    width: 50%;
+    width: 80%;
   }
   .alert-success {
     margin: auto;
@@ -597,12 +597,27 @@ html,body {
     color: #FF0000;
   }
 }
-.info-image {
-}
 
 .new-book {
   .form-control {
     margin-top: 10px;
     height: 25px !important;
   }
+}
+
+.recommend_area {
+  height: 100px !important;
+}
+
+.top-alert {
+  width: 80%;
+  margin: auto !important;
+}
+
+.condition-font {
+  font-size: 10px;
+}
+
+.caution-content {
+  color: #FF0000;
 }

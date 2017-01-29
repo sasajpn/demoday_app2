@@ -5,7 +5,7 @@ class EvalsController < ApplicationController
     @eval = current_user.evaluators.build(eval_params)
     if @eval.save
       @book.update(book_params)
-      redirect_to user_url(current_user)
+      redirect_to user_books_url(current_user), notice: '取引相手を評価しました。'
     end
   end
 

@@ -1,12 +1,12 @@
 class Negotiate < ActiveRecord::Base
   belongs_to :parent, class_name: 'Book'
   belongs_to :child, class_name: 'Book'
-
+  
   delegate :user, :status, to: :parent, prefix: :parent
   delegate :user, :status, to: :child, prefix: :child
   delegate :title, :author, :image, :condition, to: :child
 
-  validates :child_id, presence: true
+  validates :child_id, presence: { message: 'を選択してください' }
   validates :recommend, length: { maximum: 140 }
 
   after_create :update_status_for_start

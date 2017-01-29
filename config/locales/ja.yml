@@ -3,10 +3,10 @@ ja:
   enums:
     book:
       condition:
-        very_good: とても良い
-        good: 良い
-        bad: 悪い
-        very_bad: とても悪い
+        very_good: ほぼ新品
+        good: 非常に良い
+        bad: 良い
+        very_bad: 汚れあり
     eval:
       level:
         very_good: とても良い
@@ -36,7 +36,7 @@ ja:
         user_id: あなたは
       eval:
         level: 評価
-      parent:
+      deadline:
         deadline: 期限
       user:
         username: ユーザ名
@@ -45,6 +45,9 @@ ja:
         password_confirmation: パスワード(確認用)
         current_password: 現在のパスワード
         birthday: 誕生日
+      negotiate:
+        child_id: 交渉に出す本
+        recommend: おすすめポイント
   date:
     abbr_day_names:
     - 日

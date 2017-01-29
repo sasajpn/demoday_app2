@@ -14,7 +14,7 @@ class Address < ActiveRecord::Base
   end
 
   def address_detail
-    [postal_code, prefecture, municipality, street, building].compact.join
+    ['〒' + postal_code.to_s, prefecture, municipality, street, building].compact.join(' ')
   end
 
   def display_address
