@@ -4,7 +4,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.string :given_name
       t.string :family_name
-      t.integer :postal_code
+      t.string :postal_code
       t.string :prefecture
       t.string :municipality
       t.string :street

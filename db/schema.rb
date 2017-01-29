@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170111144603) do
     t.integer  "user_id",      limit: 4
     t.string   "given_name",   limit: 255
     t.string   "family_name",  limit: 255
-    t.integer  "postal_code",  limit: 4
+    t.string   "postal_code",  limit: 255
     t.string   "prefecture",   limit: 255
     t.string   "municipality", limit: 255
     t.string   "street",       limit: 255
