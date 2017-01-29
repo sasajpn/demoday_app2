@@ -33,12 +33,8 @@ class BooksController < ApplicationController
       end
     rescue
       retry_count += 1
-      if retry_count < 5
-        sleep(5)
-      else
-        flash[:alert] = 'しばらく経ってからもう一度検索してください'
-        render :new
-      end
+      sleep(5) if retry_count < 5
+      flash.now[:alert] = '申し訳ございませんが、もう一度検索してください。'
     end
   end
 
@@ -48,6 +44,9 @@ class BooksController < ApplicationController
       redirect_to user_url(current_user), notice: '本を登録しました。'
     else
       @books = []
+      @book.errors.full_messages.each do |error|
+        flash.now[:alert] = error
+      end
       render :new
     end
   end

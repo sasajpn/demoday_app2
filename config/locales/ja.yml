@@ -32,7 +32,8 @@ ja:
       book:
         title: 題名
         author: 著者名
-        condition: 本の状態
+        condition: コンディション
+        user_id: あなたは
       eval:
         level: 評価
       parent:

@@ -10,8 +10,10 @@ class Book < ActiveRecord::Base
 
   validates :title, :author, presence: true
 
+  validates :condition, presence: { message: 'を選択してください' }
+
   validates :user_id, uniqueness: { scope: [:title, :author],
-    message: 'その本はすでに登録しています' }
+    message: 'その本をすでに登録しています' }
 
   enum condition: { very_good: 3, good: 2, bad: 1, very_bad: 0 }
 

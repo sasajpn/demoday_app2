@@ -7,8 +7,12 @@
           <%= image_tag('no-image.png') unless book.image? %>
         </div>
         <div class="book-info">
-          <h3><%= book.title.truncate(15) %></h3>
+          <h3><%= book.title.truncate(15) if book.title? %></h3>
+          <% if book.author? %>
           <small><%= book.author.truncate(15) %></small>
+          <% else %>
+          <small>No Author</small>
+          <% end %>
           <hr>
           <div class="elements-list clearfix">
             <div class="new-book col-md-12">
