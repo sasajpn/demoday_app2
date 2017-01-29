@@ -27,7 +27,7 @@ class NegotiatesController < BooksController
 
   def update
     if @negotiate.update(update_negotiate_params)
-      redirect_to book_negotiates_url(@negotiate.parent)
+      redirect_to book_negotiate_url(@negotiate.parent)
     end
   end
 
