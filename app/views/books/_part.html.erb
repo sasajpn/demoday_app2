@@ -10,6 +10,9 @@
           <% animal = Animal.find(object.user.icon).name %>
           <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(object) %>
         </div>
+        <p class="bg-warning p-20">
+          <small><strong><%= object.condition_i18n %></strong></small>
+        </p>
       </div>
       <div class="book-info">
         <h3><%= object.title.truncate(15) %></h3>
