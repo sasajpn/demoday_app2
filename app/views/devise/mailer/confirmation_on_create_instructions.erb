@@ -1,6 +1,6 @@
-<p>ようこそ <%= @email %>さん！</p>
-
-<p>下記のリンクをクリックするとアカウント登録が完了します。</p>
+<p><%= @email %>さん</p>
+<p class="logo-font">Re.Bookへのご登録ありがとうございます。</p>
+<p>下記のリンクをクリックしていただくと、アカウント登録が正式に完了します。</p>
 
 <p><%= link_to 'アカウント登録',
         controller: 'users/confirmations',
