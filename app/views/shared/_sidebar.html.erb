@@ -18,5 +18,6 @@
     <%= active_link_to page_info_path, class: 'list-group-item' do %><i class="fa fa-info-circle pr-10"></i> <span class="logo-font"><%= app_title %>の使い方</span><% end %>
     <%= active_link_to page_contact_path(current_user), class: 'list-group-item' do %><i class="fa fa-commenting pr-10"></i> フィードバック<% end %>
 	</ul>
+  <hr>
   <p class="logo-font sidebar-logo"><strong>© <%= Time.now.year %> <%= app_title %></strong></p>
 </nav>
