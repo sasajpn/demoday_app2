@@ -1,3 +1,18 @@
+<% content_for :modal do %>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">おすすめポイント</h4>
+      </div>
+      <div class="modal-body">
+        <p><%= object.recommend %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 <div class="book-box">
   <div class="listing-item mb-20 book-image">
     <div class="overlay-container">
@@ -11,12 +26,17 @@
         <small><strong><%= object.child.condition_i18n %></strong></small>
       </p>
     </div>
+
     <div class="book-info">
       <h3><%= object.title.truncate(15) %></h3>
       <small><%= object.author.truncate(15) %></small>
       <div class="elements-list clearfix">
-        <hr>
-        <p><%= object.recommend if object.recommend? %></p>
+        <% if object.recommend? %>
+
+          <button class="btn btn-gray btn-sm" data-toggle="modal" data-target="#myModal">
+  					おすすめポイント
+					</button>
+        <% end %>
         <%= render 'update', object: object unless @book.status == 3 %>
       </div>
     </div>

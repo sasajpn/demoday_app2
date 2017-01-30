@@ -1,4 +1,6 @@
+<hr>
 <%= bootstrap_form_for(object, url: negotiate_path(object), method: :patch) do |f| %>
   <%= f.hidden_field :agree, value: true %>
-  <%= f.submit '取引を決定する' %>
+  <%= f.submit '取引を決定する',
+    data: { confirm: "取引を成立させると、本の交換が決まりますがよろしいですか？", 'commit': '成立させる', 'cancel': '取り消す', }, title: '取引成立の確認' %>
 <% end %>

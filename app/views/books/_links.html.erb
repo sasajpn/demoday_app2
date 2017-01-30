@@ -2,7 +2,7 @@
 <%= render 'update', object: object, num: 1 if object.status == 0 %>
 
 <% if object.status == 1 %>
-  <%= link_to '交渉を確認する', book_negotiate_path(object), class:'btn btn-gray btn-sm' if object.parents.any? %>
+  <%= link_to "#{object.parents.size}人から交渉されています", book_negotiate_path(object), class:'btn btn-gray btn-sm' if object.parents.any? %>
   <%= render 'alert', object: object if object.parents.blank? %>
 <% end %>
 <%= render 'alert', object: object if object.status == 2 %>

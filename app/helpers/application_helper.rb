@@ -21,7 +21,7 @@ module ApplicationHelper
   def update_message(num)
     case num
     when 1
-      '1週間は取引が継続されますがよろしいですか？'
+      '取引は1週間継続されますがよろしいですか？'
     end
   end
 

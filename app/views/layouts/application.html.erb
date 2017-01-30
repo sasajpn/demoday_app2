@@ -16,6 +16,7 @@
   <div class="header-container">
     <%= render partial: 'shared/header' %>
   </div>
+  <%= yield(:modal) if content_for?(:modal) %>
   <div class="page-wrapper">
   	<section class="main-container">
   		<div class="container-fluid light-gray-bg">
