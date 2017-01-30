@@ -1,6 +1,8 @@
 <% if @agree %>
-  <div class="alert alert-info">
-    <p>取引が成立しました！</p>
+  <div class="alert alert-icon alert-success" role="alert">
+    <i class="fa fa-check"></i>
+    <h5>取引が成立しました</h5>
+    <div class="separator"></div>
     <p><%= link_to 'こちらから本の交換を行ってください', negotiate_trade_path(@agree), class: 'alert-link' %></p>
   </div>
 <% end %>

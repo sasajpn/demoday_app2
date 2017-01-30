@@ -1,4 +1,4 @@
-<%= render 'nav', parent_status: @negotiate.parent_status, child_status: @negotiate.child_status %>
+<%= render 'nav' %>
 <div class="tab-content clear-style">
   <% if @object.status == 3 %>
   <%= render 'confirm' %>
@@ -15,13 +15,27 @@
   <% elsif @object.status == 6 && @other.status == 5 %>
     <p class="bg-warning p-20">相手方が本を配送するまでお待ちください。</p>
     <% end %>
-  <%= render 'recieve' if @object.status == 6 && @other.status.between?(6, 8) %>
-  <% if @object.status == 7 %>
+  <% if @object.status == 6 && @other.status.between?(6, 7) %>
+  <%= render 'recieve' %>
+  <% elsif @object.status == 7 && @other.status == 6 %>
+    <p class="bg-warning p-20">相手方が本を受け取るまでお待ちください。</p>
+  <% end %>
+  <% if @object.status == 7 && @other.status.between?(7, 8) %>
     <p class="bg-info p-20">
       最後に取引相手を評価することができます。
       <br>
       <span class="caution-content">※両者が本を受け取った後、1週間経過すると取引相手の評価ができなくなります</span>
     </p>
     <%= render 'evals/form', evaluatee: @other.user, num: 8 %>
+  <% elsif @object.status == 8 && @other.status == 8 %>
+    <p class="bg-warning p-20">お互いが相手方を評価しました。</p>
+    <br>
+    <p class="bg-primary p-20">
+      これで今回の取引は終了です。
+      <br>
+      引き続き弊サービスをよろしくお願いいたします。
+    </p>
+  <% elsif @object.status == 8 %>
+    <p class="bg-warning p-20">取引相手の評価が終了しました。</p>
   <% end %>
 </div>

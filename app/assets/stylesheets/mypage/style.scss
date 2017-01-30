@@ -623,3 +623,9 @@ html,body {
 .caution-content {
   color: #FF0000;
 }
+
+.progress {
+  .label {
+    right: inherit !important;
+  }
+}
