@@ -8,6 +8,7 @@ class PageController < ApplicationController
   end
 
   def info
+    render layout: 'mypage/application'
   end
 
   def contact
