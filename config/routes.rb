@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :addresses
     resources :negotiates, only: [:index]
     resources :books, shallow: true do
+      resources :book_addresses, only: [:create]
       resources :evals
       resource :negotiate, only: [:show]
       resources :negotiates, except: [:index, :show] do

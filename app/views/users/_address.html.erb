@@ -1,23 +1,14 @@
-<% current_user.addresses.each.with_index(1) do |address, i| %>
-		<div class="row grid-space-10">
-			<ul class="book-list social-links circle small clearfix hidden-xs">
-				<li class="flickr"><%= link_to edit_user_address_path(current_user, address) do %><i class="fa fa-edit"></i><% end %></li>
-				<li class="googleplus"><%= link_to user_address_path(current_user, address), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></li>
-			</ul>
-			<p>住所.<%= i %></p>
-			<dl class="dl-horizontal">
-				<dt>名前</dt>
-				<dd><%= address.family_name %> <%= address.given_name %></dd>
-				<dt>郵便番号</dt>
-				<dd><%= address.postal_code %></dd>
-				<dt>都道府県</dt>
-				<dd><%= address.prefecture %></dd>
-				<dt>市町村</dt>
-				<dd><%= address.municipality %></dd>
-				<dt>番地</dt>
-				<dd><%= address.street %></dd>
-				<dt>建物</dt>
-				<dd><%= address.building %></dd>
-			</dl>
-		</div>
-<% end %>
+<dl class="dl-horizontal">
+	<dt>名前</dt>
+	<dd><%= address.family_name %> <%= address.given_name %></dd>
+	<dt>郵便番号</dt>
+	<dd><%= address.postal_code %></dd>
+	<dt>都道府県</dt>
+	<dd><%= address.prefecture %></dd>
+	<dt>市町村</dt>
+	<dd><%= address.municipality %></dd>
+	<dt>番地</dt>
+	<dd><%= address.street %></dd>
+	<dt>建物</dt>
+	<dd><%= address.building %></dd>
+</dl>

@@ -30,8 +30,6 @@ class Book < ActiveRecord::Base
     end
   end
 
-  def
-
   def cancel_negotiate
     parents.each do |parent|
       Book.find(parent.child).update(status: 0)

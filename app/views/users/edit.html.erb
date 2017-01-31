@@ -70,11 +70,13 @@
       <div class="panel-body">
         <div class="col-md-6">
           <br>
-          <%= link_to "新しく住所を登録する", new_user_address_path(current_user), class: "btn btn-default" %>
-          <div class="separator-2"></div>
-          <% if @addresses.any? %>
-            <%= render 'address', address: @addresses %>
+          <% if @address %>
+						<%= link_to '住所を変更する', edit_user_address_path(current_user, @address), class: 'btn btn-success' %>
+						<hr>
+            <%= render 'address', address: @address %>
           <% else %>
+						<%= link_to "新しく住所を登録する", new_user_address_path(current_user), class: "btn btn-default"%>
+						<hr>
             <div class="alert alert-danger" role="alert">
               住所が登録されていません
             </div>

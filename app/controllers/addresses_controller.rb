@@ -2,12 +2,12 @@ class AddressesController < ApplicationController
   before_action :set_address, except: [:new, :create]
 
   def new
-    @address = current_user.addresses.build
+    @address = current_user.build_address
     session[:request_from] = request.referer
   end
 
   def create
-    @address = current_user.addresses.build(address_params)
+    @address = current_user.build_address(address_params)
     if @address.save
       if session[:request_from]
         redirect_to session[:request_from], notice: '住所を登録しました。'

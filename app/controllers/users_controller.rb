@@ -33,6 +33,6 @@ class UsersController < ApplicationController
   end
 
   def set_address
-    @addresses = current_user.addresses
+    @address = current_user.address
   end
 end

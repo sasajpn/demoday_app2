@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     send_devise_notification(:confirmation_on_create_instructions, @raw_confirmation_token, {})
   end
 
-  has_many :addresses
+  has_one :address
   has_many :books
   has_many :children, through: :books
   has_many :evaluatees, class_name: 'Eval', foreign_key: 'evaluatee_id'
