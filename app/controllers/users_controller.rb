@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_address, only: [:edit, :update]
-  before_action :user_check, except: [:get_area]
 
   def show
   end

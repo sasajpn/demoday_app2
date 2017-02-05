@@ -1,5 +1,6 @@
 class EvalsController < ApplicationController
   before_action :set_book
+  skip_before_action :user_check
 
   def create
     @eval = current_user.evaluators.build(eval_params)

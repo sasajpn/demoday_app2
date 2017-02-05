@@ -2,7 +2,7 @@
   <%= render partial: 'books/part',
     collection: @negotiates, as: "object" %>
 <% else %>
-  <p class="bg-danger p-20">
+  <div class="alert alert-danger" role="alert">
     現在交渉中の取引はありません。
-  </p>
+  </div>
 <% end %>

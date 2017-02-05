@@ -1,5 +1,6 @@
-class TradesController < BooksController
+class TradesController < ApplicationController
   before_action :set_object
+  skip_before_action :user_check
 
   def show
   end

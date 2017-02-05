@@ -1,7 +1,8 @@
-class NegotiatesController < BooksController
+class NegotiatesController < ApplicationController
   before_action :set_negotiate, only: [:update, :destroy]
   before_action :set_book, only: [:show, :new, :create]
   before_action :set_books, only: [:new, :create]
+  skip_before_action :user_check, except: [:index]
 
   def index
     @negotiates = Book.where(id: Negotiate.where(child_id: current_user.books).select(:parent_id))

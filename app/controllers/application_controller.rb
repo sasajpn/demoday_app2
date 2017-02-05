@@ -4,16 +4,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-  def user_check
-    @user = User.find(params[:id]) || User.find(params[:user_id])
-    redirect_to user_url(current_user), notice: "そのページはご利用いだだけません" unless current_user == @user
-  end
+  # before_action :authenticate_user!
+  before_action :user_check, except: [:top, :info], unless: :devise_controller?
 
   private
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :birthday, :icon, :password, :password_confirmation]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+  end
+
+  def user_check
+    @user = User.find_by(id: params[:user_id]) || User.find_by(id: params[:id])
+    unless current_user == @user
+      redirect_to user_url(current_user), notice: "そのページはご利用いだだけません"
+    end
   end
 end
