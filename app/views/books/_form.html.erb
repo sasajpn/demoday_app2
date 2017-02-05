@@ -18,7 +18,11 @@
             <div class="new-book col-md-12">
               <%= f.hidden_field :image, value: book.image %>
               <%= f.hidden_field :title, value: book.title %>
-              <%= f.hidden_field :author, value: book.author %>
+              <% if book.author? %>
+                <%= f.hidden_field :author, value: book.author %>
+              <% else %>
+                <%= f.hidden_field :author, value: "No Author" %>
+              <% end %>
               <%= f.select :condition, Book.conditions_i18n.invert, prompt: '本のコンディションを選択', hide_label: true %>
               <%= f.submit %>
             </div>
