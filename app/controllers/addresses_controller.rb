@@ -1,18 +1,18 @@
 class AddressesController < ApplicationController
   before_action :set_address, except: [:new, :create]
+  before_action :set_request_from, only: [:new, :edit]
 
   def new
     @address = current_user.build_address
-    session[:request_from] = request.referer
   end
 
   def create
     @address = current_user.build_address(address_params)
     if @address.save
       if session[:request_from]
-        redirect_to session[:request_from], notice: '住所を登録しました。'
+        redirect_to session[:request_from], notice: 'お届け先を登録しました。'
       else
-        redirect_to edit_user_url(current_user), notice: '住所を登録しました。'
+        redirect_to edit_user_url(current_user), notice: 'お届け先を登録しました。'
       end
     else
       render :new
@@ -24,13 +24,14 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update(address_params)
-      redirect_to edit_user_url(current_user), notice: '住所を変更しました。'
+      if session[:request_from]
+        redirect_to session[:request_from], notice: 'お届け先を変更しました。'
+      else
+        redirect_to edit_user_url(current_user), notice: 'お届け先を変更しました。'
+      end
+    else
+      render :edit
     end
-  end
-
-  def destroy
-    @address.destroy
-    redirect_to edit_user_url(current_user), notice: '住所を削除しました。'
   end
 
   private
@@ -44,5 +45,9 @@ class AddressesController < ApplicationController
 
   def set_address
     @address = Address.find(params[:id])
+  end
+
+  def set_request_from
+    session[:request_from] = request.referer
   end
 end

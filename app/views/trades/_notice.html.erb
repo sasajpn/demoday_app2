@@ -1,6 +1,10 @@
 <p class="bg-info p-20">相手方にお届け先をお知らせします。</p>
-<% if current_user.addresses.any? %>
-  <p>以下からあなたが利用するお届け先を選択してください。</p>
+<% if current_user.address %>
+  <p class='caution-content'>
+    <strong>以下の内容でお間違いありませんか？</strong>
+    <%= link_to '内容を変更する', edit_user_address_path(current_user, current_user.address), class: "btn btn-warning btn-sm" %>
+  </p>
+  <%= render 'users/address', address: current_user.address %>
   <%= render 'update', object: @object, num: 5 %>
 <% else %>
   <div class="alert alert-icon alert-danger" role="alert">

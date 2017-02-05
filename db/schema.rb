@@ -40,13 +40,18 @@ ActiveRecord::Schema.define(version: 20170111144603) do
   add_index "areas", ["prefecture_id"], name: "index_areas_on_prefecture_id", using: :btree
 
   create_table "book_addresses", force: :cascade do |t|
-    t.integer  "address_id", limit: 4
-    t.integer  "book_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "book_id",      limit: 4
+    t.string   "given_name",   limit: 255
+    t.string   "family_name",  limit: 255
+    t.string   "postal_code",  limit: 255
+    t.string   "prefecture",   limit: 255
+    t.string   "municipality", limit: 255
+    t.string   "street",       limit: 255
+    t.string   "building",     limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
-  add_index "book_addresses", ["address_id"], name: "index_book_addresses_on_address_id", using: :btree
   add_index "book_addresses", ["book_id"], name: "index_book_addresses_on_book_id", using: :btree
 
   create_table "books", force: :cascade do |t|
@@ -123,7 +128,6 @@ ActiveRecord::Schema.define(version: 20170111144603) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "areas", "prefectures"
-  add_foreign_key "book_addresses", "addresses"
   add_foreign_key "book_addresses", "books"
   add_foreign_key "books", "users"
   add_foreign_key "deadlines", "books"

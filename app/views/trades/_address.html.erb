@@ -1,4 +1,10 @@
 <% object.build_book_address %>
 <%= f.fields_for :book_address do |af| %>
-  <%= af.collection_radio_buttons(:address_id, object.user.addresses, :id, :display_address, hide_label: true) %>
+  <%= af.hidden_field :family_name, value: address.family_name %>
+  <%= af.hidden_field :given_name, value: address.given_name %>
+  <%= af.hidden_field :postal_code, value: address.postal_code %>
+  <%= af.hidden_field :prefecture, value: address.prefecture %>
+  <%= af.hidden_field :municipality, value: address.municipality %>
+  <%= af.hidden_field :street, value: address.street %>
+  <%= af.hidden_field :building, value: address.building %>
 <% end %>

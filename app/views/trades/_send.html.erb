@@ -3,7 +3,7 @@
 	<i class="fa fa-check"></i>
   <h5>本のお届け先</h5>
 	<hr>
-  <%= render 'display_address', address: @other.address %>
+  <%= render 'display_address', address: @other.book_address %>
 </div>
 <p>配送手続きが完了したら、以下のボタンを押してください</p>
 <%= render 'update', object: @object, num: 6 %>

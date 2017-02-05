@@ -10,7 +10,7 @@ module ApplicationHelper
     when 4
       "取引の成立を確認する"
     when 5
-      '選択したお届け先を知らせる'
+      'お届け先を通知する'
     when 6
       "本を配送しましたか？"
     when 7

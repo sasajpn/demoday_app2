@@ -73,8 +73,8 @@ class BooksController < ApplicationController
   def update_book_params
     params.require(:book).permit(
       :status,
-      book_address_attributes: [:id, :address_id]
-    )
+      book_address_attributes: [:id, :given_name, :family_name,
+        :postal_code, :prefecture, :municipality, :street, :building])
   end
 
   def set_book
