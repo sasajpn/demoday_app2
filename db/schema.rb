@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111144603) do
+ActiveRecord::Schema.define(version: 20170205094758) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170111144603) do
 
   create_table "book_addresses", force: :cascade do |t|
     t.integer  "book_id",      limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "given_name",   limit: 255
     t.string   "family_name",  limit: 255
     t.string   "postal_code",  limit: 255
@@ -48,8 +50,6 @@ ActiveRecord::Schema.define(version: 20170111144603) do
     t.string   "municipality", limit: 255
     t.string   "street",       limit: 255
     t.string   "building",     limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
   end
 
   add_index "book_addresses", ["book_id"], name: "index_book_addresses_on_book_id", using: :btree
