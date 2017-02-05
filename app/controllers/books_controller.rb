@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:update, :destroy]
-  before_action :user_book_check, only: [:show, :update, :destroy]
   skip_before_action :user_check, only: [:show, :update, :destroy]
+  skip_before_action :user_book_check, only: [:index, :new, :create]
 
   def index
     @books = current_user.books.order(created_at: :desc)
@@ -80,13 +80,5 @@ class BooksController < ApplicationController
 
   def set_book
     @book = Book.find_by(id: params[:book_id]) || Book.find(params[:id])
-  end
-
-  def user_book_check
-    @book = Book.find_by(id: params[:book_id]) || Book.find_by(id: params[:id])
-    @user = @book.user
-    unless current_user == @user
-      redirect_to user_url(current_user), notice: "そのページはご利用いだだけません"
-    end
   end
 end

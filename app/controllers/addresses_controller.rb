@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, except: [:new, :create]
   before_action :set_request_from, only: [:new, :edit]
+  skip_before_action :user_book_check
 
   def new
     @address = current_user.build_address

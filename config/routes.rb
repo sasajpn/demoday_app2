@@ -15,10 +15,10 @@ Rails.application.routes.draw do
     resources :negotiates, only: [:index]
     resources :books, except: [:edit], shallow: true do
       resources :book_addresses, only: [:create]
-      resources :evals
+      resources :evals, only: [:create]
       resource :negotiate, only: [:show]
       resources :negotiates, except: [:index, :show, :edit] do
-        resource :trade
+        resource :trade, only: [:show]
       end
     end
   end

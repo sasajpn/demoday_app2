@@ -2,7 +2,9 @@ class NegotiatesController < ApplicationController
   before_action :set_negotiate, only: [:update, :destroy]
   before_action :set_book, only: [:show, :new, :create]
   before_action :set_books, only: [:new, :create]
+  before_action :user_negotiate_check, only: [:update, :destroy]
   skip_before_action :user_check, except: [:index]
+  skip_before_action :user_book_check, except: [:show]
 
   def index
     @negotiates = Book.where(id: Negotiate.where(child_id: current_user.books).select(:parent_id))
@@ -34,7 +36,7 @@ class NegotiatesController < ApplicationController
 
   def destroy
     @negotiate.destroy
-    redirect_to user_url(current_user), notice: '交渉を取り消しました。'
+    redirect_to user_negotiates_url(current_user), notice: '交渉を取り消しました。'
   end
 
   private
@@ -57,5 +59,15 @@ class NegotiatesController < ApplicationController
 
   def set_books
     @books = current_user.books.where(status: 0)
+  end
+
+  def user_negotiate_check
+    @negotiate = Negotiate.find_by(id: params[:negotiate_id]) || Negotiate.find_by(id: params[:id])
+    @parent = @negotiate.parent
+    @child = @negotiate.child
+    @object = current_user == @parent.user ? @parent : @child
+    unless current_user == @object.user
+      redirect_to user_url(current_user), notice: "そのページはご利用いだだけません"
+    end
   end
 end

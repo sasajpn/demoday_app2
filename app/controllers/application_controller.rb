@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :authenticate_user!
   before_action :user_check, except: [:top, :info], unless: :devise_controller?
+  before_action :user_book_check, except: [:top, :info, :contact], unless: :devise_controller?
 
   private
 
@@ -16,6 +17,14 @@ class ApplicationController < ActionController::Base
 
   def user_check
     @user = User.find_by(id: params[:user_id]) || User.find_by(id: params[:id])
+    unless current_user == @user
+      redirect_to user_url(current_user), notice: "そのページはご利用いだだけません"
+    end
+  end
+
+  def user_book_check
+    @book = Book.find_by(id: params[:book_id]) || Book.find_by(id: params[:id])
+    @user = @book.user
     unless current_user == @user
       redirect_to user_url(current_user), notice: "そのページはご利用いだだけません"
     end
