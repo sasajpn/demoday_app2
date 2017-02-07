@@ -125,6 +125,40 @@ html,body {
   }
 }
 
+.listing-item {
+  img {
+    @media screen and (min-width: 1200px) {
+      height: 320px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      height: 260px;
+    }
+    @media screen and (min-width: 641px) and (max-width: 767px) {
+      height: 304px;
+    }
+    @media screen and (min-width: 641px) and (max-width: 730px) {
+      height: 280px;
+    }
+    @media screen and (max-width: 640px) {
+      height: 350px;
+    }
+    @media screen and (max-width: 575px) {
+      height: 322px;
+    }
+    @media screen and (max-width: 510px) {
+      height: 255px;
+    }
+    @media screen and (max-width: 445px) {
+      height: 215px;
+    }
+  }
+  @media screen and (min-width: 641px) and (max-width: 767px){
+    .col-xs-6 {
+      width: 33.3% !important;
+    }
+  }
+}
+
 .book-image {
   position: relative;
   .set-top {

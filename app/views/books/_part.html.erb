@@ -1,28 +1,28 @@
+<div class="listing-item mb-20 book-image">
   <div class="col-md-4 col-sm-6 col-xs-6">
-    <div class="listing-item mb-20 book-image">
-      <div class="elements-list clearfix">
-        <%= render 'links', object: object unless controller_name == 'trades' %>
-      </div>
-      <div class="overlay-container">
-        <% if object.image.blank? %>
-        <%= image_tag('no-image.png') %>
-          <div class="book-info">
-            <p class="title"><%= object.title.truncate(15) %></p>
-            <p class="author"><%= object.author.truncate(15) %></p>
-          </div>
-        <% else %>
-          <%= image_tag(object.image) %>
-        <% end %>
-        <% if object.status == 0 %>
-          <span class="badge"><%= link_to book_path(object), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></span>
-        <% end %>
-        <div class="set-top">
-          <% animal = Animal.find(object.user.icon).name %>
-          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(object) %>
+    <div class="elements-list clearfix">
+      <%= render 'links', object: object unless controller_name == 'trades' %>
+    </div>
+    <div class="overlay-container">
+      <% if object.image.blank? %>
+      <%= image_tag('no-image.png') %>
+        <div class="book-info">
+          <p class="title"><%= object.title.truncate(15) %></p>
+          <p class="author"><%= object.author.truncate(15) %></p>
         </div>
-        <p class="bg-warning p-20">
-          <small><strong><%= object.condition_i18n %></strong></small>
-        </p>
+      <% else %>
+        <%= image_tag(object.image) %>
+      <% end %>
+      <% if object.status == 0 %>
+        <span class="badge"><%= link_to book_path(object), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></span>
+      <% end %>
+      <div class="set-top">
+        <% animal = Animal.find(object.user.icon).name %>
+        <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(object) %>
       </div>
+      <p class="bg-warning p-20">
+        <small><strong><%= object.condition_i18n %></strong></small>
+      </p>
     </div>
   </div>
+</div>
