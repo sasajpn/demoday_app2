@@ -80,4 +80,11 @@ group :development do
   gem 'rails_best_practices', require: false
 end
 
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
+end
+
 gem 'rails_12factor', group: :production
