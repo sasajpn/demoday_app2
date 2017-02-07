@@ -1,32 +1,18 @@
-<div class="header-container">
-  <div class="header-top dark">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-3 col-sm-6 col-md-3">
-          <% if user_signed_in? %>
-            <button type="button" class="navbar-toggle offcanvas-toggle" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-          <% end %>
-        </div>
-        <div class="col-xs-9 col-sm-6 col-md-9">
-          <div id="header-top-second" class="clearfix">
-            <div class="header-top-dropdown text-right">
-              <% if user_signed_in? %>
-                <%= link_to destroy_user_session_path, method: :delete, class: "btn dropdown-toggle btn-default btn-sm" do %><i class="fa fa-unlock-alt pr-10"></i> ログアウト<% end %>
-              <% else %>
-                <div class="btn-group">
-                <%= link_to new_user_registration_path, class:"btn btn-default btn-sm" do %><i class="fa fa-user pr-10"></i> 新規登録<% end %>
-                <%= link_to new_user_session_path, class: "btn btn-default btn-sm" do %><i class="fa fa-lock pr-10"></i> ログイン<% end %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+<header class="header fixed clearfix">
+  	<div class="header-left clearfix">
+  		<div id="logo" class="logo">
+  			<h2 class="page-title text-center logo-font"><%= app_title %></h2>
+  		</div>
+  	</div>
+  	<div class="header-right clearfix">
+    	<div class="main-navigation animated">
+    		<nav class="navbar navbar-default" role="navigation">
+            <ul class="nav navbar-nav">
+              <li><%= link_to user_books_path(current_user) do %><i class="fa fa-home fa-2x pr-10"></i><% end %></li>
+              <li><%= link_to deals_path do %><i class="fa fa-gavel fa-2x pr-10"></i><% end %></li>
+              <li><%= link_to edit_user_path(current_user) do %><i class="fa fa-user-circle-o fa-2x pr-10"></i><% end %></li>
+            </ul>
+    		</nav>
+    	</div>
     </div>
-  </div>
-</div>
+</header>

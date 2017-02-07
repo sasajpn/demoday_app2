@@ -13,29 +13,20 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
-  <div class="header-container">
-    <%= render partial: 'shared/header' %>
-  </div>
-  <%= yield(:modal) if content_for?(:modal) %>
-  <div class="page-wrapper">
-  	<section class="main-container">
-  		<div class="container-fluid light-gray-bg">
-  			<div class="row">
-          <div class="no-padding sidebar col-md-3 col-sm-4">
-            <%= render 'shared/sidebar' %>
-          </div>
-          <div class="main col-md-9 col-sm-8 col-xs-12">
-            <% flash.each do |type, msg| %>
-              <div class="alert alert-<%= type %> alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <%= msg %>
-              </div>
-            <% end %>
-            <%= yield %>
-          </div>
-  			</div>
-  		</div>
-  	</section>
+  <div class="container">
+    <div class="row">
+      <%= render partial: 'shared/header' %>
+      <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+      <%= yield(:modal) if content_for?(:modal) %>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-<%= type %> alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <%= msg %>
+        </div>
+      <% end %>
+      <%= yield %>
+      </div>
+    </div>
   </div>
 </body>
 </html>

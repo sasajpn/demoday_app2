@@ -1,8 +1,18 @@
-  <div class="col-md-3 col-sm-4 col-xs-6 no-padding">
+  <div class="col-md-4 col-sm-6 col-xs-6">
     <div class="listing-item mb-20 book-image">
+      <div class="elements-list clearfix">
+        <%= render 'links', object: object unless controller_name == 'trades' %>
+      </div>
       <div class="overlay-container">
-        <%= image_tag(object.image) unless object.image.blank? %>
-        <%= image_tag('no-image.png') if object.image.blank? %>
+        <% if object.image.blank? %>
+        <%= image_tag('no-image.png') %>
+          <div class="book-info">
+            <p class="title"><%= object.title.truncate(15) %></p>
+            <p class="author"><%= object.author.truncate(15) %></p>
+          </div>
+        <% else %>
+          <%= image_tag(object.image) %>
+        <% end %>
         <% if object.status == 0 %>
           <span class="badge"><%= link_to book_path(object), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></span>
         <% end %>
@@ -13,13 +23,6 @@
         <p class="bg-warning p-20">
           <small><strong><%= object.condition_i18n %></strong></small>
         </p>
-      </div>
-      <div class="book-info">
-        <h3><%= object.title.truncate(15) %></h3>
-        <small><%= object.author.truncate(15) %></small>
-        <div class="elements-list clearfix">
-          <%= render 'links', object: object unless controller_name == 'trades' %>
-        </div>
       </div>
     </div>
   </div>
