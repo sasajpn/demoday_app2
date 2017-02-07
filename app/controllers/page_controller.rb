@@ -12,5 +12,6 @@ class PageController < ApplicationController
   end
 
   def contact
+    render layout: 'maypage/application'
   end
 end
