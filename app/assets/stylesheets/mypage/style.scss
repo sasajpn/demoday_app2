@@ -44,6 +44,7 @@ html,body {
 }
 .menu-box {
   position: relative;
+  margin-bottom: 30px;
   &:before {
     display: block;
     content: '';
@@ -68,10 +69,8 @@ html,body {
 	bottom: 0;
 	left: 0;
 	margin: auto;
-  i {
-    padding-top: 25%;
-  }
   p {
+    padding-top: 25%;
     margin-bottom: 0;
     font-size: 12px;
   }

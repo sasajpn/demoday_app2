@@ -8,21 +8,49 @@
   			</div>
   			<h2><%= current_user.username %></h2>
   			<div class="separator"></div>
-  			<div class="testimonial-body">
-  				<div class="testimonial-info-1">- Jane Doe</div>
-  				<div class="testimonial-info-2">By Company</div>
-  			</div>
   		</div>
   	</div>
     <div class="col-md-3 col-sm-6 col-xs-6">
       <div class="menu-box">
         <div class="menu-item">
           <div class="menu-content">
-            <i class="fa fa-plus-square-o fa-2x"></i>
             <p>登録した本</p>
             <p><%= current_user.books.size %>冊</p>
           </div>
           <%= link_to '', user_books_path(current_user), class: 'menu-link' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-6">
+      <div class="menu-box">
+        <div class="menu-item">
+          <div class="menu-content">
+            <p><i class="fa fa-plus fa-2x px-10"></i></p>
+            <p>本の登録</p>
+          </div>
+          <%= link_to '', user_books_path(current_user), class: 'menu-link' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-6">
+      <div class="menu-box">
+        <div class="menu-item">
+          <div class="menu-content">
+            <p><i class="fa fa-star fa-2x px-10"></i></p>
+            <p>ほしいもの<br>リスト</p>
+          </div>
+          <%= link_to '', user_books_path(current_user), class: 'menu-link' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-6">
+      <div class="menu-box">
+        <div class="menu-item">
+          <div class="menu-content">
+            <p><i class="fa fa-user-circle fa-2x px-10"></i></p>
+            <p>登録情報</p>
+          </div>
+          <%= link_to '', edit_user_path(current_user), class: 'menu-link' %>
         </div>
       </div>
     </div>
