@@ -3,7 +3,7 @@
     <% if user_signed_in? %>
       <div class="user-info">
         <% animal = Animal.find(current_user.icon).name %>
-        <%= image_tag(icon(animal), class: "#{icon_style(animal)}", size: "40x40", align: "middle") %>
+        <%= image_tag(icon(animal), class: "#{icon_style(animal)}") %>
         <span><%= current_user.username %></span>
       </div>
     <% end %>
