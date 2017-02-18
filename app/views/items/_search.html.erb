@@ -1,0 +1,3 @@
+<%= search_form_for(search, url: items_path, method: :get) do |f| %>
+  <%= f.search_field :title_or_author_cont, placeholder: 'タイトルあるいは著者名で検索できます', class: 'form-control' %>
+<% end %>

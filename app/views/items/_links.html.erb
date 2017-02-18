@@ -1,0 +1,10 @@
+<% if current_user.already_negotiate?(object) %>
+  <%= link_to "やっぱりいらない", negotiate_path(current_user.children.find_by(parent_id: object.id)), class: "btn btn-danger btn-sm", method: :delete,
+    data: { confirm: 'ほしいな！を取り消してもよろしいですか？' } %>
+<% elsif current_user.books.where(status: 0).blank? %>
+  <div class="alert alert-danger small-font">
+    交換できる本を持っていません
+  </div>
+<% elsif current_user.until_negotiate?(object) %>
+  <%= link_to "ほしいな！", new_book_negotiate_path(object), class: "btn btn-info btn-sm" %>
+<% end %>

@@ -8,7 +8,7 @@
     	<div class="main-navigation animated">
     		<nav class="navbar navbar-default" role="navigation">
             <ul class="nav navbar-nav">
-              <li><%= link_to deals_path do %><i class="fa fa-flag-o fa-2x pr-10"></i><% end %></li>
+              <li><%= link_to '本をさがす', items_path %></li>
               <% if user_signed_in? %>
                 <li><%= link_to user_path(current_user) do %><i class="fa fa-user-o fa-2x pr-10"></i><% end %></li>
               <% end %>

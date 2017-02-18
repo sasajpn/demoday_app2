@@ -1,0 +1,14 @@
+<%= render 'search', search: @search if @items.any? %>
+<% if @items.blank? %>
+  <div class="alert alert-danger" role="alert">
+    現在、交換できる本がありません
+  </div>
+<% elsif @search_items.any? %>
+  <%= render partial: 'books/part', collection: @search_items, as: "object" %>
+<% elsif @search_items.blank? %>
+  <div class="alert alert-warning" role="alert">
+    条件に一致する本が見つかりませんでした
+  </div>
+<% elsif @items.any? %>
+  <%= render partial: 'books/part', collection: @search_items, as: "object" %>
+<% end %>

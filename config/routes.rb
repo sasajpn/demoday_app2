@@ -23,4 +23,5 @@ Rails.application.routes.draw do
     end
   end
   resources :deals, only: [:index]
+  resources :items, only: [:index]
 end
