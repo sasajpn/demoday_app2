@@ -1,0 +1,4 @@
+<%= bootstrap_form_for [current_user, @action], inline_errors: false do |f| %>
+  <%= f.hidden_field :book_id, value: book.id %>
+  <%= f.submit class: 'btn btn-info btn-sm' %>
+<% end %>
