@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   }
 
   resources :users do
+    resources :actions do
+      resources :replies
+    end
     resources :addresses
     resources :negotiates, only: [:index]
     resources :books, except: [:edit], shallow: true do
