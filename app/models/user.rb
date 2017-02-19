@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
   has_one :address
   has_many :books
+  has_many :actions
   has_many :children, through: :books
   has_many :evaluatees, class_name: 'Eval', foreign_key: 'evaluatee_id'
   has_many :evaluators, class_name: 'Eval', foreign_key: 'evaluator_id'
