@@ -1,14 +1,32 @@
 <%= render 'search', search: @search if @items.any? %>
-<% if @items.blank? %>
-  <div class="alert alert-danger" role="alert">
-    現在、交換できる本がありません
+<% @items.each do |item| %>
+  <div class="listing-item mb-20 book-image">
+    <div class="col-md-4 col-sm-6 col-xs-6">
+      <div class="elements-list clearfix">
+        <% if current_user.already_action?(item) %>
+          <%= link_to 'ほしいな！を取り消す', action_path(current_user.actions.find_by(book_id: item)), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
+        <% else %>
+          <%= render 'actions/form', item: item %>
+        <% end %>
+      </div>
+      <div class="overlay-container">
+        <% if item.image.blank? %>
+        <%= image_tag('no-image.png') %>
+          <div class="book-info">
+            <p class="title"><%= item.title.truncate(15) %></p>
+            <p class="author"><%= item.author.truncate(15) %></p>
+          </div>
+        <% else %>
+          <%= image_tag(item.image) %>
+        <% end %>
+        <div class="set-top">
+          <% animal = Animal.find(item.user.icon).name %>
+          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(item) %>
+        </div>
+        <p class="bg-warning p-20">
+          <small><strong><%= item.condition_i18n %></strong></small>
+        </p>
+      </div>
+    </div>
   </div>
-<% elsif @search_items.any? %>
-  <%= render partial: 'books/part', collection: @search_items, as: "object" %>
-<% elsif @search_items.blank? %>
-  <div class="alert alert-warning" role="alert">
-    条件に一致する本が見つかりませんでした
-  </div>
-<% elsif @items.any? %>
-  <%= render partial: 'books/part', collection: @search_items, as: "object" %>
 <% end %>

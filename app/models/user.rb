@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
 
   before_create :set_icon
 
+  def already_action?(item)
+    actions.find_by(book_id: item)
+  end
+
   private
 
   def set_icon
