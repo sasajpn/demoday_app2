@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-body">
                   <% book.actions.each do |action| %>
-                    <% animal = Animal.find(current_user.icon).name %>
+                    <% animal = Animal.find(action.user.icon).name %>
                     <div class="user-info">
                       <%= image_tag(icon(animal), class: "#{icon_style(animal)}") %>
                       <span><%= link_to user_path(action.user) do %><%= action.user.username %><% end %></span>

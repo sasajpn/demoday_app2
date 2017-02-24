@@ -119,6 +119,8 @@ html,body {
 .user-info {
   &:not(:first-child) {
     border-top: 1px solid;
+    margin-top: 5px;
+    padding-top: 5px;
   }
   img {
     display: inline;
@@ -198,6 +200,16 @@ html,body {
   }
 }
 
+.book-form {
+  position: absolute;
+  top: 60%;
+  text-align: center;
+  .form-control {
+    margin-top: 10px;
+    height: 25px !important;
+  }
+}
+
 .book-image {
   position: relative;
   .set-top {
@@ -210,7 +222,8 @@ html,body {
   }
   .book-info {
     position: absolute;
-    top: 60%;
+    width: 100%;
+    top: 15%;
     color: #FFFFFF;
     text-align: center;
     .book-bottom {
@@ -218,10 +231,10 @@ html,body {
     }
     .title {
       margin-top: 5px;
-      font-size: 10px;
+      font-size: 15px;
     }
     .author {
-      font-size: 8px;
+      font-size: 12px;
     }
     hr {
       margin: 3px;
@@ -384,7 +397,7 @@ html,body {
     margin: 0;
   }
   .alert {
-    padding: 8px;
+    padding: 6px;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
     width: 80%;
@@ -413,13 +426,6 @@ html,body {
   }
   .info-danger {
     color: #FF0000;
-  }
-}
-
-.new-book {
-  .form-control {
-    margin-top: 10px;
-    height: 25px !important;
   }
 }
 

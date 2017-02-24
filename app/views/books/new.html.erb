@@ -13,22 +13,27 @@
     <div class="listing-item mb-20 book-image">
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="overlay-container">
-          <%= image_tag(book.image) if book.image? %>
-          <%= image_tag('no-image.png') unless book.image? %>
-        </div>
-        <div class="book-info">
-          <div class="elements-list clearfix">
-            <div class="new-book col-md-12">
-              <%= f.hidden_field :image, value: book.image %>
-              <%= f.hidden_field :title, value: book.title %>
-              <% if book.author? %>
-                <%= f.hidden_field :author, value: book.author %>
-              <% else %>
-                <%= f.hidden_field :author, value: "No Author" %>
-              <% end %>
-              <%= f.select :condition, Book.conditions_i18n.invert, prompt: '本のコンディションを選択', hide_label: true %>
-              <%= f.submit %>
+          <% if book.image.blank? %>
+          <%= image_tag('no-image.png') %>
+            <div class="book-info">
+              <p class="title"><%= book.title.truncate(15) %></p>
+              <p class="author"><%= book.author? ? book.author.truncate(15) : "No Author" %></p>
             </div>
+          <% else %>
+            <%= image_tag(book.image) %>
+          <% end %>
+        </div>
+        <div class="elements-list clearfix">
+          <div class="book-form">
+            <%= f.hidden_field :image, value: book.image %>
+            <%= f.hidden_field :title, value: book.title %>
+            <% if book.author? %>
+              <%= f.hidden_field :author, value: book.author %>
+            <% else %>
+              <%= f.hidden_field :author, value: "No Author" %>
+            <% end %>
+            <%= f.select :condition, Book.conditions_i18n.invert, prompt: '本のコンディションを選択', hide_label: true %>
+            <%= f.submit %>
           </div>
         </div>
       </div>
