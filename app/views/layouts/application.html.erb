@@ -17,14 +17,14 @@
     <div class="row">
       <%= render partial: 'shared/header' %>
       <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-      <%= yield(:modal) if content_for?(:modal) %>
-      <% flash.each do |type, msg| %>
-        <div class="alert alert-<%= type %> alert-dismissible">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-          <%= msg %>
-        </div>
-      <% end %>
-      <%= yield %>
+        <%= yield(:modal) if content_for?(:modal) %>
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-<%= type %> alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <%= msg %>
+          </div>
+        <% end %>
+        <%= yield %>
       </div>
     </div>
   </div>
