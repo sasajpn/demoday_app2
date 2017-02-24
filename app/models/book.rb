@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+  has_many :actions
   has_many :replies
   has_many :parents, class_name: 'Negotiate', foreign_key: 'parent_id'
   has_one :child, class_name: 'Negotiate', foreign_key: 'child_id'

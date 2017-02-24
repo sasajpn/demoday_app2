@@ -1,0 +1,14 @@
+<%= render 'search', search: @search if @books.any? %>
+<% if @books.blank? %>
+  <div class="alert alert-danger" role="alert">
+    本が登録されていません
+  </div>
+<% elsif @search_books.any? %>
+  <%= render partial: 'part', collection: @search_books, as: "object" %>
+<% elsif @search_books.blank? %>
+  <div class="alert alert-warning" role="alert">
+    条件に一致する本が見つかりませんでした
+  </div>
+<% elsif @books.any? %>
+  <%= render partial: 'part', collection: @search_books, as: "object" %>
+<% end %>

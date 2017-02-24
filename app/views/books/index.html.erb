@@ -1,14 +1,48 @@
 <%= render 'search', search: @search if @books.any? %>
-<% if @books.blank? %>
-  <div class="alert alert-danger" role="alert">
-    本が登録されていません
+<% @books.each do |book| %>
+  <div class="listing-item mb-20 book-image">
+    <div class="col-md-4 col-sm-6 col-xs-6">
+      <div class="elements-list clearfix">
+        <% if book.actions.any? %>
+          <% content_for :modal do %>
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                  <h4 class="modal-title" id="myModalLabel"><%= book.actions.count %></h4>
+                </div>
+                <div class="modal-body">
+                  <% book.actions.each do |action| %>
+                    <p><%= action.user.username %></p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% else %>
+        <div class="alert alert-warning text-center">ほしいな！はありません</div>
+        <% end %>
+      </div>
+      <div class="overlay-container">
+        <% if book.image.blank? %>
+        <%= image_tag('no-image.png') %>
+          <div class="book-info">
+            <p class="title"><%= book.title.truncate(15) %></p>
+            <p class="author"><%= book.author.truncate(15) %></p>
+          </div>
+        <% else %>
+          <%= image_tag(book.image) %>
+        <% end %>
+        <div class="set-top">
+          <% animal = Animal.find(book.user.icon).name %>
+          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(book) %>
+        </div>
+        <p class="bg-warning p-20">
+          <small><strong><%= book.condition_i18n %></strong></small>
+        </p>
+      </div>
+    </div>
   </div>
-<% elsif @search_books.any? %>
-  <%= render partial: 'part', collection: @search_books, as: "object" %>
-<% elsif @search_books.blank? %>
-  <div class="alert alert-warning" role="alert">
-    条件に一致する本が見つかりませんでした
-  </div>
-<% elsif @books.any? %>
-  <%= render partial: 'part', collection: @search_books, as: "object" %>
 <% end %>
