@@ -1,0 +1,39 @@
+<div class='row'>
+  <div class="form-group" id="search-box">
+    <!-- アマゾン書籍検索 -->
+    <%= form_tag({ controller: :wish_lists, action: :new }, method: :get) do %>
+      <%= text_field_tag :wish_list, "", class: "form-control", id: "wish_list_search", name: "keyword", placeholder: "本のタイトル,著者名あるいはISBNコードを入力してください" %>
+      <button class="btn btn-info" title="検索" type="submit">検索</button>
+    <% end %>
+  </div>
+</div>
+<!-- 検索結果一覧表示 -->
+<% @wish_lists.each do |wish_list| %>
+  <%= bootstrap_form_for [current_user, wish_list] do |f| %>
+    <div class="listing-item mb-20 book-image">
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="overlay-container">
+          <% if wish_list.image.blank? %>
+          <%= image_tag('no-image.png') %>
+            <div class="wish_list-info">
+              <p class="title"><%= wish_list.title.truncate(15) %></p>
+              <p class="author"><%= wish_list.author? ? wish_list.author.truncate(15) : "No Author" %></p>
+            </div>
+          <% else %>
+            <%= image_tag(wish_list.image) %>
+          <% end %>
+        </div>
+        <div class="elements-list clearfix">
+          <%= f.hidden_field :image, value: wish_list.image %>
+          <%= f.hidden_field :title, value: wish_list.title %>
+          <% if wish_list.author? %>
+            <%= f.hidden_field :author, value: wish_list.author %>
+          <% else %>
+            <%= f.hidden_field :author, value: "No Author" %>
+          <% end %>
+          <%= f.submit %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

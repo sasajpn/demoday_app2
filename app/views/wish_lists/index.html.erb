@@ -1,3 +1,4 @@
+<%= link_to new_user_wish_list_path, class: 'btn btn-primary' do %>ほしいものリストを追加する　<i class="fa fa-plus"></i><% end %>
 <% if @wish_lists.any? %>
   <% @wish_lists.each do |wish_list| %>
     <div class="listing-item mb-20 book-image">
@@ -14,7 +15,7 @@
           <% else %>
             <%= image_tag(wish_list.image) %>
           <% end %>
-            <span class="badge"><%= link_to book_path(wish_list), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></span>
+            <span class="badge"><%= link_to wish_list_path(wish_list), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></span>
           <div class="set-top">
             <% animal = Animal.find(wish_list.user.icon).name %>
             <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(wish_list) %>
