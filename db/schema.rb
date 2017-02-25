@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219140420) do
+ActiveRecord::Schema.define(version: 20170225025726) do
 
   create_table "actions", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -146,6 +146,18 @@ ActiveRecord::Schema.define(version: 20170219140420) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  create_table "wish_lists", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "title",      limit: 255
+    t.string   "author",     limit: 255
+    t.string   "image",      limit: 255
+    t.boolean  "get",                    default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "wish_lists", ["user_id"], name: "index_wish_lists_on_user_id", using: :btree
+
   add_foreign_key "actions", "books"
   add_foreign_key "actions", "users"
   add_foreign_key "addresses", "users"
@@ -154,4 +166,5 @@ ActiveRecord::Schema.define(version: 20170219140420) do
   add_foreign_key "books", "users"
   add_foreign_key "deadlines", "books"
   add_foreign_key "replies", "actions"
+  add_foreign_key "wish_lists", "users"
 end
