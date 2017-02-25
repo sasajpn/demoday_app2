@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :addresses
     resources :negotiates, only: [:index]
+    resources :wish_lists, only: [:index]
     resources :books, except: [:edit], shallow: true do
       resources :actions, only: [:create, :destroy] do
         resources :replies, only: [:create, :destroy]
