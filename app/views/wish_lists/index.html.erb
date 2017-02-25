@@ -1,0 +1,28 @@
+<% if @wish_lists.any? %>
+  <% @wish_lists.each do |wish_list| %>
+    <div class="listing-item mb-20 book-image">
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="elements-list clearfix">
+        </div>
+        <div class="overlay-container">
+          <% if wish_list.image.blank? %>
+          <%= image_tag('no-image.png') %>
+            <div class="book-info">
+              <p class="title"><%= wish_list.title.truncate(15) %></p>
+              <p class="author"><%= wish_list.author.truncate(15) %></p>
+            </div>
+          <% else %>
+            <%= image_tag(wish_list.image) %>
+          <% end %>
+            <span class="badge"><%= link_to book_path(wish_list), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %><i class="fa fa-trash-o"></i><% end %></span>
+          <div class="set-top">
+            <% animal = Animal.find(wish_list.user.icon).name %>
+            <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(wish_list) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="alert alert-danger" role="alert">ほしいものリストに本を登録していません</div>
+<% end %>
