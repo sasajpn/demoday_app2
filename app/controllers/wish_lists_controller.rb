@@ -1,7 +1,8 @@
 class WishListsController < ApplicationController
+  before_action :set_wish_list, only: [:update, :destroy]
 
   def index
-    @wish_lists = current_user.wish_lists.order(created_at: :desc)
+    @wish_lists = current_user.wish_lists.where.not(get: true).order(created_at: :desc)
   end
 
   def new
@@ -48,8 +49,13 @@ class WishListsController < ApplicationController
     end
   end
 
+  def update
+    if @wish_list.update(update_wish_list_params)
+      redirect_to user_wish_lists_url(current_user), notice: 'ほしいものリストを更新しました。'
+    end
+  end
+
   def destroy
-    @wish_list = WishList.find(params[:id])
     @wish_list.destroy
     redirect_to user_wish_lists_url(current_user), notice: 'ほしいものリストから削除しました。'
   end
@@ -58,5 +64,13 @@ class WishListsController < ApplicationController
 
   def wish_list_params
     params.require(:wish_list).permit(:title, :author, :image)
+  end
+
+  def update_wish_list_params
+    params.require(:wish_list).permit(:get)
+  end
+
+  def set_wish_list
+    @wish_list = WishList.find(params[:id])
   end
 end

@@ -21,6 +21,12 @@
             <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(wish_list) %>
           </div>
         </div>
+        <div class="elements-list clearfix">
+          <%= bootstrap_form_for(wish_list) do |f| %>
+            <%= f.hidden_field :get, value: true %>
+            <%= f.submit '手に入れましたか？', data: { confirm: "この本を手に入れましたか？"} %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
