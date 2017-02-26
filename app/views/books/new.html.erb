@@ -11,7 +11,7 @@
 <% @books.each do |book| %>
   <%= bootstrap_form_for [current_user, book] do |f| %>
     <div class="listing-item mb-20 book-image">
-      <div class="col-md-4 col-sm-6 col-xs-6">
+      <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
         <div class="overlay-container">
           <% if book.image.blank? %>
           <%= image_tag('no-image.png') %>
@@ -24,17 +24,15 @@
           <% end %>
         </div>
         <div class="elements-list clearfix">
-          <div class="book-form">
-            <%= f.hidden_field :image, value: book.image %>
-            <%= f.hidden_field :title, value: book.title %>
-            <% if book.author? %>
-              <%= f.hidden_field :author, value: book.author %>
-            <% else %>
-              <%= f.hidden_field :author, value: "No Author" %>
-            <% end %>
-            <%= f.select :condition, Book.conditions_i18n.invert, prompt: '本のコンディションを選択', hide_label: true %>
-            <%= f.submit %>
-          </div>
+          <%= f.hidden_field :image, value: book.image %>
+          <%= f.hidden_field :title, value: book.title %>
+          <% if book.author? %>
+            <%= f.hidden_field :author, value: book.author %>
+          <% else %>
+            <%= f.hidden_field :author, value: "No Author" %>
+          <% end %>
+          <%= f.select :condition, Book.conditions_i18n.invert, prompt: '本のコンディションを選択', hide_label: true %>
+          <%= f.submit %>
         </div>
       </div>
     </div>

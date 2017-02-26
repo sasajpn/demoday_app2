@@ -1,7 +1,7 @@
 <%= render 'search', search: @search if @books.any? %>
 <% @books.each do |book| %>
   <div class="listing-item mb-20 book-image">
-    <div class="col-md-4 col-sm-6 col-xs-6">
+    <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
       <div class="elements-list clearfix">
         <% if book.actions.any? %>
           <% content_for :modal do %>
