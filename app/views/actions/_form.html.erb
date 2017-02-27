@@ -1,3 +1,3 @@
 <%= bootstrap_form_for [item, @action], inline_errors: false do |f| %>
-  <%= f.submit 'ほしいな！', class: 'btn btn-info btn-sm' %>
+  <%= f.submit 'ほしいな！', class: 'btn btn-info btn-sm', data: { confirm: "ほしいな！してもよろしいですか？" } %>
 <% end %>

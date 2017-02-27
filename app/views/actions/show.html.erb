@@ -1,0 +1,34 @@
+<div class="listing-item mb-20 book-image">
+  <% @user.books.each do |book| %>
+    <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
+      <div class="elements-list clearfix">
+        <% if @yet_reply.any? %>
+          <div class="alert alert-info text-center">返答待ちです</div>
+        <% else %>
+          <%= bootstrap_form_for [@action, @reply] do |f| %>
+            <%= f.hidden_field :book_id, value: book.id %>
+            <%= f.submit 'これがいいな！', data: { confirm: "これがいいな！してもよろしいですか？" } %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="overlay-container">
+        <% if book.image.blank? %>
+        <%= image_tag('no-image.png') %>
+          <div class="book-info">
+            <p class="title"><%= book.title.truncate(15) %></p>
+            <p class="author"><%= book.author.truncate(15) %></p>
+          </div>
+        <% else %>
+          <%= image_tag(book.image) %>
+        <% end %>
+        <div class="set-top">
+          <% animal = Animal.find(book.user.icon).name %>
+          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(book) %>
+        </div>
+        <p class="bg-warning p-20">
+          <small><strong><%= book.condition_i18n %></strong></small>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

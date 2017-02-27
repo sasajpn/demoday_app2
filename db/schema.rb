@@ -113,12 +113,14 @@ ActiveRecord::Schema.define(version: 20170225025726) do
 
   create_table "replies", force: :cascade do |t|
     t.integer  "action_id",  limit: 4
+    t.integer  "book_id",    limit: 4
     t.integer  "status",     limit: 4, default: 0
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
 
   add_index "replies", ["action_id"], name: "index_replies_on_action_id", using: :btree
+  add_index "replies", ["book_id"], name: "index_replies_on_book_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               limit: 255
@@ -166,5 +168,6 @@ ActiveRecord::Schema.define(version: 20170225025726) do
   add_foreign_key "books", "users"
   add_foreign_key "deadlines", "books"
   add_foreign_key "replies", "actions"
+  add_foreign_key "replies", "books"
   add_foreign_key "wish_lists", "users"
 end

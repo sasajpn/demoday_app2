@@ -205,6 +205,10 @@ html,body {
   }
 }
 
+.listing-item {
+  margin-top: 20px;
+}
+
 .book-image {
   position: relative;
   .set-top {
@@ -411,7 +415,7 @@ html,body {
     margin: auto;
   }
   .alert-info {
-    margin: auto;
+    // margin: auto;
   }
 }
 
