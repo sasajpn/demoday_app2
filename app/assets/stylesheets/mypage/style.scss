@@ -104,6 +104,22 @@ html,body {
   background-color: #f2dede
 }
 
+.modal-body {
+  .reply-img {
+    width: 250px !important;
+    height: 350px !important;
+    display: inherit;
+    margin: 0 auto !important;
+  }
+  .right {
+    text-align: right !important;
+  }
+  .left {
+    text-align: left !important;
+  }
+}
+
+
 .book-list {
   margin-bottom: 5px !important;
 }
@@ -412,7 +428,7 @@ html,body {
     // margin: auto;
   }
   .alert-danger {
-    margin: auto;
+    // margin: auto;
   }
   .alert-info {
     // margin: auto;

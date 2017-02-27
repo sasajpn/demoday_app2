@@ -9,6 +9,17 @@ class RepliesController < ApplicationController
     end
   end
 
+  def update
+    @reply = Reply.find(params[:id])
+    if @reply.update(update_reply_params)
+      if @reply.status == 1
+        redirect_to items_url, notice: 'やめて！を選択しました。'
+      else
+        redirect_to items_url, notice: 'いいよ！を選択しました。'
+      end
+    end
+  end
+
   def destroy
   end
 
@@ -16,5 +27,9 @@ class RepliesController < ApplicationController
 
   def reply_params
     params.require(:reply).permit(:book_id)
+  end
+
+  def update_reply_params
+    params.require(:reply).permit(:status)
   end
 end

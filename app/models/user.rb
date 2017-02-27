@@ -30,6 +30,12 @@ class User < ActiveRecord::Base
     wishes.find_by(book_id: item)
   end
 
+  def already_reject_wish(item)
+    if wish = already_wish(item)
+      wish.reject == true
+    end
+  end
+
   private
 
   def set_icon

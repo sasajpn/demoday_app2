@@ -3,8 +3,52 @@
   <div class="listing-item mb-20 book-image">
     <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
       <div class="elements-list clearfix">
-        <% if wish = current_user.already_wish(item) %>
-          <%= link_to 'ほしいな！を取り消す', wish_path(wish), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
+        <% if current_user.already_reject_wish(item) %>
+          <div class="alert alert-danger text-center">お断りされました</div>
+        <% elsif wish = current_user.already_wish(item) %>
+          <% if reply = wish.replies.find_by(status: 0) %>
+            <% content_for :modal do %>
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                      <h4 class="modal-title" id="myModalLabel">これがいいな！されています</h4>
+                    </div>
+                    <div class="modal-body">
+                      <% book = reply.book %>
+                      <% if book.image.blank? %>
+                        <%= image_tag('no-image.png', class: 'reply-img') %>
+                        <div class="book-info">
+                          <p class="title"><%= book.title.truncate(15) %></p>
+                          <p class="author"><%= book.author.truncate(15) %></p>
+                        </div>
+                      <% else %>
+                        <%= image_tag(book.image, class: 'reply-img') %>
+                      <% end %>
+                      <div class="row">
+                        <div class="col-md-6 right">
+                          <%= bootstrap_form_for(reply) do |f| %>
+                            <%= f.hidden_field :status, value: 1 %>
+                            <%= f.submit 'やめて！', data: { confirm: 'これやめて！を選択してもよろしいですか？' }, class: 'btn btn-danger' %>
+                          <% end %>
+                        </div>
+                        <div class="col-md-6 left">
+                          <%= bootstrap_form_for(reply) do |f| %>
+                            <%= f.hidden_field :status, value: 1 %>
+                            <%= f.submit 'いいよ！', data: { confirm: 'いいよ！を選択してもよろしいですか？' }, class: 'btn btn-primary' %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">お返しをもらっています</button>
+          <% else %>
+            <%= link_to 'ほしいな！を取り消す', wish_path(wish), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
         <% else %>
           <%= bootstrap_form_for [item, @wish], inline_errors: false do |f| %>
             <%= f.hidden_field :book_id, value: item.id %>
