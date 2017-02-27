@@ -10,22 +10,25 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  resources :users do
+  resources :users, shallow: true do
     resources :addresses
     resources :negotiates, only: [:index]
-    resources :wish_lists, shallow: true
-    resources :books, except: [:edit], shallow: true do
-      resources :actions, only: [:create, :destroy] do
-        resources :replies, only: [:create, :destroy]
-      end
-      resources :book_addresses, only: [:create]
-      resources :evals, only: [:create]
-      resource :negotiate, only: [:show]
-      resources :negotiates, except: [:index, :show, :edit] do
-        resource :trade, only: [:show]
-      end
+    resources :wish_lists
+    resources :books, except: [:edit]
+  end
+
+  resources :books do
+    resources :actions, only: [:show, :create, :destroy] do
+      resources :replies, only: [:create, :destroy]
+    end
+    resources :book_addresses, only: [:create]
+    resources :evals, only: [:create]
+    resource :negotiate, only: [:show]
+    resources :negotiates, except: [:index, :show, :edit] do
+      resource :trade, only: [:show]
     end
   end
+
   resources :deals, only: [:index]
   resources :items, only: [:index]
 end
