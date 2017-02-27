@@ -221,6 +221,12 @@ html,body {
   }
 }
 
+.left,.right {
+  form {
+    margin: 0 !important
+  }
+}
+
 .listing-item {
   margin-top: 20px;
 }
@@ -419,10 +425,10 @@ html,body {
     padding: 6px;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
-    width: 80%;
+    // width: 80%;
   }
   .alert-success {
-    margin: auto;
+    // margin: auto;
   }
   .alert-warning {
     // margin: auto;

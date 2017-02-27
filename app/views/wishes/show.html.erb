@@ -8,7 +8,9 @@
   <% @user.books.each do |book| %>
     <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
       <div class="elements-list clearfix">
-        <% if @yet_reply.any? %>
+        <% if book.replies.find_by(status: 1) %>
+          <div class="alert alert-danger text-center">これやめて！を選択されました</div>
+        <% elsif @yet_reply.any? %>
           <div class="alert alert-info text-center">返答待ちです</div>
         <% else %>
           <%= bootstrap_form_for [@wish, @reply] do |f| %>

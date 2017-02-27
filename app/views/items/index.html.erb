@@ -17,25 +17,33 @@
                     </div>
                     <div class="modal-body">
                       <% book = reply.book %>
-                      <% if book.image.blank? %>
-                        <%= image_tag('no-image.png', class: 'reply-img') %>
-                        <div class="book-info">
-                          <p class="title"><%= book.title.truncate(15) %></p>
-                          <p class="author"><%= book.author.truncate(15) %></p>
+                      <div class="book-image">
+                        <div class="overlay-container">
+                          <% if book.image.blank? %>
+                            <%= image_tag('no-image.png', class: 'reply-img') %>
+                            <div class="book-info">
+                              <p class="title"><%= book.title.truncate(15) %></p>
+                              <p class="author"><%= book.author.truncate(15) %></p>
+                            </div>
+                          <% else %>
+                            <%= image_tag(book.image, class: 'reply-img') %>
+                          <% end %>
                         </div>
-                      <% else %>
-                        <%= image_tag(book.image, class: 'reply-img') %>
-                      <% end %>
+                      </div>
                       <div class="row">
                         <div class="col-md-6 right">
-                          <%= bootstrap_form_for(reply) do |f| %>
-                            <%= f.hidden_field :status, value: 1 %>
-                            <%= f.submit 'やめて！', data: { confirm: 'これやめて！を選択してもよろしいですか？' }, class: 'btn btn-danger' %>
+                          <% if wish.replies.find_by(status: 1) %>
+                            <button type="submit" class="btn btn-danger" disabled="">やめて！</button>
+                          <% else %>
+                            <%= bootstrap_form_for(reply) do |f| %>
+                              <%= f.hidden_field :status, value: 1 %>
+                              <%= f.submit 'やめて！', data: { confirm: 'やめて！を選択してもよろしいですか？' }, class: 'btn btn-danger' %>
+                            <% end %>
                           <% end %>
                         </div>
                         <div class="col-md-6 left">
                           <%= bootstrap_form_for(reply) do |f| %>
-                            <%= f.hidden_field :status, value: 1 %>
+                            <%= f.hidden_field :status, value: 2 %>
                             <%= f.submit 'いいよ！', data: { confirm: 'いいよ！を選択してもよろしいですか？' }, class: 'btn btn-primary' %>
                           <% end %>
                         </div>
@@ -46,6 +54,8 @@
               </div>
             <% end %>
             <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">お返しをもらっています</button>
+          <% elsif wish.replies.find_by(status: 1) %>
+            <div class="alert alert-success text-center">これがいいな！を断りました</div>
           <% else %>
             <%= link_to 'ほしいな！を取り消す', wish_path(wish), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
           <% end %>
