@@ -5,6 +5,6 @@ class ItemsController < ApplicationController
     @items = Book.where(status: 0).where.not(user_id: current_user)
     @search = @items.search(params[:q])
     @search_items = @search.result(distinct: true)
-    @action = current_user.actions.build
+    @wish = current_user.wishes.build
   end
 end

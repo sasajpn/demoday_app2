@@ -1,3 +1,4 @@
 class Reply < ActiveRecord::Base
-  belongs_to :action
+  belongs_to :wish
+  belongs_to :book
 end

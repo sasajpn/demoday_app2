@@ -1,3 +1,9 @@
+<% unless @yet_reply.any? %>
+  <%= bootstrap_form_for @wish do |f| %>
+    <%= f.hidden_field :reject, value: true %>
+    <%= f.submit 'お断り', data: { confirm: 'お断りしてもよろしいですか？' }, class: 'btn btn-danger' %>
+  <% end %>
+<% end %>
 <div class="listing-item mb-20 book-image">
   <% @user.books.each do |book| %>
     <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
@@ -5,7 +11,7 @@
         <% if @yet_reply.any? %>
           <div class="alert alert-info text-center">返答待ちです</div>
         <% else %>
-          <%= bootstrap_form_for [@action, @reply] do |f| %>
+          <%= bootstrap_form_for [@wish, @reply] do |f| %>
             <%= f.hidden_field :book_id, value: book.id %>
             <%= f.submit 'これがいいな！', data: { confirm: "これがいいな！してもよろしいですか？" } %>
           <% end %>

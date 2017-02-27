@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :books do
-    resources :actions, only: [:show, :create]
+    resources :wishes, only: [:show, :create]
     resources :book_addresses, only: [:create]
     resources :evals, only: [:create]
     resource :negotiate, only: [:show]
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :actions, only: [:destroy], shallow: true do
+  resources :wishes, only: [:update, :destroy], shallow: true do
     resources :replies, only: [:create, :update, :destroy]
   end
 

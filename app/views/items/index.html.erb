@@ -3,10 +3,13 @@
   <div class="listing-item mb-20 book-image">
     <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
       <div class="elements-list clearfix">
-        <% if action = current_user.already_action(item) %>
-          <%= link_to 'ほしいな！を取り消す', action_path(action), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
+        <% if wish = current_user.already_wish(item) %>
+          <%= link_to 'ほしいな！を取り消す', wish_path(wish), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
         <% else %>
-          <%= render 'actions/form', item: item %>
+          <%= bootstrap_form_for [item, @wish], inline_errors: false do |f| %>
+            <%= f.hidden_field :book_id, value: item.id %>
+            <%= f.submit 'ほしいな！', class: 'btn btn-info btn-sm', data: { confirm: "ほしいな！してもよろしいですか？" } %>
+          <% end %>
         <% end %>
       </div>
       <div class="overlay-container">

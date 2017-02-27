@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :reply do
-    action nil
+    wish nil
+    book nil
     status 1
   end
 end

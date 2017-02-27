@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_one :address
   has_many :books
   has_many :wish_lists
-  has_many :actions
+  has_many :wishes
   has_many :children, through: :books
   has_many :evaluatees, class_name: 'Eval', foreign_key: 'evaluatee_id'
   has_many :evaluators, class_name: 'Eval', foreign_key: 'evaluator_id'
@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
 
   before_create :set_icon
 
-  def already_action(item)
-    actions.find_by(book_id: item)
+  def already_wish(item)
+    wishes.find_by(book_id: item)
   end
 
   private

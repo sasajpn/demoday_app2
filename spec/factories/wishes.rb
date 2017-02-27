@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :action do
+  factory :wish do
     user nil
     book nil
     reject false

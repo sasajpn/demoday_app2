@@ -3,7 +3,7 @@
   <div class="listing-item mb-20 book-image">
     <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
       <div class="elements-list clearfix">
-        <% if book.actions.any? %>
+        <% if book.wishes.where(reject: false).any? %>
           <% content_for :modal do %>
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog">
@@ -13,11 +13,11 @@
                   <h4 class="modal-title" id="myModalLabel">この本をほしいな！しているユーザ</h4>
                 </div>
                 <div class="modal-body">
-                  <% book.actions.each do |action| %>
-                    <% animal = Animal.find(action.user.icon).name %>
+                  <% book.wishes.where(reject: false).each do |wish| %>
+                    <% animal = Animal.find(wish.user.icon).name %>
                     <div class="user-info">
                       <%= image_tag(icon(animal), class: "#{icon_style(animal)}") %>
-                      <span><%= link_to book_action_path(book, action) do %><%= action.user.username %><% end %></span>
+                      <span><%= link_to book_wish_path(book, wish) do %><%= wish.user.username %><% end %></span>
                     </div>
                   <% end %>
                 </div>
@@ -25,7 +25,7 @@
             </div>
           </div>
           <% end %>
-          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><%= book.actions.count %>人がほしいな！しています</button>
+          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><%= book.wishes.where(reject: false).count %>人がほしいな！しています</button>
         <% else %>
         <div class="alert alert-warning text-center">ほしいな！はありません</div>
         <% end %>

@@ -1,11 +1,11 @@
 class RepliesController < ApplicationController
   def create
-    @action = Action.find(params[:action_id])
-    @reply = @action.replies.build(reply_params)
+    @wish = Wish.find(params[:wish_id])
+    @reply = @wish.replies.build(reply_params)
     if @reply.save
-      redirect_to book_action_url(@action.book, @action), notice: 'これがいいな！しました。'
+      redirect_to book_wish_url(@wish.book, @wish), notice: 'これがいいな！しました。'
     else
-      render 'actions/show'
+      render 'wishes/show'
     end
   end
 

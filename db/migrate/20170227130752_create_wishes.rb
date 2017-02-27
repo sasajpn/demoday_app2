@@ -1,6 +1,6 @@
-class CreateActions < ActiveRecord::Migration
+class CreateWishes < ActiveRecord::Migration
   def change
-    create_table :actions do |t|
+    create_table :wishes do |t|
       t.references :user, index: true, foreign_key: true
       t.references :book, index: true, foreign_key: true
       t.boolean :reject, default: false
