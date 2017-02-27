@@ -4,7 +4,8 @@ class BooksController < ApplicationController
   skip_before_action :user_book_check, only: [:index, :new, :create]
 
   def index
-    @books = current_user.books.order(created_at: :desc)
+    @user = User.find(params[:user_id])
+    @books = @user.books.order(created_at: :desc)
     @search = @books.search(params[:q])
     @search_books = @search.result(distinct: true)
   end

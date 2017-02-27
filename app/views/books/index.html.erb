@@ -17,7 +17,7 @@
                     <% animal = Animal.find(action.user.icon).name %>
                     <div class="user-info">
                       <%= image_tag(icon(animal), class: "#{icon_style(animal)}") %>
-                      <span><%= link_to user_path(action.user) do %><%= action.user.username %><% end %></span>
+                      <span><%= link_to user_books_path(action.user) do %><%= action.user.username %><% end %></span>
                     </div>
                   <% end %>
                 </div>

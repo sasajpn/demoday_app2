@@ -3,8 +3,8 @@
   <div class="listing-item mb-20 book-image">
     <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
       <div class="elements-list clearfix">
-        <% if current_user.already_action?(item) %>
-          <%= link_to 'ほしいな！を取り消す', action_path(current_user.actions.find_by(book_id: item)), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
+        <% if action = current_user.already_action(item) %>
+          <%= link_to 'ほしいな！を取り消す', action_path(action), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
         <% else %>
           <%= render 'actions/form', item: item %>
         <% end %>

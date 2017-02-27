@@ -2,7 +2,8 @@ class WishListsController < ApplicationController
   before_action :set_wish_list, only: [:update, :destroy]
 
   def index
-    @wish_lists = current_user.wish_lists.where.not(get: true).order(created_at: :desc)
+    @user = User.find(params[:user_id])
+    @wish_lists = @user.wish_lists.where.not(get: true).order(created_at: :desc)
   end
 
   def new
