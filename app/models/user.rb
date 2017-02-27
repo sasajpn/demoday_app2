@@ -30,10 +30,6 @@ class User < ActiveRecord::Base
     actions.find_by(book_id: item)
   end
 
-  def actioning(user)
-    actions.where(book_id: user.books).any?
-  end
-
   private
 
   def set_icon

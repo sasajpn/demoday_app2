@@ -20,10 +20,6 @@ class Book < ActiveRecord::Base
 
   after_update :create_deadline
 
-  def actioned_by(user)
-    actions.find_by(user_id: user.id)
-  end
-
   def set_negotiate
     parents.find_by(agree: true) || child
   end
