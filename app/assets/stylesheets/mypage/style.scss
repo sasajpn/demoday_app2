@@ -137,6 +137,19 @@ html,body {
   color: #2F4F4F;
   font-weight: bold;
 }
+
+.wish-list-info {
+  &:not(:first-child) {
+    border-top: 1px solid;
+    margin-top: 5px;
+    padding-top: 5px;
+  }
+  img {
+    display: inline;
+    height: 60px;
+    margin-right: 10px;
+  }
+}
 .user-info {
   &:not(:first-child) {
     border-top: 1px solid;
@@ -240,6 +253,11 @@ html,body {
       height: 40px;
       width: 40px;
     }
+  }
+  .set-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
   .book-info {
     position: absolute;
