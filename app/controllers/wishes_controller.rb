@@ -19,8 +19,12 @@ class WishesController < ApplicationController
   end
 
   def destroy
-    @wish.destroy
-    redirect_to items_url, notice: 'ほしいな！を取り消しました。'
+    if @wish.replies.any?
+      redirect_to items_url, notice: 'すでにお返しをもらっているため取り消すことができません'
+    else
+      @wish.destroy
+      redirect_to items_url, notice: 'ほしいな！を取り消しました。'
+    end
   end
 
   private
