@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   resources :users, shallow: true do
     resources :addresses
-    resources :negotiates, only: [:index]
     resources :wish_lists
     resources :books, except: [:edit]
   end
@@ -21,16 +20,12 @@ Rails.application.routes.draw do
     resources :wishes, only: [:show, :create]
     resources :book_addresses, only: [:create]
     resources :evals, only: [:create]
-    resource :negotiate, only: [:show]
-    resources :negotiates, except: [:index, :show, :edit] do
-      resource :trade, only: [:show]
-    end
+    resource :trade, only: [:show]
   end
 
   resources :wishes, only: [:update, :destroy], shallow: true do
     resources :replies, only: [:create, :update, :destroy]
   end
 
-  resources :deals, only: [:index]
   resources :items, only: [:index]
 end
