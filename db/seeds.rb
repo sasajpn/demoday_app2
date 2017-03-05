@@ -1,3 +1,9 @@
+(1..3).each do |n|
+  user = User.new(username:"#{n}", email:"test#{n}@test.com", password:'password', birthday:"1990-0#{n}-0#{n}")
+  user.skip_confirmation!
+  user.save
+end
+
 require "csv"
 
 Prefecture.delete_all

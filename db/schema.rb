@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20170227130903) do
 
-  create_table "actions", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "book_id",    limit: 4
-    t.boolean  "reject",               default: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-  end
-
-  add_index "actions", ["book_id"], name: "index_actions_on_book_id", using: :btree
-  add_index "actions", ["user_id"], name: "index_actions_on_user_id", using: :btree
-
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
     t.string   "given_name",   limit: 255
@@ -79,30 +68,12 @@ ActiveRecord::Schema.define(version: 20170227130903) do
   add_index "books", ["user_id", "title", "author"], name: "index_books_on_user_id_and_title_and_author", unique: true, using: :btree
   add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
 
-  create_table "deadlines", force: :cascade do |t|
-    t.integer  "book_id",    limit: 4
-    t.datetime "deadline"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "deadlines", ["book_id"], name: "index_deadlines_on_book_id", using: :btree
-
   create_table "evals", force: :cascade do |t|
     t.integer  "evaluatee_id", limit: 4
     t.integer  "evaluator_id", limit: 4
     t.integer  "level",        limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-  end
-
-  create_table "negotiates", force: :cascade do |t|
-    t.integer  "parent_id",  limit: 4
-    t.integer  "child_id",   limit: 4
-    t.text     "recommend",  limit: 65535
-    t.boolean  "agree",                    default: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -171,13 +142,10 @@ ActiveRecord::Schema.define(version: 20170227130903) do
   add_index "wishes", ["book_id"], name: "index_wishes_on_book_id", using: :btree
   add_index "wishes", ["user_id"], name: "index_wishes_on_user_id", using: :btree
 
-  add_foreign_key "actions", "books"
-  add_foreign_key "actions", "users"
   add_foreign_key "addresses", "users"
   add_foreign_key "areas", "prefectures"
   add_foreign_key "book_addresses", "books"
   add_foreign_key "books", "users"
-  add_foreign_key "deadlines", "books"
   add_foreign_key "replies", "books"
   add_foreign_key "replies", "wishes"
   add_foreign_key "wish_lists", "users"
