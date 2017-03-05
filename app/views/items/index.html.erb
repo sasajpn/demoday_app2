@@ -1,37 +1,5 @@
 <%= render 'search', search: @search if @items.any? %>
 <% @items.each do |item| %>
-  <!-- ユーザのほしいものリスト表示用 -->
-  <% content_for :modal do %>
-    <% user = item.user %>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">このユーザのほしいものリスト</h4>
-          </div>
-          <div class="modal-body">
-            <% if user.wish_lists.any? %>
-              <% user.wish_lists.each do |wish_list| %>
-                <div class="wish-list-info">
-                  <% if wish_list.image.blank? %>
-                    <%= image_tag('no-image.png') %>
-                  <% else %>
-                    <%= image_tag(wish_list.image) %>
-                  <% end %>
-                  <span><%= wish_list.title %></span>
-                  <span><%= wish_list.author %></span>
-                </div>
-              <% end %>
-            <% else %>
-              <div class="alert alert-warning text-center">このユーザはほしいものリストを登録していません</div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
   <div class="listing-item mb-20 book-image">
     <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
       <div class="elements-list clearfix">
@@ -92,6 +60,37 @@
             <%= link_to 'ほしいな！を取り消す', wish_path(wish), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
           <% end %>
         <% else %>
+          <!-- ユーザのほしいものリスト表示用 -->
+          <% content_for :modal do %>
+            <% user = item.user %>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">このユーザのほしいものリスト</h4>
+                  </div>
+                  <div class="modal-body">
+                    <% if user.wish_lists.any? %>
+                      <% user.wish_lists.each do |wish_list| %>
+                        <div class="wish-list-info">
+                          <% if wish_list.image.blank? %>
+                            <%= image_tag('no-image.png') %>
+                          <% else %>
+                            <%= image_tag(wish_list.image) %>
+                          <% end %>
+                          <span><%= wish_list.title %></span>
+                          <span><%= wish_list.author %></span>
+                        </div>
+                      <% end %>
+                    <% else %>
+                      <div class="alert alert-warning text-center">このユーザはほしいものリストを登録していません</div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
           <%= bootstrap_form_for [item, @wish], inline_errors: false do |f| %>
             <%= f.hidden_field :book_id, value: item.id %>
             <%= f.submit 'ほしいな！', class: 'btn btn-primary btn-sm', data: { confirm: "ほしいな！してもよろしいですか？" } %>
@@ -112,9 +111,11 @@
           <% animal = Animal.find(item.user.icon).name %>
           <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(item) %>
         </div>
-        <div class="set-bottom">
-          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">このユーザの<br>ほしいものリスト</button>
-        </div>
+        <% unless current_user.already_wish(item) %>
+          <div class="set-bottom">
+            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">このユーザの<br>ほしいものリスト</button>
+          </div>
+        <% end %>
         <p class="bg-warning p-20">
           <small><strong><%= item.condition_i18n %></strong></small>
         </p>
