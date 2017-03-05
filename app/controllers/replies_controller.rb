@@ -2,10 +2,9 @@ class RepliesController < ApplicationController
   def create
     @wish = Wish.find(params[:wish_id])
     @reply = @wish.replies.build(reply_params)
-    if @reply.save
+    if @wish.can_reply?
+      @reply.save
       redirect_to book_wish_url(@wish.book, @wish), notice: 'これがいいな！しました。'
-    else
-      render 'wishes/show'
     end
   end
 
