@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   has_many :books
   has_many :wish_lists
   has_many :wishes
-  has_many :children, through: :books
   has_many :evaluatees, class_name: 'Eval', foreign_key: 'evaluatee_id'
   has_many :evaluators, class_name: 'Eval', foreign_key: 'evaluator_id'
 
