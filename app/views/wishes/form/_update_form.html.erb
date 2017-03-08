@@ -1,0 +1,4 @@
+<%= bootstrap_form_for @wish do |f| %>
+  <%= f.hidden_field :reject, value: true %>
+  <%= f.submit 'お断り', data: { confirm: 'お断りしてもよろしいですか？' }, class: 'btn btn-danger' %>
+<% end %>

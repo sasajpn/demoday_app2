@@ -17,11 +17,8 @@
             <%= link_to 'ほしいな！を取り消す', wish_path(wish), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-sm' %>
           <% end %>
         <% else %>
-          <%= render 'shared/items/wish_list_modal', item: item %>
-          <%= bootstrap_form_for [item, @wish], inline_errors: false do |f| %>
-            <%= f.hidden_field :book_id, value: item.id %>
-            <%= f.submit 'ほしいな！', class: 'btn btn-primary btn-sm', data: { confirm: "ほしいな！してもよろしいですか？" } %>
-          <% end %>
+          <%= render 'shared/modal/wish_list_modal', item: item %>
+          <%= render 'wishes/form/create_form', item: item %>
         <% end %>
       </div>
       <div class="overlay-container">

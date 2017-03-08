@@ -1,0 +1,4 @@
+<%= bootstrap_form_for [item, @wish] do |f| %>
+  <%= f.hidden_field :book_id, value: item.id %>
+  <%= f.submit 'ほしいな！', class: 'btn btn-primary btn-sm', data: { confirm: "ほしいな！してもよろしいですか？" } %>
+<% end %>
