@@ -6,37 +6,39 @@
 <% end %>
 <div class="listing-item mb-20 book-image">
   <% @user.books.each do |book| %>
-    <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
-      <div class="elements-list clearfix">
-        <% if book.replies.find_by(status: 1) %>
-          <div class="alert alert-danger text-center">やめて！を選択されました</div>
-        <% elsif @yet_reply.any? %>
-          <div class="alert alert-info text-center">返答待ちです</div>
-        <% else %>
-          <%= bootstrap_form_for [@wish, @reply] do |f| %>
-            <%= f.hidden_field :book_id, value: book.id %>
-            <%= f.submit 'これがいいな！', data: { confirm: "これがいいな！してもよろしいですか？" } %>
+    <% if book.can_get_reply? %>
+      <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
+        <div class="elements-list clearfix">
+          <% if book.replies.find_by(status: 1) %>
+            <div class="alert alert-danger text-center">やめて！を選択されました</div>
+          <% elsif @yet_reply.any? %>
+            <div class="alert alert-info text-center">返答待ちです</div>
+          <% else %>
+            <%= bootstrap_form_for [@wish, @reply] do |f| %>
+              <%= f.hidden_field :book_id, value: book.id %>
+              <%= f.submit 'これがいいな！', data: { confirm: "これがいいな！してもよろしいですか？" }, class: 'btn btn-primary btn-sm' %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-      <div class="overlay-container">
-        <% if book.image.blank? %>
-        <%= image_tag('no-image.png') %>
-          <div class="book-info">
-            <p class="title"><%= book.title.truncate(15) %></p>
-            <p class="author"><%= book.author.truncate(15) %></p>
-          </div>
-        <% else %>
-          <%= image_tag(book.image) %>
-        <% end %>
-        <div class="set-top">
-          <% animal = Animal.find(book.user.icon).name %>
-          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(book) %>
         </div>
-        <p class="bg-warning p-20">
-          <small><strong><%= book.condition_i18n %></strong></small>
-        </p>
+        <div class="overlay-container">
+          <% if book.image.blank? %>
+          <%= image_tag('no-image.png') %>
+            <div class="book-info">
+              <p class="title"><%= book.title.truncate(15) %></p>
+              <p class="author"><%= book.author.truncate(15) %></p>
+            </div>
+          <% else %>
+            <%= image_tag(book.image) %>
+          <% end %>
+          <div class="set-top">
+            <% animal = Animal.find(book.user.icon).name %>
+            <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(book) %>
+          </div>
+          <p class="bg-warning p-20">
+            <small><strong><%= book.condition_i18n %></strong></small>
+          </p>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

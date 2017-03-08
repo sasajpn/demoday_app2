@@ -12,4 +12,8 @@ class Book < ActiveRecord::Base
     message: 'その本をすでに登録しています' }
 
   enum condition: { very_good: 3, good: 2, bad: 1, very_bad: 0 }
+
+  def can_get_reply?
+    replies.where(status: [0, 1]).blank?
+  end
 end
