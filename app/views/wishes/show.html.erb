@@ -26,7 +26,7 @@
           <% end %>
           <div class="set-top">
             <% animal = Animal.find(book.user.icon).name %>
-            <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(book) %>
+            <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") %>
           </div>
           <p class="bg-warning p-20">
             <small><strong><%= book.condition_i18n %></strong></small>
