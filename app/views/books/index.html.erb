@@ -5,9 +5,9 @@
       <div class="elements-list clearfix">
         <% if book.wishes.where(reject: false).any? %>
           <%= render 'shared/modal/wish_user', book: book %>
-          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><%= book.wishes.where(reject: false).count %>人がほしいな！しています</button>
+          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#wish-user-<%= book.id %>"><%= book.wishes.where(reject: false).count %>人がほしいな！しています</button>
         <% else %>
-        <div class="alert alert-warning text-center">ほしいな！はありません</div>
+          <div class="alert alert-warning text-center">ほしいな！はありません</div>
         <% end %>
       </div>
       <div class="overlay-container">
@@ -20,10 +20,6 @@
         <% else %>
           <%= image_tag(book.image) %>
         <% end %>
-        <div class="set-top">
-          <% animal = Animal.find(book.user.icon).name %>
-          <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") if current_user.not_mine?(book) %>
-        </div>
         <p class="bg-warning p-20">
           <small><strong><%= book.condition_i18n %></strong></small>
         </p>
