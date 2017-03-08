@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates :username, :birthday, presence: true
   validates :username, :email, uniqueness: true
 
-  before_create :set_icon
+  before_create :create_icon
 
   def already_wish(item)
     wishes.find_by(book_id: item)
@@ -35,9 +35,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_icon
+    Animal.find(self.icon).name
+  end
+
   private
 
-  def set_icon
+  def create_icon
     self.icon = set_animal
   end
 end
