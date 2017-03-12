@@ -8,8 +8,8 @@
         </div>
         <div class="modal-body">
           <% book.wishes.where(reject: false).each do |wish| %>
-            <% animal = Animal.find(wish.user.icon).name %>
             <div class="user-info">
+              <% animal = wish.user.set_icon %>
               <%= image_tag(icon(animal), class: "#{icon_style(animal)}") %>
               <span><%= link_to book_wish_path(book, wish) do %><%= wish.user.username %><% end %></span>
             </div>

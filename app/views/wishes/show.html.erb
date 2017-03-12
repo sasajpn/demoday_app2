@@ -25,7 +25,8 @@
             <%= image_tag(book.image) %>
           <% end %>
           <div class="set-top">
-            <%= image_tag(icon(@user.set_icon), class: "#{icon_style(animal)}", align: "middle") %>
+            <% animal = @user.set_icon %>
+            <%= image_tag(icon(animal), class: "#{icon_style(animal)}", align: "middle") %>
           </div>
           <p class="bg-warning p-20">
             <small><strong><%= book.condition_i18n %></strong></small>

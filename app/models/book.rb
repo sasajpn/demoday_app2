@@ -16,4 +16,8 @@ class Book < ActiveRecord::Base
   def can_get_reply?
     replies.where(status: [0, 1]).blank?
   end
+
+  def already_reply?(book)
+    replies.find_by(book_id: book)
+  end
 end

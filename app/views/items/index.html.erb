@@ -7,7 +7,7 @@
           <div class="alert alert-danger text-center">お断りされました</div>
         <% elsif wish = current_user.already_wish(item) %>
           <% if reply = wish.replies.find_by(status: 0) %>
-            <%= render 'shared/items/reply_modal', wish: wish, reply: reply %>
+            <%= render 'shared/modal/reply_modal', wish: wish, reply: reply %>
             <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#replyModal">お返しをもらっています</button>
           <% elsif wish.replies.find_by(status: 2) %>
             <div class="alert alert-info text-center">本の交換が決まりました！</div>
