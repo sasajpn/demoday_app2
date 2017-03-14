@@ -1,8 +1,6 @@
 class Book < ActiveRecord::Base
   has_many :wishes
   has_many :replies
-  has_many :trades_of_wish, class_name: 'Trade', foreign_key: 'wish_book_id'
-  has_many :trades_of_reply, class_name: 'Trade', foreign_key: 'reply_book_id'
   has_one :book_address
   accepts_nested_attributes_for :book_address
 

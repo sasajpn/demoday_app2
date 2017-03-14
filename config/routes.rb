@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :wishes, only: [:show, :create]
     resources :book_addresses, only: [:create]
     resources :evals, only: [:create]
+    resource :trade, only: [:show]
   end
 
   resources :wishes, only: [:update, :destroy], shallow: true do

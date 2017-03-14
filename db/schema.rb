@@ -97,9 +97,9 @@ ActiveRecord::Schema.define(version: 20170314130918) do
   create_table "trades", force: :cascade do |t|
     t.integer  "wish_book_id",  limit: 4
     t.integer  "reply_book_id", limit: 4
-    t.boolean  "finish"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.boolean  "finish",                  default: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "users", force: :cascade do |t|
