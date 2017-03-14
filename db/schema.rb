@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227130903) do
+ActiveRecord::Schema.define(version: 20170314130918) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -60,9 +60,10 @@ ActiveRecord::Schema.define(version: 20170227130903) do
     t.string   "author",     limit: 255
     t.string   "image",      limit: 255
     t.integer  "condition",  limit: 4
-    t.integer  "status",     limit: 1,   default: 0, null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.boolean  "change",                 default: false
+    t.integer  "status",     limit: 1,   default: 0,     null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "books", ["user_id", "title", "author"], name: "index_books_on_user_id_and_title_and_author", unique: true, using: :btree
@@ -92,6 +93,14 @@ ActiveRecord::Schema.define(version: 20170227130903) do
 
   add_index "replies", ["book_id"], name: "index_replies_on_book_id", using: :btree
   add_index "replies", ["wish_id"], name: "index_replies_on_wish_id", using: :btree
+
+  create_table "trades", force: :cascade do |t|
+    t.integer  "wish_book_id",  limit: 4
+    t.integer  "reply_book_id", limit: 4
+    t.boolean  "finish"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               limit: 255

@@ -1,9 +1,0 @@
-<%= bootstrap_form_for [@book, @negotiate], inline_errors: false do |f| %>
-  <%= f.alert_message "エラーがあります" %>
-  <%= f.hidden_field :parent_id, value: @book.id %>
-  <%= f.collection_select :child_id, @books, :id, :title, prompt: '交渉に出す本を選択してください', label: '交渉に出す本' %>
-  <%= f.text_area :recommend, label: 'おすすめポイント(140字以内)　※必須でない', class: 'recommend_area' %>
-  <%= f.submit '交渉する',
-    data: { confirm: '取引主があなたの本と取引を成立させた場合、本の交換が即座に決定しますがよろしいですか？',
-      'commit': '交渉に出す', 'cancel': '取り消す', }, title: '交渉開始の確認' %>
-<% end %>

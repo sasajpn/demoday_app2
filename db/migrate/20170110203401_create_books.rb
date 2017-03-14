@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :author
       t.string :image
       t.integer :condition
+      t.boolean :change, default: false
       t.integer :status, default: 0, null: false, limit:1
 
       t.timestamps null: false
