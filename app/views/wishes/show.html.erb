@@ -3,15 +3,16 @@
 <% end %>
 <div class="listing-item mb-20 book-image">
   <% @user.books.each do |book| %>
-    <% if book.can_get_reply? %>
       <div class="col-md-4 col-sm-6 col-xs-6 item-detail">
         <div class="elements-list clearfix">
           <% if book.replies.find_by(status: 1) %>
             <div class="alert alert-danger text-center">やめて！を選択されました</div>
           <% elsif @yet_reply.any? %>
             <div class="alert alert-info text-center">返答待ちです</div>
+          <% elsif book.can_get_reply? %>
+            <%= render 'replies/create_form', book: book %>
           <% else %>
-            <%= render 'replies/create_form' %>
+            <div class="alert alert-warning text-center">この本は選択できません</div>
           <% end %>
         </div>
         <div class="overlay-container">
@@ -33,6 +34,5 @@
           </p>
         </div>
       </div>
-    <% end %>
   <% end %>
 </div>
