@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314130918) do
+ActiveRecord::Schema.define(version: 20170314135948) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -95,12 +95,14 @@ ActiveRecord::Schema.define(version: 20170314130918) do
   add_index "replies", ["wish_id"], name: "index_replies_on_wish_id", using: :btree
 
   create_table "trades", force: :cascade do |t|
-    t.integer  "wish_book_id",  limit: 4
-    t.integer  "reply_book_id", limit: 4
-    t.boolean  "finish",                  default: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.integer  "book_id",    limit: 4
+    t.integer  "change_id",  limit: 4
+    t.boolean  "finish",               default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
+
+  add_index "trades", ["book_id"], name: "index_trades_on_book_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               limit: 255
@@ -157,6 +159,7 @@ ActiveRecord::Schema.define(version: 20170314130918) do
   add_foreign_key "books", "users"
   add_foreign_key "replies", "books"
   add_foreign_key "replies", "wishes"
+  add_foreign_key "trades", "books"
   add_foreign_key "wish_lists", "users"
   add_foreign_key "wishes", "books"
   add_foreign_key "wishes", "users"

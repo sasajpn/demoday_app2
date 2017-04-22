@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   has_many :wishes
   has_many :replies
+  has_one :trade
   has_one :book_address
   accepts_nested_attributes_for :book_address
 

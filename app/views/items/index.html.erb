@@ -10,7 +10,7 @@
             <%= render 'shared/modal/reply_modal', wish: wish, reply: reply %>
             <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#replyModal">お返しをもらっています</button>
           <% elsif wish.replies.find_by(status: 2) %>
-            <%= link_to book_trade_path(book) %>
+            <%= link_to '本の交換が決まりました！', trade_path(item.trade), class: 'btn btn-info btn-sm' %>
           <% elsif wish.replies.find_by(status: 1) %>
             <div class="alert alert-success text-center">これがいいな！を断りました</div>
           <% else %>
